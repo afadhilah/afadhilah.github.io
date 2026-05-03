@@ -1,0 +1,703 @@
+---
+title: "SurveyScout — Digital Survey Marketplace"
+publishedAt: "2025-05-04"
+summary: "Aplikasi Flutter multi-role sebagai marketplace survei lapangan digital. Menghubungkan Client, Surveyor, dan Respondent dalam satu platform terintegrasi dengan sistem reward, analytics real-time, dan manajemen proyek survei."
+images:
+  - "/images/projects/surveyscout/cover.jpg"
+  - "/images/projects/surveyscout/dashboard-client.jpg"
+  - "/images/projects/surveyscout/dashboard-surveyor.jpg"
+  - "/images/projects/surveyscout/respondent-survey.jpg"
+team:
+  - name: "Ahmad Fadhilah"
+    role: "Flutter Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/ahmadfahilah"
+---
+
+## Overview
+
+**SurveyScout** adalah aplikasi mobile marketplace untuk survei lapangan yang dibangun menggunakan Flutter. Platform ini menghubungkan tiga aktor utama: **Client** yang membutuhkan data lapangan, **Surveyor** yang mengumpulkan data, dan **Respondent** yang mengisi survei online — semuanya dalam satu ekosistem yang terintegrasi.
+
+Proyek ini dikembangkan sebagai bagian dari mata kuliah Rekayasa Perangkat Lunak di ITS Semester 7, dengan fokus pada arsitektur mobile yang scalable, role-based access control, dan desain UI/UX yang modern.
+
+<Feedback variant="info">
+  <Text variant="body-default-m">
+    <strong>Tech Stack:</strong> Flutter 3.8 · Dart · Provider · GoRouter · SQLite · Material Design 3
+  </Text>
+</Feedback>
+
+---
+
+## Permasalahan yang Diselesaikan
+
+Proses pengumpulan data survei lapangan konvensional menghadapi beberapa hambatan utama:
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="close" size="m" onBackground="danger-medium" />
+    <Text variant="heading-strong-s">Fragmentasi Platform</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Client, surveyor, dan responden menggunakan tools terpisah sehingga koordinasi menjadi tidak efisien.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="close" size="m" onBackground="danger-medium" />
+    <Text variant="heading-strong-s">Transparansi Minim</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Tidak ada sistem tracking progress survei secara real-time, menyulitkan monitoring dari sisi client.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="close" size="m" onBackground="danger-medium" />
+    <Text variant="heading-strong-s">Rekrutmen Manual</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Mencari surveyor yang qualified membutuhkan proses seleksi manual yang memakan waktu.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="close" size="m" onBackground="danger-medium" />
+    <Text variant="heading-strong-s">Tidak Ada Insentif Terstandar</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Sistem reward untuk responden tidak terstruktur, menurunkan engagement dan kualitas data.
+    </Text>
+  </Card>
+</Grid>
+
+SurveyScout hadir sebagai solusi terpadu yang menjawab semua permasalahan di atas dalam satu aplikasi mobile.
+
+---
+
+## Fitur Utama per Role
+
+### Client
+
+<Card padding="32" radius="l" border="neutral-alpha-weak" direction="column" gap="16" marginBottom="16">
+  <Row gap="12" vertical="center">
+    <Icon name="person" size="l" />
+    <Text variant="heading-strong-m">Dashboard Client</Text>
+  </Row>
+  <Text variant="body-default-m" onBackground="neutral-medium">
+    Client memiliki kontrol penuh atas lifecycle proyek survei — mulai dari pembuatan proyek, rekrutmen tim lapangan, hingga analisis hasil.
+  </Text>
+  <Grid columns="2" gap="12">
+    <Column gap="8">
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Buat & kelola proyek survei</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Scout & rekrut surveyor qualified</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Filter responden by demografi</Text>
+      </Row>
+    </Column>
+    <Column gap="8">
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Analytics dashboard dengan chart</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Sistem pembayaran & invoice</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Rating & review surveyor</Text>
+      </Row>
+    </Column>
+  </Grid>
+</Card>
+
+### Surveyor
+
+<Card padding="32" radius="l" border="neutral-alpha-weak" direction="column" gap="16" marginBottom="16">
+  <Row gap="12" vertical="center">
+    <Icon name="person" size="l" />
+    <Text variant="heading-strong-m">Dashboard Surveyor</Text>
+  </Row>
+  <Text variant="body-default-m" onBackground="neutral-medium">
+    Surveyor dapat melihat proyek yang tersedia, melamar, mengelola pekerjaan aktif, dan melacak penghasilan secara real-time.
+  </Text>
+  <Grid columns="2" gap="12">
+    <Column gap="8">
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Browse & apply proyek lapangan</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Tracking progress aktif dengan milestone</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Submit hasil dengan simulasi upload file</Text>
+      </Row>
+    </Column>
+    <Column gap="8">
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Portfolio & sertifikat digital</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Earnings analytics dengan line chart</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Subscription tier Silver/Gold/Platinum</Text>
+      </Row>
+    </Column>
+  </Grid>
+</Card>
+
+### Respondent
+
+<Card padding="32" radius="l" border="neutral-alpha-weak" direction="column" gap="16" marginBottom="16">
+  <Row gap="12" vertical="center">
+    <Icon name="person" size="l" />
+    <Text variant="heading-strong-m">Dashboard Respondent</Text>
+  </Row>
+  <Text variant="body-default-m" onBackground="neutral-medium">
+    Responden mengisi survei online dan mendapatkan reward berupa poin yang dapat dicairkan ke rekening bank atau e-wallet.
+  </Text>
+  <Grid columns="2" gap="12">
+    <Column gap="8">
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Katalog survei dengan berbagai topik</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Form survei multi-tipe pertanyaan</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Sistem poin & konversi ke Rupiah</Text>
+      </Row>
+    </Column>
+    <Column gap="8">
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Leaderboard & gamifikasi</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Withdrawal via bank / e-wallet</Text>
+      </Row>
+      <Row gap="8" vertical="center">
+        <Icon name="check" size="s" onBackground="success-medium" />
+        <Text variant="body-default-s">Riwayat survei & reward analytics</Text>
+      </Row>
+    </Column>
+  </Grid>
+</Card>
+
+---
+
+## Tech Stack
+
+<Table
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "Layer", key: "layer" },
+      { content: "Teknologi", key: "tech" },
+      { content: "Versi", key: "version" },
+      { content: "Kegunaan", key: "use" }
+    ],
+    rows: [
+      ["Framework", "Flutter", "SDK ^3.8.0", "Cross-platform mobile development"],
+      ["Language", "Dart", "Latest", "Programming language utama"],
+      ["State Management", "Provider", "^6.1.1", "Reactive state & dependency injection"],
+      ["Routing", "GoRouter", "^13.0.0", "Deklaratif routing dengan 80+ routes"],
+      ["Local DB", "SQLite (sqflite)", "^2.3.0", "Persistensi data user & session"],
+      ["Storage", "SharedPreferences", "^2.2.2", "Session token & auto-login"],
+      ["Charts", "FL Chart", "^0.66.0", "Analytics dashboard visualisasi"],
+      ["Typography", "Google Fonts", "^6.3.2", "Plus Jakarta Sans & Inter"],
+      ["Security", "crypto", "^3.0.3", "SHA-256 password hashing"],
+      ["Animation", "Shimmer", "^3.0.0", "Skeleton loading UX"],
+      ["UI Framework", "Material Design 3", "-", "Design system & komponen UI"],
+    ]
+  }}
+/>
+
+---
+
+## Arsitektur Aplikasi
+
+Aplikasi menggunakan **layered architecture** dengan pemisahan concern yang jelas:
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `surveyscout_app/
+├── lib/
+│   ├── main.dart              # Entry point + MultiProvider setup
+│   ├── router.dart            # GoRouter — 80+ routes, role-based redirect
+│   ├── screens/               # 72 Dart files
+│   │   ├── general/           # 28 screens (Auth, Profile, Settings)
+│   │   ├── client/            # 16 screens (Projects, Analytics, Payment)
+│   │   ├── surveyor/          # 13 screens (Jobs, Portfolio, Earnings)
+│   │   ├── respondent/        # 8 screens (Surveys, Rewards)
+│   │   └── admin/             # 7 screens (Management, Reports)
+│   ├── services/
+│   │   ├── auth_service.dart       # Register, login, session management
+│   │   ├── database_helper.dart    # SQLite singleton, SHA-256 hashing
+│   │   └── mock_api.dart           # Mock data + API wrapper + models
+│   ├── widgets/
+│   │   ├── bottom_nav_scaffold.dart # Floating bottom navigation
+│   │   ├── modern_widgets.dart      # GradientCard, StatCard, dll
+│   │   ├── shared_widgets.dart      # PrimaryButton, StatusBadge, dll
+│   │   └── upload_simulation.dart   # File upload progress widget
+│   └── theme/
+│       └── app_theme.dart     # Color palette, typography tokens
+└── assets/
+    ├── icons/                 # Logo.png, Logo.svg
+    └── mock_data/             # Placeholder data`,
+      language: "bash",
+      label: "Project Structure"
+    }
+  ]}
+/>
+
+### State Management
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `// main.dart — MultiProvider setup
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final authService = AuthService();
+  final mockApiService = MockApiService();
+
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider<MockApiService>.value(value: mockApiService),
+        Provider<AuthService>.value(value: authService),
+        ChangeNotifierProvider(
+          create: (_) => AuthProvider(authService),
+        ),
+      ],
+      child: const SurveyScoutApp(),
+    ),
+  );
+}`,
+      language: "dart",
+      label: "main.dart"
+    },
+    {
+      code: `// router.dart — Role-based redirect
+redirect: (context, state) {
+  final authProvider = context.read<AuthProvider>();
+  final isPublicRoute = publicRoutes.contains(state.matchedLocation);
+
+  if (!authProvider.isAuthenticated && !isPublicRoute) {
+    return '/login';
+  }
+
+  if (authProvider.isAuthenticated) {
+    final role = authProvider.user?.role;
+    if (role == 'client') return '/client/dashboard';
+    if (role == 'surveyor') return '/surveyor/dashboard';
+    if (role == 'respondent') return '/respondent/dashboard';
+  }
+  return null;
+},`,
+      language: "dart",
+      label: "router.dart"
+    },
+    {
+      code: `// database_helper.dart — SHA-256 auth
+Future<Map<String, dynamic>?> loginUser(
+  String email, String password
+) async {
+  final db = await database;
+  final hashedPassword = _hashPassword(password);
+
+  final result = await db.query(
+    'users',
+    where: 'email = ? AND password = ?',
+    whereArgs: [email, hashedPassword],
+  );
+
+  if (result.isNotEmpty) {
+    final token = _generateToken(email);
+    final expiresAt = DateTime.now().add(Duration(days: 30));
+    await db.insert('sessions', {
+      'user_id': result.first['id'],
+      'token': token,
+      'expires_at': expiresAt.toIso8601String(),
+    });
+    return result.first;
+  }
+  return null;
+}
+
+String _hashPassword(String password) {
+  final bytes = utf8.encode(password);
+  return sha256.convert(bytes).toString();
+}`,
+      language: "dart",
+      label: "database_helper.dart"
+    }
+  ]}
+/>
+
+---
+
+## Design System
+
+Desain menggunakan **4-color minimalist palette** berbasis cokelat hangat, memberikan kesan profesional dan modern:
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="16">
+    <Text variant="heading-strong-m">Color Palette</Text>
+    <Column gap="12">
+      <Row gap="12" vertical="center">
+        <Column
+          style={{
+            width: "40px",
+            height: "40px",
+            borderRadius: "8px",
+            background: "#40302B",
+            flexShrink: 0
+          }}
+        />
+        <Column gap="2">
+          <Text variant="label-strong-s">Primary Brown</Text>
+          <Text variant="label-default-xs" onBackground="neutral-weak">#40302B</Text>
+        </Column>
+      </Row>
+      <Row gap="12" vertical="center">
+        <Column
+          style={{
+            width: "40px",
+            height: "40px",
+            borderRadius: "8px",
+            background: "#2D201C",
+            flexShrink: 0
+          }}
+        />
+        <Column gap="2">
+          <Text variant="label-strong-s">Primary Dark</Text>
+          <Text variant="label-default-xs" onBackground="neutral-weak">#2D201C</Text>
+        </Column>
+      </Row>
+      <Row gap="12" vertical="center">
+        <Column
+          style={{
+            width: "40px",
+            height: "40px",
+            borderRadius: "8px",
+            background: "#6B5550",
+            flexShrink: 0
+          }}
+        />
+        <Column gap="2">
+          <Text variant="label-strong-s">Primary Light</Text>
+          <Text variant="label-default-xs" onBackground="neutral-weak">#6B5550</Text>
+        </Column>
+      </Row>
+      <Row gap="12" vertical="center">
+        <Column
+          style={{
+            width: "40px",
+            height: "40px",
+            borderRadius: "8px",
+            background: "#FAF8F6",
+            border: "1px solid #E0D8D4",
+            flexShrink: 0
+          }}
+        />
+        <Column gap="2">
+          <Text variant="label-strong-s">Background</Text>
+          <Text variant="label-default-xs" onBackground="neutral-weak">#FAF8F6</Text>
+        </Column>
+      </Row>
+    </Column>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="16">
+    <Text variant="heading-strong-m">Typography</Text>
+    <Column gap="16">
+      <Column gap="4">
+        <Text variant="label-strong-s" onBackground="neutral-weak">HEADING</Text>
+        <Text variant="heading-strong-l">Plus Jakarta Sans</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">Bold · 22–36px · Heading & Display</Text>
+      </Column>
+      <Line />
+      <Column gap="4">
+        <Text variant="label-strong-s" onBackground="neutral-weak">BODY</Text>
+        <Text variant="body-default-m">Inter Regular/Medium</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">Regular/Medium · 12–16px · Body text</Text>
+      </Column>
+    </Column>
+  </Card>
+</Grid>
+
+### Reusable Widget Library
+
+<Table
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "Widget", key: "widget" },
+      { content: "File", key: "file" },
+      { content: "Deskripsi", key: "desc" }
+    ],
+    rows: [
+      ["GradientCard", "modern_widgets.dart", "Card dengan gradient cokelat & shadow"],
+      ["StatCard", "modern_widgets.dart", "Kartu statistik dengan angka & label"],
+      ["ModernProgressBar", "modern_widgets.dart", "Progress bar gradient dengan animasi"],
+      ["PrimaryButton", "shared_widgets.dart", "Full-width button dengan loading state"],
+      ["StatusBadge", "shared_widgets.dart", "Badge Open / Active / Completed"],
+      ["ProjectCard", "shared_widgets.dart", "Card untuk listing proyek survei"],
+      ["ShimmerLoading", "shared_widgets.dart", "Skeleton loading placeholder"],
+      ["UploadSimulationCard", "upload_simulation.dart", "File upload dengan progress animasi"],
+      ["BottomNavScaffold", "bottom_nav_scaffold.dart", "Floating bottom navigation per role"],
+    ]
+  }}
+/>
+
+---
+
+## Database Schema
+
+Menggunakan SQLite lokal dengan dua tabel utama dan indexing untuk performa query:
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `-- users table
+CREATE TABLE users (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  email      TEXT    UNIQUE NOT NULL,
+  password   TEXT    NOT NULL,  -- SHA-256 hashed
+  name       TEXT    NOT NULL,
+  role       TEXT    NOT NULL,  -- client | surveyor | respondent | admin
+  phone      TEXT,
+  avatar_url TEXT,
+  created_at TEXT    NOT NULL,  -- ISO 8601
+  updated_at TEXT    NOT NULL
+);
+
+-- sessions table
+CREATE TABLE sessions (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id    INTEGER NOT NULL REFERENCES users(id),
+  token      TEXT    NOT NULL,  -- SHA-256 generated
+  created_at TEXT    NOT NULL,
+  expires_at TEXT    NOT NULL   -- 30 days TTL
+);
+
+-- Indexes untuk query performance
+CREATE INDEX idx_users_email    ON users(email);
+CREATE INDEX idx_sessions_token ON sessions(token);`,
+      language: "sql",
+      label: "schema.sql"
+    }
+  ]}
+/>
+
+---
+
+## Authentication Flow
+
+<AccordionGroup>
+  <Accordion title="1. Splash Screen → Onboarding">
+    <Text variant="body-default-m" onBackground="neutral-medium">
+      Aplikasi dimulai dari Splash Screen (3 detik). Jika user belum pernah login, diarahkan ke Onboarding (3-slide PageView) yang menjelaskan value proposition platform.
+    </Text>
+  </Accordion>
+  <Accordion title="2. Role Gateway → Register / Login">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      User memilih role (Client / Surveyor / Respondent) di Role Gateway Screen. Setelah memilih, mereka masuk ke form registrasi atau login yang spesifik per role. Password di-hash menggunakan SHA-256 sebelum disimpan ke SQLite.
+    </Text>
+    <CodeBlock
+      codes={[
+        {
+          code: `Future<User?> register(String email, String password, 
+    String name, String role) async {
+  final db = DatabaseHelper();
+  final userId = await db.registerUser(email, password, name, role);
+  if (userId != null) {
+    return User(id: userId, email: email, name: name, role: role);
+  }
+  return null;
+}`,
+          language: "dart",
+          label: "auth_service.dart"
+        }
+      ]}
+    />
+  </Accordion>
+  <Accordion title="3. Session Management & Auto-login">
+    <Text variant="body-default-m" onBackground="neutral-medium">
+      Setelah login berhasil, token disimpan di SharedPreferences dengan TTL 30 hari. Saat aplikasi dibuka kembali, AuthProvider memeriksa token yang tersimpan — jika valid, user langsung diarahkan ke dashboard sesuai role tanpa perlu login ulang.
+    </Text>
+  </Accordion>
+  <Accordion title="4. Route Guard & Role Redirect">
+    <Text variant="body-default-m" onBackground="neutral-medium">
+      GoRouter menggunakan <InlineCode>redirect</InlineCode> callback yang dievaluasi ulang setiap kali AuthProvider berubah. Route yang dilindungi akan redirect ke <InlineCode>/login</InlineCode> jika belum autentikasi. Setelah login, user diarahkan ke dashboard sesuai role secara otomatis.
+    </Text>
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Tantangan & Solusi
+
+<Grid columns="1" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Role-Based Navigation Complexity</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      <strong>Tantangan:</strong> 4 role berbeda dengan 80+ routes yang harus diorganisir secara terstruktur dan aman.
+    </Text>
+    <Text variant="body-default-s" onBackground="neutral-medium">
+      <strong>Solusi:</strong> GoRouter ShellRoute per role dengan floating bottom navigation independen. Auth guard terpusat di satu redirect callback yang memeriksa state AuthProvider, sehingga tidak ada duplikasi logika keamanan.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Consistent UI Across 72 Screens</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      <strong>Tantangan:</strong> Menjaga konsistensi visual di 72 screen Dart yang dikerjakan secara iteratif.
+    </Text>
+    <Text variant="body-default-s" onBackground="neutral-medium">
+      <strong>Solusi:</strong> Design token terpusat di <InlineCode>app_theme.dart</InlineCode> dan widget library reusable (<InlineCode>modern_widgets.dart</InlineCode>, <InlineCode>shared_widgets.dart</InlineCode>). Setiap screen menggunakan komponen yang sama sehingga perubahan tema berlaku global.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Mock API yang Realistis</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      <strong>Tantangan:</strong> Demonstrasi fitur lengkap tanpa backend real membutuhkan mock data yang convincing.
+    </Text>
+    <Text variant="body-default-s" onBackground="neutral-medium">
+      <strong>Solusi:</strong> MockApiService singleton dengan data generator deterministik dan simulated delay 500–1000ms. Semua model data sudah didefinisikan lengkap agar mudah diganti dengan HTTP client saat backend tersedia.
+    </Text>
+  </Card>
+</Grid>
+
+---
+
+## Fitur Platform
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">Multi-language</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Dukungan Bahasa Indonesia, English, dan Melayu dengan sistem localization berbasis <InlineCode>intl</InlineCode>.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">Dark Mode</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Toggle dark/light mode dengan transisi smooth yang tersimpan di SharedPreferences.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">Offline Handling</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Dedicated No Internet screen dengan retry mechanism yang graceful untuk pengalaman pengguna yang lebih baik.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">In-app Chat</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Sistem chat antar pengguna (client ↔ surveyor) untuk koordinasi proyek tanpa keluar dari aplikasi.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">Admin KYC Verification</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Panel admin untuk verifikasi dokumen identitas (KYC) surveyor sebelum dapat menerima proyek berbayar.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">Subscription Tiers</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Tiga paket berlangganan untuk surveyor (Silver/Gold/Platinum) dan tiga paket proyek untuk client (Basic/Pro/Enterprise).
+    </Text>
+  </Card>
+</Grid>
+
+---
+
+## Statistik Proyek
+
+<Grid columns="4" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="8" horizontal="center">
+    <Text variant="display-strong-m" onBackground="brand-medium">72</Text>
+    <Text variant="label-default-s" onBackground="neutral-weak">Dart Screens</Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="8" horizontal="center">
+    <Text variant="display-strong-m" onBackground="brand-medium">80+</Text>
+    <Text variant="label-default-s" onBackground="neutral-weak">Routes</Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="8" horizontal="center">
+    <Text variant="display-strong-m" onBackground="brand-medium">4</Text>
+    <Text variant="label-default-s" onBackground="neutral-weak">User Roles</Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="8" horizontal="center">
+    <Text variant="display-strong-m" onBackground="brand-medium">11</Text>
+    <Text variant="label-default-s" onBackground="neutral-weak">Dependencies</Text>
+  </Card>
+</Grid>
+
+---
+
+## Cara Menjalankan
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `# Clone repository
+git clone https://github.com/yourusername/surveyscout_app.git
+cd surveyscout_app
+
+# Install dependencies
+flutter pub get
+
+# Jalankan di emulator / device
+flutter run
+
+# Build APK
+flutter build apk --release`,
+      language: "bash",
+      label: "Terminal"
+    }
+  ]}
+/>
+
+<Feedback variant="warning">
+  <Text variant="body-default-m">
+    <strong>Catatan:</strong> Initial route saat ini mengarah ke <InlineCode>/ui-showcase</InlineCode> untuk kemudahan development. Ubah ke <InlineCode>/splash</InlineCode> di <InlineCode>lib/router.dart</InlineCode> untuk alur pengguna yang lengkap.
+  </Text>
+</Feedback>
+
+---
+
+## Outcome & Pembelajaran
+
+Proyek ini memberikan pengalaman praktis membangun **full-stack mobile application** dengan kompleksitas nyata:
+
+- Merancang **role-based access control** yang aman menggunakan declarative routing
+- Mengimplementasikan **local-first architecture** dengan SQLite dan sinkronisasi state via Provider
+- Membangun **design system yang konsisten** untuk tim yang mengerjakan banyak screen secara paralel
+- Memahami trade-off antara **mock API** untuk development velocity vs live backend untuk production readiness
+- Mengelola **state yang kompleks** (auth, navigation, data) dalam satu aplikasi multi-role
+
+SurveyScout membuktikan bahwa Flutter mampu menangani aplikasi dengan skala menengah-besar dengan arsitektur yang clean, performa yang baik, dan developer experience yang solid.
