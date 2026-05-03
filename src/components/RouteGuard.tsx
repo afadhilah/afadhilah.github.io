@@ -18,6 +18,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(true);
+  const accessPassword = process.env.NEXT_PUBLIC_PAGE_ACCESS_PASSWORD ?? "password";
 
   useEffect(() => {
     const performChecks = async () => {
@@ -49,8 +50,8 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
         setIsPasswordRequired(true);
 
-        const response = await fetch("/api/check-auth");
-        if (response.ok) {
+        const storedPassword = window.localStorage.getItem(`route-auth:${pathname}`);
+        if (storedPassword === accessPassword) {
           setIsAuthenticated(true);
         }
       }
@@ -62,13 +63,8 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   }, [pathname]);
 
   const handlePasswordSubmit = async () => {
-    const response = await fetch("/api/authenticate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
-    });
-
-    if (response.ok) {
+    if (password === accessPassword) {
+      window.localStorage.setItem(`route-auth:${pathname}`, accessPassword);
       setIsAuthenticated(true);
       setError(undefined);
     } else {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Writing about design and tech...</title>
+    <link>https://afadhilah.github.io/blog</link>
+    <description>Read what Ahmad Fadhilah Mappisara has been up to recently</description>
+    <language>en</language>
+    <lastBuildDate>Sun, 03 May 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://afadhilah.github.io/rss.xml" rel="self" type="application/rss+xml" />
+    <item><title>Blog</title><link>https://afadhilah.github.io/blog/blog</link><guid>https://afadhilah.github.io/blog/blog</guid><description>Blog</description></item>
+    <item><title>Components</title><link>https://afadhilah.github.io/blog/components</link><guid>https://afadhilah.github.io/blog/components</guid><description>Components</description></item>
+    <item><title>Content</title><link>https://afadhilah.github.io/blog/content</link><guid>https://afadhilah.github.io/blog/content</guid><description>Content</description></item>
+    <item><title>Localization</title><link>https://afadhilah.github.io/blog/localization</link><guid>https://afadhilah.github.io/blog/localization</guid><description>Localization</description></item>
+    <item><title>Mailchimp</title><link>https://afadhilah.github.io/blog/mailchimp</link><guid>https://afadhilah.github.io/blog/mailchimp</guid><description>Mailchimp</description></item>
+    <item><title>Pages</title><link>https://afadhilah.github.io/blog/pages</link><guid>https://afadhilah.github.io/blog/pages</guid><description>Pages</description></item>
+    <item><title>Password</title><link>https://afadhilah.github.io/blog/password</link><guid>https://afadhilah.github.io/blog/password</guid><description>Password</description></item>
+    <item><title>Quick Start</title><link>https://afadhilah.github.io/blog/quick-start</link><guid>https://afadhilah.github.io/blog/quick-start</guid><description>Quick Start</description></item>
+    <item><title>SEO</title><link>https://afadhilah.github.io/blog/seo</link><guid>https://afadhilah.github.io/blog/seo</guid><description>SEO</description></item>
+    <item><title>Styling</title><link>https://afadhilah.github.io/blog/styling</link><guid>https://afadhilah.github.io/blog/styling</guid><description>Styling</description></item>
+    <item><title>Work</title><link>https://afadhilah.github.io/blog/work</link><guid>https://afadhilah.github.io/blog/work</guid><description>Work</description></item>
+  </channel>
+</rss>
