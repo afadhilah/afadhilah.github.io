@@ -202,6 +202,9 @@ const components = {
   Icon,
   Media,
   SmartLink,
+  Line,
+  List,
+  ListItem,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

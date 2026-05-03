@@ -1,0 +1,655 @@
+---
+title: "Template: Semua Once UI Components di MDX"
+subtitle: "Referensi lengkap setiap komponen yang bisa digunakan di blog post"
+summary: "Template MDX yang mendemonstrasikan semua Once UI components yang tersedia: Typography, CodeBlock, Media, Table, Accordion, Button, Card, Grid, Feedback, Icon, dan lainnya."
+image: "/images/gallery/horizontal-1.jpg"
+publishedAt: "2025-05-03"
+tag: "Template"
+---
+
+## Typography
+
+### Heading (h1 - h6)
+
+Heading otomatis menjadi anchor link yang bisa diklik. Berikut contoh setiap level:
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+### Paragraph
+
+Ini adalah contoh paragraf biasa. Teks ini akan di-render menggunakan `Text` component dari Once UI dengan variant `body-default-m`. Setiap paragraf memiliki line-height 175% untuk keterbacaan yang optimal.
+
+Paragraf kedua untuk menunjukkan spacing antar paragraf. Kamu bisa menulis **bold**, *italic*, dan ***bold italic*** seperti biasa menggunakan Markdown syntax.
+
+### Custom Heading Component
+
+Selain heading Markdown standar, kamu juga bisa menggunakan `<Heading>` component langsung:
+
+<Heading as="h3" variant="heading-strong-l" marginTop="24" marginBottom="12">
+  Custom Heading dengan Variant
+</Heading>
+
+<Heading as="h4" variant="display-strong-s" marginBottom="12">
+  Display Strong Small
+</Heading>
+
+### Text Component
+
+<Text variant="body-default-l" onBackground="neutral-strong" marginBottom="12">
+  Text variant: body-default-l — untuk teks yang lebih besar dan menonjol.
+</Text>
+
+<Text variant="body-default-s" onBackground="neutral-weak" marginBottom="12">
+  Text variant: body-default-s — untuk teks kecil, caption, atau keterangan tambahan.
+</Text>
+
+<Text variant="label-strong-m" onBackground="brand-medium" marginBottom="12">
+  Text variant: label-strong-m — cocok untuk label atau tag.
+</Text>
+
+<Text variant="heading-strong-m" marginBottom="12">
+  Text variant: heading-strong-m — heading tanpa anchor link.
+</Text>
+
+---
+
+## Inline Code & Code Block
+
+### Inline Code
+
+Gunakan backtick untuk inline code: `const x = 42;` atau `npm install once-ui`.
+
+Kamu juga bisa pakai component langsung: <InlineCode>InlineCode component</InlineCode>
+
+### Code Block (Markdown Syntax)
+
+Cukup gunakan triple backtick dengan bahasa:
+
+```tsx
+import { Button, Column, Row } from "@once-ui-system/core";
+
+export default function MyComponent() {
+  return (
+    <Column gap="16" padding="24">
+      <Row gap="8">
+        <Button variant="primary" size="m">
+          Primary
+        </Button>
+        <Button variant="secondary" size="m">
+          Secondary
+        </Button>
+      </Row>
+    </Column>
+  );
+}
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: var(--radius-l);
+  background: var(--surface-background);
+}
+```
+
+```python
+def fibonacci(n: int) -> list[int]:
+    """Generate fibonacci sequence."""
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib[:n]
+
+print(fibonacci(10))
+```
+
+### CodeBlock Component (Advanced)
+
+Gunakan `<CodeBlock>` component untuk fitur lebih lengkap seperti highlight baris, label, dan multiple tabs:
+
+<CodeBlock
+    marginBottom="16"
+    highlight="3-5"
+    codes={[
+  {
+    code:
+`// next.config.mjs
+const nextConfig = {
+  output: "export",
+  pageExtensions: ["ts", "tsx", "md", "mdx"],
+  images: { unoptimized: true },
+};
+
+export default nextConfig;`,
+    language: "javascript",
+    label: "next.config.mjs"
+  }
+]} />
+
+#### Multi-tab CodeBlock
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: "admin" | "user";
+}`,
+    language: "tsx",
+    label: "types.ts"
+  },
+  {
+    code:
+`import { User } from "./types";
+
+export async function getUser(id: string): Promise<User> {
+  const res = await fetch(\`/api/users/\${id}\`);
+  return res.json();
+}`,
+    language: "tsx",
+    label: "api.ts"
+  },
+  {
+    code:
+`{
+  "id": "usr_001",
+  "name": "Ahmad Fadhilah",
+  "email": "afadhilah@example.com",
+  "role": "admin"
+}`,
+    language: "json",
+    label: "response.json"
+  }
+]} />
+
+---
+
+## Links
+
+### Internal Link
+
+Navigasi ke halaman lain di portfolio: [Kembali ke Blog](/blog) atau [Halaman About](/about).
+
+### External Link
+
+Link ke situs eksternal: [GitHub](https://github.com) — otomatis terbuka di tab baru.
+
+### Anchor Link
+
+Link ke section di halaman yang sama: [Ke bagian Table](#table).
+
+### SmartLink Component
+
+<SmartLink href="/blog">
+  <Text variant="label-strong-m" onBackground="brand-medium">
+    SmartLink ke Blog →
+  </Text>
+</SmartLink>
+
+---
+
+## Lists
+
+### Unordered List
+
+- Item pertama dalam unordered list
+- Item kedua dengan penjelasan lebih panjang yang menunjukkan wrapping
+- Item ketiga
+- Item keempat
+
+### Ordered List
+
+1. Langkah pertama: Setup project
+2. Langkah kedua: Install dependencies
+3. Langkah ketiga: Konfigurasi
+4. Langkah keempat: Deploy
+
+### Nested List
+
+- Parent item satu
+  - Child item A
+  - Child item B
+- Parent item dua
+  - Child item C
+  - Child item D
+    - Grandchild item
+
+---
+
+## Media & Images
+
+### Markdown Image
+
+![Contoh gambar horizontal](/images/gallery/horizontal-1.jpg)
+
+### Media Component
+
+<Media
+  src="/images/gallery/horizontal-2.jpg"
+  alt="Landscape photo"
+  aspectRatio="16/9"
+  radius="l"
+  border="neutral-alpha-weak"
+  marginTop="12"
+  marginBottom="16"
+/>
+
+### Media dengan Enlarge (Klik untuk zoom)
+
+<Media
+  src="/images/gallery/horizontal-3.jpg"
+  alt="Zoomable image"
+  aspectRatio="16/9"
+  radius="m"
+  border="neutral-alpha-medium"
+  enlarge
+  sizes="(max-width: 960px) 100vw, 960px"
+  marginBottom="16"
+/>
+
+### Media dalam Grid
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Media
+    src="/images/gallery/vertical-1.jpg"
+    alt="Photo 1"
+    aspectRatio="3/4"
+    radius="m"
+    border="neutral-alpha-weak"
+  />
+  <Media
+    src="/images/gallery/vertical-2.jpg"
+    alt="Photo 2"
+    aspectRatio="3/4"
+    radius="m"
+    border="neutral-alpha-weak"
+  />
+</Grid>
+
+---
+
+## Table
+
+<Table
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "Component", key: "component" },
+      { content: "Deskripsi", key: "desc" },
+      { content: "Contoh Penggunaan", key: "example" }
+    ],
+    rows: [
+      ["Heading", "Judul dengan anchor link", "## Heading 2"],
+      ["Text", "Teks dengan variant styling", "<Text variant='body-default-m'>"],
+      ["CodeBlock", "Blok kode dengan syntax highlighting", "<CodeBlock codes={[...]} />"],
+      ["Media", "Gambar / video responsif", "<Media src='...' />"],
+      ["Button", "Tombol interaktif", "<Button variant='primary'>"],
+      ["Card", "Container dengan link / hover", "<Card href='...'>"],
+      ["Accordion", "Collapsible content", "<Accordion title='...'>"],
+      ["Table", "Tabel data", "<Table data={{...}} />"],
+      ["Icon", "Ikon dari icon set", "<Icon name='github' />"],
+      ["Feedback", "Komponen feedback / alert", "<Feedback variant='success'>"],
+    ]
+  }}
+/>
+
+---
+
+## Button
+
+<Row gap="16" marginBottom="16" wrap>
+  <Button variant="primary" size="m">
+    Primary Button
+  </Button>
+  <Button variant="secondary" size="m">
+    Secondary Button
+  </Button>
+  <Button variant="tertiary" size="m">
+    Tertiary Button
+  </Button>
+  <Button variant="danger" size="m">
+    Danger Button
+  </Button>
+</Row>
+
+### Button dengan Icon
+
+<Row gap="16" marginBottom="16" wrap>
+  <Button variant="primary" size="m" prefixIcon="github">
+    GitHub
+  </Button>
+  <Button variant="secondary" size="m" suffixIcon="arrowRight">
+    Next
+  </Button>
+  <Button variant="secondary" size="s" prefixIcon="openLink">
+    External Link
+  </Button>
+</Row>
+
+### Button sebagai Link
+
+<Row gap="16" marginBottom="16" wrap>
+  <Button variant="primary" size="m" href="/blog">
+    Ke Blog
+  </Button>
+  <Button variant="secondary" size="m" href="https://github.com">
+    GitHub Repo
+  </Button>
+</Row>
+
+---
+
+## Card
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card
+    padding="24"
+    radius="l"
+    border="neutral-alpha-weak"
+    direction="column"
+    gap="12"
+  >
+    <Text variant="heading-strong-m">Card Title</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah contoh Card component tanpa link. Card bisa digunakan sebagai container untuk mengelompokkan konten.
+    </Text>
+  </Card>
+  <Card
+    padding="24"
+    radius="l"
+    border="neutral-alpha-weak"
+    direction="column"
+    gap="12"
+    href="/about"
+  >
+    <Text variant="heading-strong-m">Clickable Card</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Card ini bisa diklik dan akan navigasi ke halaman About. Hover untuk melihat efek transisi.
+    </Text>
+  </Card>
+</Grid>
+
+---
+
+## Layout: Row, Column, Grid
+
+### Row (Horizontal)
+
+<Row gap="16" marginBottom="16" vertical="center" wrap>
+  <Button variant="primary" size="s">One</Button>
+  <Button variant="secondary" size="s">Two</Button>
+  <Button variant="tertiary" size="s">Three</Button>
+  <Text variant="label-default-s" onBackground="neutral-weak">← Items dalam Row</Text>
+</Row>
+
+### Column (Vertical)
+
+<Column gap="12" marginBottom="16" padding="24" radius="l" border="neutral-alpha-weak">
+  <Text variant="label-strong-m">Item 1 — Column</Text>
+  <Text variant="label-strong-m">Item 2 — Column</Text>
+  <Text variant="label-strong-m">Item 3 — Column</Text>
+</Column>
+
+### Grid
+
+<Grid columns="3" gap="16" marginBottom="16">
+  <Column padding="24" radius="m" border="neutral-alpha-weak" horizontal="center">
+    <Text variant="label-strong-s">Grid 1</Text>
+  </Column>
+  <Column padding="24" radius="m" border="neutral-alpha-weak" horizontal="center">
+    <Text variant="label-strong-s">Grid 2</Text>
+  </Column>
+  <Column padding="24" radius="m" border="neutral-alpha-weak" horizontal="center">
+    <Text variant="label-strong-s">Grid 3</Text>
+  </Column>
+  <Column padding="24" radius="m" border="neutral-alpha-weak" horizontal="center">
+    <Text variant="label-strong-s">Grid 4</Text>
+  </Column>
+  <Column padding="24" radius="m" border="neutral-alpha-weak" horizontal="center">
+    <Text variant="label-strong-s">Grid 5</Text>
+  </Column>
+  <Column padding="24" radius="m" border="neutral-alpha-weak" horizontal="center">
+    <Text variant="label-strong-s">Grid 6</Text>
+  </Column>
+</Grid>
+
+---
+
+## Icon
+
+<Row gap="24" marginBottom="16" wrap vertical="center">
+  <Column horizontal="center" gap="8">
+    <Icon name="github" size="l" />
+    <Text variant="label-default-xs">github</Text>
+  </Column>
+  <Column horizontal="center" gap="8">
+    <Icon name="linkedin" size="l" />
+    <Text variant="label-default-xs">linkedin</Text>
+  </Column>
+  <Column horizontal="center" gap="8">
+    <Icon name="email" size="l" />
+    <Text variant="label-default-xs">email</Text>
+  </Column>
+  <Column horizontal="center" gap="8">
+    <Icon name="arrowRight" size="l" />
+    <Text variant="label-default-xs">arrowRight</Text>
+  </Column>
+  <Column horizontal="center" gap="8">
+    <Icon name="openLink" size="l" />
+    <Text variant="label-default-xs">openLink</Text>
+  </Column>
+</Row>
+
+---
+
+## Accordion
+
+<AccordionGroup>
+  <Accordion title="Apa itu Once UI?">
+    <Text variant="body-default-m" onBackground="neutral-medium">
+      Once UI adalah design system yang dibangun di atas React dan Next.js. Menyediakan komponen-komponen siap pakai dengan theming yang konsisten dan customizable.
+    </Text>
+  </Accordion>
+  <Accordion title="Bagaimana cara menambah komponen baru di MDX?">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Buka file <InlineCode>src/components/mdx.tsx</InlineCode>, import komponen yang diinginkan, lalu tambahkan ke objek <InlineCode>components</InlineCode>.
+    </Text>
+    <CodeBlock
+      codes={[
+        {
+          code: `const components = {\n  // ... existing components\n  MyNewComponent,\n};`,
+          language: "tsx",
+          label: "mdx.tsx"
+        }
+      ]}
+    />
+  </Accordion>
+  <Accordion title="Apakah MDX mendukung hot reload?">
+    <Text variant="body-default-m" onBackground="neutral-medium">
+      Saat ini hot reload untuk file MDX belum sepenuhnya didukung. Kamu perlu me-restart dev server setelah mengubah file MDX.
+    </Text>
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Feedback
+
+<Column gap="16" marginBottom="16">
+  <Feedback variant="success" marginBottom="8">
+    <Text variant="body-default-m">
+      <strong>Berhasil!</strong> Operasi telah selesai tanpa error.
+    </Text>
+  </Feedback>
+
+  <Feedback variant="warning" marginBottom="8">
+    <Text variant="body-default-m">
+      <strong>Perhatian:</strong> Pastikan kamu sudah membackup data sebelum melanjutkan.
+    </Text>
+  </Feedback>
+
+  <Feedback variant="danger" marginBottom="8">
+    <Text variant="body-default-m">
+      <strong>Error:</strong> Gagal terhubung ke server. Coba lagi nanti.
+    </Text>
+  </Feedback>
+
+  <Feedback variant="info" marginBottom="8">
+    <Text variant="body-default-m">
+      <strong>Info:</strong> Versi terbaru sudah tersedia. Update untuk fitur baru.
+    </Text>
+  </Feedback>
+</Column>
+
+---
+
+## Line (Horizontal Rule)
+
+Menggunakan Markdown `---` syntax:
+
+---
+
+Atau menggunakan `<Line>` component langsung:
+
+<Row fillWidth horizontal="center" marginTop="16" marginBottom="16">
+  <Line maxWidth="40" />
+</Row>
+
+---
+
+## Kombinasi Komponen
+
+Berikut contoh kombinasi beberapa komponen dalam satu section:
+
+<Card padding="32" radius="l" border="neutral-alpha-weak" direction="column" gap="20" marginBottom="16">
+  <Row gap="16" vertical="center">
+    <Icon name="github" size="l" />
+    <Column gap="4">
+      <Text variant="heading-strong-m">Project Repository</Text>
+      <Text variant="body-default-s" onBackground="neutral-weak">
+        Open source project dengan 2.5k stars
+      </Text>
+    </Column>
+  </Row>
+  <Text variant="body-default-m" onBackground="neutral-medium">
+    Ini adalah contoh Card yang berisi kombinasi Icon, Text, dan Button. Komponen-komponen ini bisa di-compose secara fleksibel untuk membuat layout yang kompleks.
+  </Text>
+  <Row gap="12">
+    <Button variant="primary" size="s" prefixIcon="github" href="https://github.com">
+      View on GitHub
+    </Button>
+    <Button variant="secondary" size="s">
+      Documentation
+    </Button>
+  </Row>
+</Card>
+
+### Feature Grid
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">Responsive Design</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Semua komponen otomatis responsif di berbagai ukuran layar.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">Dark Mode</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Mendukung dark mode dan light mode dengan transisi smooth.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">TypeScript</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Fully typed dengan TypeScript untuk developer experience terbaik.
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">Customizable</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Theme dan styling bisa disesuaikan melalui design tokens.
+    </Text>
+  </Card>
+</Grid>
+
+---
+
+## Tips Penggunaan
+
+<AccordionGroup>
+  <Accordion title="Frontmatter fields yang tersedia">
+    <Table
+      data={{
+        headers: [
+          { content: "Field", key: "field" },
+          { content: "Tipe", key: "type" },
+          { content: "Required", key: "req" },
+          { content: "Keterangan", key: "desc" }
+        ],
+        rows: [
+          ["title", "string", "✅", "Judul post"],
+          ["subtitle", "string", "❌", "Subtitle, ditampilkan di bawah judul (italic)"],
+          ["summary", "string", "✅", "Ringkasan untuk SEO dan card preview"],
+          ["image", "string", "❌", "Path gambar hero, e.g. /images/..."],
+          ["publishedAt", "string", "✅", "Tanggal publish format YYYY-MM-DD"],
+          ["tag", "string", "❌", "Kategori / tag post"],
+          ["team", "array", "❌", "Daftar kontributor {name, role, avatar, linkedIn}"],
+        ]
+      }}
+    />
+  </Accordion>
+  <Accordion title="Komponen yang tersedia di MDX">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Semua komponen berikut sudah terdaftar di <InlineCode>src/components/mdx.tsx</InlineCode> dan bisa langsung digunakan tanpa import:
+    </Text>
+    <Table
+      data={{
+        headers: [
+          { content: "Component", key: "component" },
+          { content: "Kategori", key: "category" }
+        ],
+        rows: [
+          ["Heading", "Typography"],
+          ["Text", "Typography"],
+          ["InlineCode", "Typography"],
+          ["CodeBlock", "Code"],
+          ["Media", "Media"],
+          ["SmartLink", "Navigation"],
+          ["Button", "Action"],
+          ["Card", "Layout"],
+          ["Row", "Layout"],
+          ["Column", "Layout"],
+          ["Grid", "Layout"],
+          ["Icon", "Visual"],
+          ["Line", "Visual"],
+          ["Accordion", "Disclosure"],
+          ["AccordionGroup", "Disclosure"],
+          ["Table", "Data"],
+          ["Feedback", "Status"],
+        ]
+      }}
+    />
+  </Accordion>
+</AccordionGroup>
