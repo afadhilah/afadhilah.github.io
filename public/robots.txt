@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://afadhilah.github.io/sitemap.xml
+Sitemap: https://ahmadfadhilah.my.id/sitemap.xml
