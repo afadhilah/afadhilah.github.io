@@ -78,7 +78,6 @@ const about: About = {
       title: skill.title,
       description: <>{skill.description}</>,
       tags: skill.tags,
-      images: skill.images,
     })),
   },
 };
