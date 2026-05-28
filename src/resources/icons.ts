@@ -12,7 +12,15 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiSparkles,
+  HiCog6Tooth,
 } from "react-icons/hi2";
+
+import {
+  HiTerminal, 
+  
+  HiChartBar,
+} from "react-icons/hi";
 
 import {
   PiHouseDuotone,
@@ -27,7 +35,16 @@ import {
   SiNextdotjs,
   SiFigma,
   SiSupabase,
+  SiTypescript,
+  SiReact,
+  SiTailwindcss,
+  SiFirebase,
+  SiPython,
+  SiDocker,
+  SiSpringsecurity,
 } from "react-icons/si";
+
+import { PiNetwork } from "react-icons/pi";
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, } from "react-icons/fa6";
 
@@ -64,6 +81,18 @@ export const iconLibrary: Record<string, IconType> = {
   reddit: FaReddit,
   telegram: FaTelegram,
   instagram: FaInstagram,
+  typescript: SiTypescript,
+  react: SiReact,
+  tailwindcss: SiTailwindcss,
+  firebase: SiFirebase,
+  python: SiPython,
+  sparkles: HiSparkles,
+  gear: HiCog6Tooth,
+  chart: HiChartBar,
+  terminal: HiTerminal,
+  docker: SiDocker,
+  network: PiNetwork,
+  shield: SiSpringsecurity,
 };
 
 export type IconLibrary = typeof iconLibrary;

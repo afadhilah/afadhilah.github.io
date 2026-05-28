@@ -1,0 +1,458 @@
+---
+title: "Civic Spotlight - Indonesia Public Infrastructure Reporting Platform"
+subtitle: "Complete documentation of architecture, features, and implementation"
+summary: "Civic Spotlight is a real-time public infrastructure reporting platform for Indonesia with Leaflet map visualization, JWT authentication system, report progress tracking, and community collaboration through upvotes and comments."
+image: "/images/gallery/horizontal-1.jpg"
+publishedAt: "2026-05-28"
+tag: "Project Documentation"
+---
+
+## Project Summary
+
+Civic Spotlight is an interactive web platform that enables Indonesian citizens to report public infrastructure issues in real-time with spatial visualization based on maps. The platform is designed to increase transparency and community participation in public infrastructure improvements with community collaboration features.
+
+### Purpose of Creation
+
+This project was built to achieve several strategic objectives:
+
+1. **Transparency** - Provide an open platform for reporting infrastructure issues
+2. **Community Participation** - Enable community collaboration through upvotes and comments
+3. **Real-time Tracking** - Provide project progress status updates in real-time
+4. **Spatial Data** - Visualize reports in map format for geographic analysis
+5. **Accountability** - Document and track each report from start to finish
+
+---
+
+## System Architecture
+
+Civic Spotlight uses a modern architecture divided into two main layers: Frontend and Backend, with a centralized database.
+
+### Architecture Diagram
+
+```md
+┌─────────────────────────────────────────────────────────────┐
+│                    CLIENT LAYER (Frontend)                  │
+│  React 18 + TypeScript + Vite | Responsive UI with Tailwind CSS │
+│                                                              │
+│  Pages: Home | Map | Dashboard | ReportDetail | Login      │
+│  Components: Navbar | Map | Cards | Forms | Comments       │
+│  State Management: TanStack Query (React Query)             │
+└────────────────────┬─────────────────────────────────────────┘
+                     │ HTTP / REST API (Axios)
+                     │ Origin: http://localhost:5173
+                     │
+┌────────────────────┴─────────────────────────────────────────┐
+│                    API GATEWAY (Backend)                     │
+│         Express.js Server | Port 5000                        │
+│                                                              │
+│  Routes:                                                     │
+│  • /api/auth         (Register, Login, Profile)             │
+│  • /api/reports      (CRUD, Status, Upvote)                │
+│  • /api/reports/:id/comments (Comments)                    │
+│                                                              │
+│  Middleware:                                                │
+│  • Authentication (JWT)                                     │
+│  • File Upload (Multer)                                     │
+│  • Error Handling                                           │
+│  • CORS Configuration                                       │
+│                                                              │
+│  Controller Layer:                                          │
+│  • User Controller                                          │
+│  • Report Controller                                        │
+│  • Comment Controller                                       │
+└────────────────────┬─────────────────────────────────────────┘
+                     │ Database Queries (pg library)
+                     │
+┌────────────────────┴─────────────────────────────────────────┐
+│              DATABASE LAYER (PostgreSQL)                     │
+│         Port 5432 | Database: civic_spotlight               │
+│                                                              │
+│  Tables:                                                     │
+│  • users            (Identity & Authentication)              │
+│  • reports          (Main Report Data)                       │
+│  • comments         (Collaboration & Discussion)             │
+│  • upvotes          (Voting & Priority)                      │
+│  • report_timeline  (Progress Tracking)                      │
+│                                                              │
+│  File Storage: /backend/uploads/                            │
+└────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Technology Stack
+
+### Frontend Stack
+
+<Table
+  data={{
+    headers: [
+      { content: "Technology", key: "tech" },
+      { content: "Version", key: "version" },
+      { content: "Purpose", key: "function" }
+    ],
+    rows: [
+      ["React", "18", "UI Library and Component Framework"],
+      ["TypeScript", "Latest", "Type Safety for JavaScript"],
+      ["Vite", "Latest", "Module Bundler & Dev Server"],
+      ["Tailwind CSS", "Latest", "Utility-first CSS Framework"],
+      ["ShadCN UI", "Latest", "Component Library (Radix UI)"],
+      ["React Router", "Latest", "Client-side Routing"],
+      ["TanStack Query", "5.83.0", "Server State Management & Data Fetching"],
+      ["Axios", "1.7.7", "HTTP Client for API calls"],
+      ["Leaflet", "1.9.x", "Interactive Maps Library"],
+      ["React Hook Form", "3.10.0", "Form Management & Validation"],
+      ["Framer Motion", "Latest", "Animation Library"],
+      ["Vitest", "Latest", "Unit Testing Framework"],
+      ["ESLint", "Latest", "Code Quality & Linting"]
+    ]
+  }}
+/>
+
+### Backend Stack
+
+<Table
+  data={{
+    headers: [
+      { content: "Technology", key: "tech" },
+      { content: "Version", key: "version" },
+      { content: "Purpose", key: "function" }
+    ],
+    rows: [
+      ["Node.js", "16+", "JavaScript Runtime"],
+      ["Express.js", "4.18.2", "Web Framework & REST API"],
+      ["PostgreSQL", "12+", "Relational Database"],
+      ["JWT", "9.0.2", "Authentication & Authorization"],
+      ["Bcrypt", "2.4.3", "Password Hashing & Security"],
+      ["Multer", "1.4.5", "File Upload Handler"],
+      ["CORS", "2.8.5", "Cross-Origin Resource Sharing"],
+      ["Dotenv", "16.3.1", "Environment Variables Management"],
+      ["UUID", "8.3.2", "Unique Identifier Generation"],
+      ["Nodemon", "3.0.2", "Development Auto-reload"],
+      ["Express Validator", "6.14.3", "Request Validation & Sanitization"]
+    ]
+  }}
+/>
+
+---
+
+## Database Schema
+
+### Users Table
+
+Stores user information and authentication credentials.
+
+```sql
+CREATE TABLE users (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  phone VARCHAR(20),
+  address TEXT,
+  avatar_url VARCHAR(255),
+  role VARCHAR(50) DEFAULT 'user',
+  status VARCHAR(50) DEFAULT 'active',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+```
+
+### Reports Table
+
+Main infrastructure report data with location and status information.
+
+```sql
+CREATE TABLE reports (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  title VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  category VARCHAR(50) NOT NULL,
+  status VARCHAR(50) DEFAULT 'pending',
+  location VARCHAR(255) NOT NULL,
+  latitude DECIMAL(10, 8) NOT NULL,
+  longitude DECIMAL(11, 8) NOT NULL,
+  photo_url VARCHAR(255),
+  upvotes INT DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+```
+
+### Comments Table
+
+Community collaboration through discussions on each report.
+
+```sql
+CREATE TABLE comments (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  report_id UUID NOT NULL REFERENCES reports(id) ON DELETE CASCADE,
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  content TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+```
+
+### Upvotes Table
+
+Tracking upvotes per user to prevent duplication and calculate priority.
+
+```sql
+CREATE TABLE upvotes (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  report_id UUID NOT NULL REFERENCES reports(id) ON DELETE CASCADE,
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE(report_id, user_id)
+)
+```
+
+### Report Timeline Table
+
+Progress tracking for reports from pending to completed.
+
+```sql
+CREATE TABLE report_timeline (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  report_id UUID NOT NULL REFERENCES reports(id) ON DELETE CASCADE,
+  step VARCHAR(255) NOT NULL,
+  done BOOLEAN DEFAULT FALSE,
+  date TIMESTAMP,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+```
+
+---
+
+## Main Features
+
+### 1. Authentication & User Management
+
+JWT-based security system with password encryption.
+
+<Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12" marginBottom="16">
+  <Text variant="heading-strong-m">Authentication Features</Text>
+  <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="12">
+    Login/register system with JWT token, password encryption using bcryptjs, and profile management for each user.
+  </Text>
+  <Table
+    data={{
+      headers: [
+        { content: "Endpoint", key: "endpoint" },
+        { content: "Method", key: "method" },
+        { content: "Description", key: "desc" }
+      ],
+      rows: [
+        ["POST /api/auth/register", "POST", "Register new user"],
+        ["POST /api/auth/login", "POST", "Login and get JWT token"],
+        ["GET /api/auth/profile", "GET", "Get user profile (requires auth)"],
+        ["PUT /api/auth/profile", "PUT", "Update user profile (requires auth)"]
+      ]
+    }}
+  />
+</Card>
+
+### 2. Infrastructure Reporting
+
+Multi-channel reporting system with photos, GPS location, and categorization.
+
+<Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12" marginBottom="16">
+  <Text variant="heading-strong-m">Report Categories</Text>
+  <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="12">
+    The platform supports 6 main infrastructure categories:
+  </Text>
+  <Row gap="8" marginBottom="12" wrap>
+    <Button variant="secondary" size="s">Roads</Button>
+    <Button variant="secondary" size="s">Lighting</Button>
+    <Button variant="secondary" size="s">Waste</Button>
+    <Button variant="secondary" size="s">Drainage</Button>
+    <Button variant="secondary" size="s">Safety</Button>
+    <Button variant="secondary" size="s">Other</Button>
+  </Row>
+</Card>
+
+Reporting features include:
+
+- **Photo Upload** - Maximum 5MB per file with MIME type validation
+- **GPS Location** - Latitude/longitude coordinates from map picker or GPS device
+- **Detailed Description** - Title and description for context
+- **Status Progress** - Pending, In Progress, Resolved tracking
+- **Timestamps** - Created_at and updated_at for audit trail
+
+### 3. Interactive Map Visualization
+
+Leaflet integration for real-time spatial report visualization.
+
+<Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12" marginBottom="16">
+  <Text variant="heading-strong-m">Map Features</Text>
+  <Text variant="body-default-s" onBackground="neutral-weak">
+    Interactive map showing all reports with markers that can be clicked for details. Users can create new reports by selecting location on the map.
+  </Text>
+</Card>
+
+### 4. Priority System (Upvotes)
+
+Community voting mechanism to determine repair priority.
+
+- Users can upvote reports to show support
+- Each user can only upvote once per report (UNIQUE constraint)
+- Upvote counter auto-updates
+
+### 5. Community Collaboration (Comments)
+
+Comment system for discussion and progress updates.
+
+<Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12" marginBottom="16">
+  <Text variant="heading-strong-m">Comment Features</Text>
+  <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="12">
+    Users can add comments on each report, report owner can delete comments, and all comments are stored with timestamp.
+  </Text>
+  <Table
+    data={{
+      headers: [
+        { content: "Endpoint", key: "endpoint" },
+        { content: "Description", key: "desc" }
+      ],
+      rows: [
+        ["GET /api/reports/:reportId/comments", "Get all comments on report"],
+        ["POST /api/reports/:reportId/comments", "Add new comment (requires auth)"],
+        ["DELETE /api/reports/comments/:commentId", "Delete comment (requires auth)"]
+      ]
+    }}
+  />
+</Card>
+
+### 6. Search & Filter
+
+Search and filter reports based on various criteria.
+
+- Filter by category
+- Filter by status (pending, in progress, resolved)
+- Search text on title, description, and location
+- Pagination support for optimal performance
+
+### 7. Responsive Design
+
+Fully responsive application for desktop, tablet, and mobile.
+
+- Mobile-first approach with Tailwind CSS
+- Adaptive layouts for various screen sizes
+- Touch-friendly interface for mobile devices
+
+---
+
+## API Endpoints Overview
+
+### Authentication Routes
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `// Register new user
+POST /api/auth/register
+Body: {
+  name: string,
+  email: string,
+  password: string,
+  phone?: string,
+  address?: string
+}
+Response: { id, name, email, token }
+
+// Login
+POST /api/auth/login
+Body: { email, password }
+Response: { id, name, email, token }
+
+// Get profile
+GET /api/auth/profile
+Headers: { Authorization: "Bearer token" }
+Response: { id, name, email, phone, address, avatar_url }
+
+// Update profile
+PUT /api/auth/profile
+Headers: { Authorization: "Bearer token" }
+Body: { name?, phone?, address?, avatar_url? }
+Response: { id, name, email, phone, address, avatar_url }`,
+      language: "javascript",
+      label: "Authentication Endpoints"
+    }
+  ]}
+/>
+
+### Reports Routes
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `// Get all reports (with filter)
+GET /api/reports?category=all&status=all&search=&limit=20&offset=0
+Response: { data: [reports], total }
+
+// Get user reports
+GET /api/reports/user
+Headers: { Authorization: "Bearer token" }
+Response: { data: [reports] }
+
+// Get report detail
+GET /api/reports/:id
+Response: { id, title, description, category, status, location, latitude, longitude, photo_url, upvotes, author, comments }
+
+// Create report
+POST /api/reports
+Headers: { Authorization: "Bearer token" }
+Body: FormData {
+  title, description, category, location, latitude, longitude, photo (file)
+}
+Response: { id, title, description, ... }
+
+// Update report status
+PATCH /api/reports/:id/status
+Headers: { Authorization: "Bearer token" }
+Body: { status: "pending" | "in_progress" | "resolved" }
+Response: { id, status, updated_at }
+
+// Upvote report
+POST /api/reports/:id/upvote
+Headers: { Authorization: "Bearer token" }
+Response: { upvotes }
+
+// Delete report
+DELETE /api/reports/:id
+Headers: { Authorization: "Bearer token" }
+Response: { message: "Report deleted" }`,
+      language: "javascript",
+      label: "Reports Endpoints"
+    }
+  ]}
+/>
+
+### Comments Routes
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `// Get comments on report
+GET /api/reports/:reportId/comments
+Response: { data: [comments] }
+
+// Create comment
+POST /api/reports/:reportId/comments
+Headers: { Authorization: "Bearer token" }
+Body: { content: string }
+Response: { id, report_id, user_id, content, created_at }
+
+// Delete comment
+DELETE /api/reports/comments/:commentId
+Headers: { Authorization: "Bearer token" }
+Response: { message: "Comment deleted" }`,
+      language: "javascript",
+      label: "Comments Endpoints"
+    }
+  ]}
+/>

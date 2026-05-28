@@ -1,0 +1,768 @@
+---
+title: "Artharum - Aplikasi Catatan Keuangan Pribadi"
+subtitle: "Personal Finance Management untuk Android"
+summary: "Artharum adalah aplikasi Android untuk mencatat, mengelola, dan menganalisis keuangan pribadi dengan fitur transaksi, budget, dan statistik visual."
+image: "/images/gallery/horizontal-1.jpg"
+publishedAt: "2026-05-28"
+tag: "Documentation"
+---
+
+## Tentang Artharum
+
+**Artharum** adalah aplikasi Android native yang dirancang untuk membantu Anda mencatat dan mengelola keuangan pribadi dengan mudah. Aplikasi ini menyediakan tools lengkap untuk tracking transaksi, mengelola multiple accounts, menetapkan budget, dan menganalisis pengeluaran dengan visualisasi data yang intuitif.
+
+### Tujuan Aplikasi
+
+Artharum dibuat untuk memenuhi kebutuhan:
+- **Mencatat transaksi** - Income, expense, dan transfer antar akun
+- **Mengelola multiple accounts** - Cash, bank, e-wallet, kartu kredit
+- **Monitoring budget** - Set limit per kategori dan track progress
+- **Analisis pengeluaran** - Visualisasi distribusi dan tren keuangan
+- **Membuat keputusan finansial** - Data-driven insights untuk perencanaan keuangan
+
+---
+
+## Fitur Utama
+
+### 1. Dashboard
+
+Halaman utama yang menampilkan ringkasan keuangan Anda secara real-time.
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Total Saldo</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Saldo gabungan dari semua akun Anda
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Income & Expense</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ringkasan pemasukan dan pengeluaran bulan ini
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Net Balance</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Selisih antara income dan expense
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Visualisasi</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Pie & bar chart untuk distribusi pengeluaran
+    </Text>
+  </Card>
+</Grid>
+
+### 2. Transaksi
+
+Fitur lengkap untuk mencatat semua jenis transaksi keuangan.
+
+**Jenis Transaksi:**
+- **Income** - Pemasukan (gaji, bonus, dll)
+- **Expense** - Pengeluaran (belanja, tagihan, dll)
+- **Transfer** - Transfer antar akun pribadi
+
+**Informasi Transaksi:**
+- Tanggal dan waktu transaksi
+- Deskripsi/keterangan detail
+- Jumlah uang
+- Kategori (Makanan, Transportasi, Kesehatan, dll)
+- Akun sumber/tujuan
+- Lampiran atau catatan tambahan
+
+**Fitur Lanjutan:**
+- Edit transaksi yang sudah dibuat
+- Hapus transaksi (dengan konfirmasi)
+- Cari berdasarkan keyword
+- Filter berdasarkan range tanggal
+- Filter berdasarkan kategori
+- Filter berdasarkan akun
+
+### 3. Akun
+
+Kelola multiple accounts untuk mengorganisir uang Anda.
+
+<Table
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "Tipe Akun", key: "type" },
+      { content: "Contoh", key: "example" },
+      { content: "Keterangan", key: "desc" }
+    ],
+    rows: [
+      ["Bank", "BCA, Mandiri, BNI", "Rekening bank utama"],
+      ["Cash", "Dompet", "Uang tunai"],
+      ["E-Wallet", "GCash, Gopay, OVO", "Dompet digital"],
+      ["Kartu Kredit", "CC Visa, CC Mastercard", "Kartu kredit"],
+      ["Lainnya", "Investasi, Saving", "Akun custom"],
+    ]
+  }}
+/>
+
+**Fitur Manajemen Akun:**
+- Tambah akun baru dengan nama custom
+- Pilih warna untuk identifikasi visual
+- Edit informasi akun
+- Hapus akun (dengan validasi)
+- View detail akun dan history transaksi
+
+### 4. Budget
+
+Fitur untuk menetapkan dan memantau budget pengeluaran per kategori.
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Set Budget Limit</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Tentukan batas pengeluaran per kategori per bulan
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Alert & Notifikasi</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Dapatkan warning saat mendekati atau melampaui limit
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Progress Tracking</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Visualisasi progress dengan progress bar interaktif
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Multiple Periode</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Budget bulanan atau custom range sesuai kebutuhan
+    </Text>
+  </Card>
+</Grid>
+
+### 5. Statistik
+
+Analisis visual untuk memahami pola pengeluaran Anda.
+
+- Pie chart distribusi pengeluaran per kategori
+- Bar chart tren income vs expense
+- Grafik tren per periode waktu
+- Insights dan rekomendasi penghematan
+
+---
+
+## Arsitektur
+
+Artharum dibangun menggunakan **Clean Architecture** yang dikombinasikan dengan **MVVM (Model-View-ViewModel)** pattern.
+
+### Layer Architecture
+
+```
+┌──────────────────────────────────────────────┐
+│         Presentation Layer (UI)              │
+│    (Composable, ViewModel, Screen)           │
+└──────────────────────────────────────────────┘
+                    ↓ ↑
+┌──────────────────────────────────────────────┐
+│     Domain Layer (Business Logic)            │
+│  (UseCase, Repository Interface, Entity)    │
+└──────────────────────────────────────────────┘
+                    ↓ ↑
+┌──────────────────────────────────────────────┐
+│     Data Layer (Database & Repository)      │
+│  (Room DAO, Entity DB, Repository Impl)     │
+└──────────────────────────────────────────────┘
+```
+
+### 1. Presentation Layer
+
+Bertanggung jawab untuk menampilkan UI dan menangani user interaction.
+
+**Komponen:**
+- **Composable** - UI components menggunakan Jetpack Compose
+- **ViewModel** - Mengelola state dan business logic untuk UI
+- **Screen/Page** - Container untuk navigasi
+- **Event** - User interaction event
+
+**Technology:**
+- Jetpack Compose
+- StateFlow untuk state management
+- Navigation Component
+
+**Struktur:**
+```
+ui/
+├── screen/
+│   ├── dashboard/
+│   ├── transaction/
+│   ├── account/
+│   └── budget/
+├── component/
+│   ├── Card components
+│   ├── Charts
+│   └── Custom UI elements
+├── viewmodel/
+│   └── ViewModel untuk setiap screen
+└── navigation/
+    └── Navigation graph
+```
+
+### 2. Domain Layer
+
+Layer yang berisi business logic dan tidak tergantung pada framework.
+
+**Komponen:**
+- **UseCase** - Encapsulate business logic, satu use case = satu fungsi bisnis
+- **Entity** - Model domain (representasi data bisnis)
+- **Repository Interface** - Contract untuk data access
+
+**Contoh UseCase:**
+- `GetAllTransactionsUseCase` - Retrieve semua transaksi
+- `CreateTransactionUseCase` - Buat transaksi baru
+- `GetBudgetUseCase` - Ambil budget setting
+- `CalculateNetBalanceUseCase` - Hitung net balance
+
+**Struktur:**
+```
+domain/
+├── usecase/
+│   ├── transaction/
+│   ├── budget/
+│   ├── account/
+│   └── statistics/
+├── entity/
+│   ├── Transaction
+│   ├── Account
+│   ├── Budget
+│   └── Category
+└── repository/
+    ├── TransactionRepository interface
+    ├── AccountRepository interface
+    └── BudgetRepository interface
+```
+
+### 3. Data Layer
+
+Layer yang menangani penyimpanan dan pengambilan data.
+
+**Komponen:**
+- **Room Database** - Local database untuk offline storage
+- **DAO (Data Access Object)** - Database queries
+- **Entity (DB)** - Database models
+- **Repository Implementation** - Implementasi interface dari domain layer
+- **Mapper** - Convert antara DB entity dan domain entity
+
+**Technology:**
+- Room (SQLite)
+- KSP (Kotlin Symbol Processing) untuk code generation
+
+**Struktur:**
+```
+data/
+├── local/
+│   ├── dao/
+│   │   ├── TransactionDao
+│   │   ├── AccountDao
+│   │   └── BudgetDao
+│   ├── entity/
+│   │   ├── TransactionEntity (DB)
+│   │   ├── AccountEntity (DB)
+│   │   └── BudgetEntity (DB)
+│   └── AppDatabase.kt
+├── repository/
+│   ├── TransactionRepositoryImpl
+│   ├── AccountRepositoryImpl
+│   └── BudgetRepositoryImpl
+└── mapper/
+    ├── TransactionMapper
+    ├── AccountMapper
+    └── BudgetMapper
+```
+
+---
+
+## Tech Stack
+
+<Table
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "Komponen", key: "component" },
+      { content: "Technology", key: "tech" },
+      { content: "Versi", key: "version" }
+    ],
+    rows: [
+      ["Bahasa Pemrograman", "Kotlin", "2.0.21"],
+      ["UI Framework", "Jetpack Compose", "2024.09.00"],
+      ["Database", "Room", "2.7.2"],
+      ["Navigation", "Compose Navigation", "2.9.0"],
+      ["Dependency Injection", "Manual DI", "-"],
+      ["Concurrency", "Kotlin Coroutines", "1.10.2"],
+      ["Date/Time", "kotlinx-datetime", "0.6.1"],
+      ["Build System", "Gradle", "8.13"],
+      ["Android Gradle Plugin", "AGP", "8.11.2"],
+      ["Code Generation", "KSP", "2.0.21-1.0.28"],
+      ["Min SDK", "Android", "24 (API 24)"],
+      ["Target SDK", "Android", "36 (API 36)"],
+      ["Compile SDK", "Android", "36 (API 36)"],
+      ["JVM Target", "Java", "11"],
+    ]
+  }}
+/>
+
+### Framework & Libraries
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`// Core & Lifecycle
+androidx-core-ktx: 1.18.0
+androidx-lifecycle-runtime-ktx: 2.10.0
+androidx-lifecycle-runtime-compose: 2.10.0
+androidx-lifecycle-viewmodel-compose: 2.10.0
+
+// Compose UI
+androidx-compose-bom: 2024.09.00
+androidx-ui
+androidx-ui-graphics
+androidx-ui-tooling-preview
+androidx-material3
+androidx-material-icons-extended
+
+// Navigation
+androidx-navigation-compose: 2.9.0
+
+// Database
+androidx-room-runtime: 2.7.2
+androidx-room-ktx: 2.7.2
+androidx-room-compiler: 2.7.2 (KSP)
+
+// Async & Concurrency
+kotlinx-coroutines-android: 1.10.2
+
+// Date & Time
+kotlinx-datetime: 0.6.1
+
+// Testing
+junit: 4.13.2
+androidx-junit: 1.3.0
+androidx-espresso-core: 3.7.0`,
+    language: "text",
+    label: "Dependencies"
+  }
+]} />
+
+---
+
+## Project Structure
+
+### Root Level
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`CatatanKeuanganPribadi/
+├── app/                          # Main application module
+├── gradle/                       # Gradle configuration
+│   └── libs.versions.toml       # Centralized dependency versions
+├── docs/                         # Documentation
+│   └── wiki/                     # Wiki pages
+├── build.gradle.kts              # Root build configuration
+├── settings.gradle.kts           # Gradle settings
+├── gradle.properties             # Gradle properties
+├── local.properties              # Local SDK path
+├── run-device.ps1               # Script: run on physical device
+├── run-android.ps1              # Script: run on emulator
+└── README.md                     # Project overview`,
+    language: "text",
+    label: "Root Structure"
+  }
+]} />
+
+### app/ - Main Module
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`app/
+├── src/
+│   ├── main/
+│   │   ├── java/com/example/catatankeuanganpribadi/
+│   │   │   ├── ui/               # Presentation Layer
+│   │   │   ├── domain/           # Domain Layer
+│   │   │   ├── data/             # Data Layer
+│   │   │   ├── di/               # Dependency Injection
+│   │   │   └── MainActivity.kt  # Entry point
+│   │   ├── res/
+│   │   │   ├── values/           # Strings, colors, dimens
+│   │   │   ├── drawable/         # Icons & images
+│   │   │   ├── mipmap/           # App icons
+│   │   │   └── layout/           # XML layouts (if any)
+│   │   └── AndroidManifest.xml
+│   ├── test/                     # Unit tests
+│   └── androidTest/              # Instrumentation tests
+├── schemas/                      # Room database schemas
+├── build/                        # Build output (gitignored)
+├── build.gradle.kts
+└── proguard-rules.pro`,
+    language: "text",
+    label: "App Module Structure"
+  }
+]} />
+
+### Source Code Organization
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`java/com/example/catatankeuanganpribadi/
+
+├── ui/                                    # Presentation Layer
+│   ├── screen/                           # Screen Composables
+│   │   ├── dashboard/DashboardScreen.kt
+│   │   ├── transaction/TransactionListScreen.kt
+│   │   ├── account/AccountScreen.kt
+│   │   └── budget/BudgetScreen.kt
+│   ├── component/                        # Reusable Components
+│   │   ├── TransactionCard.kt
+│   │   ├── BudgetCard.kt
+│   │   ├── StatChart.kt
+│   │   └── CustomDialogs.kt
+│   ├── viewmodel/                        # ViewModels
+│   │   ├── DashboardViewModel.kt
+│   │   ├── TransactionViewModel.kt
+│   │   └── BudgetViewModel.kt
+│   └── navigation/NavigationGraph.kt
+│
+├── domain/                                # Domain Layer
+│   ├── usecase/
+│   │   ├── transaction/
+│   │   │   ├── GetAllTransactionsUseCase.kt
+│   │   │   ├── CreateTransactionUseCase.kt
+│   │   │   └── DeleteTransactionUseCase.kt
+│   │   ├── budget/GetBudgetUseCase.kt
+│   │   └── account/GetAccountsUseCase.kt
+│   ├── entity/
+│   │   ├── Transaction.kt
+│   │   ├── Account.kt
+│   │   ├── Budget.kt
+│   │   └── Category.kt
+│   └── repository/
+│       ├── TransactionRepository.kt
+│       ├── AccountRepository.kt
+│       └── BudgetRepository.kt
+│
+├── data/                                  # Data Layer
+│   ├── local/
+│   │   ├── dao/
+│   │   │   ├── TransactionDao.kt
+│   │   │   ├── AccountDao.kt
+│   │   │   └── BudgetDao.kt
+│   │   ├── entity/
+│   │   │   ├── TransactionEntity.kt
+│   │   │   ├── AccountEntity.kt
+│   │   │   └── BudgetEntity.kt
+│   │   └── AppDatabase.kt
+│   ├── repository/
+│   │   ├── TransactionRepositoryImpl.kt
+│   │   ├── AccountRepositoryImpl.kt
+│   │   └── BudgetRepositoryImpl.kt
+│   └── mapper/
+│       ├── TransactionMapper.kt
+│       ├── AccountMapper.kt
+│       └── BudgetMapper.kt
+│
+├── di/                                    # Dependency Injection
+│   └── Module.kt                         # DI Container/Module
+│
+└── MainActivity.kt                        # App Entry Point`,
+    language: "text",
+    label: "Source Code Organization"
+  }
+]} />
+
+---
+
+## Cara Menjalankan
+
+### Prerequisites
+
+<Row gap="12" marginBottom="16" wrap>
+  <Feedback variant="info" marginBottom="0">
+    <Text variant="body-default-m">
+      <strong>JDK 21:</strong> Pastikan menggunakan JDK 21 (bukan Java 25)
+    </Text>
+  </Feedback>
+</Row>
+
+- **JDK 21** - Java Development Kit version 21
+- **Android SDK 36.0.0** atau lebih tinggi
+- **Android Emulator** atau **Physical Device** dengan Android 12+ (API 31+)
+
+### Quick Start
+
+#### Run di Physical Device
+
+```powershell
+.\run-device.ps1
+```
+
+Script ini akan:
+1. Build debug APK
+2. Install ke physical device
+3. Launch aplikasi secara otomatis
+
+#### Run di Emulator
+
+```powershell
+.\run-android.ps1
+```
+
+Script ini akan:
+1. Build debug APK
+2. Install ke emulator yang sedang running
+3. Launch aplikasi secara otomatis
+
+#### Build Only
+
+```powershell
+.\gradlew.bat :app:assembleDebug
+```
+
+Hanya build APK tanpa install dan launch.
+
+### Compile Check
+
+Untuk cek apakah code compile tanpa error:
+
+```powershell
+.\gradlew.bat :app:compileDebugKotlin
+```
+
+---
+
+## Features & Capabilities
+
+<AccordionGroup>
+  <Accordion title="Fitur Core">
+    <Table
+      data={{
+        headers: [
+          { content: "Fitur", key: "feature" },
+          { content: "Status", key: "status" },
+          { content: "Keterangan", key: "desc" }
+        ],
+        rows: [
+          ["Catatan Transaksi", "✅ Active", "Income, expense, transfer"],
+          ["Multiple Accounts", "✅ Active", "Cash, bank, e-wallet, CC"],
+          ["Budget Management", "✅ Active", "Set limit per kategori"],
+          ["Statistik & Chart", "✅ Active", "Pie & bar chart"],
+          ["Search & Filter", "✅ Active", "By date, category, account"],
+          ["Export Data", "❌ Planned", "CSV atau PDF export"],
+          ["Sync Cloud", "❌ Planned", "Cloud backup & sync"],
+        ]
+      }}
+    />
+  </Accordion>
+  <Accordion title="Kategori Transaksi">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Berikut kategori yang tersedia untuk transaksi:
+    </Text>
+    <Grid columns="2" gap="12">
+      <Text variant="label-default-m">Makanan & Minuman</Text>
+      <Text variant="label-default-m">Transportasi</Text>
+      <Text variant="label-default-m">Kesehatan</Text>
+      <Text variant="label-default-m">Pendidikan</Text>
+      <Text variant="label-default-m">Hiburan</Text>
+      <Text variant="label-default-m">Kebutuhan Rumah</Text>
+      <Text variant="label-default-m">Utilitas</Text>
+      <Text variant="label-default-m">Shopping</Text>
+      <Text variant="label-default-m">Investasi</Text>
+      <Text variant="label-default-m">Komunikasi</Text>
+    </Grid>
+  </Accordion>
+  <Accordion title="Database Schema">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Aplikasi menggunakan Room Database dengan beberapa table utama:
+    </Text>
+    <CodeBlock
+      codes={[
+        {
+          code: `// Main Tables
+- Transaction (id, amount, type, category, date, accountId, description)
+- Account (id, name, type, color, balance, createdAt)
+- Budget (id, categoryId, limit, spentAmount, period, month, year)
+- Category (id, name, icon, color, type)
+
+// Relationships
+- Transaction -> Account (foreign key: accountId)
+- Budget -> Category (foreign key: categoryId)`,
+          language: "text",
+          label: "Database Schema"
+        }
+      ]}
+    />
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Data Flow
+
+Berikut adalah flow data dari User Input hingga Display:
+
+```
+User Action (Click, Input)
+           ↓
+   ViewModel (Handle Event)
+           ↓
+   UseCase (Execute Business Logic)
+           ↓
+   Repository Interface
+           ↓
+   Repository Implementation
+           ↓
+   Room DAO (Database Query)
+           ↓
+   Database (SQLite via Room)
+           ↓
+   Response (Data back up through layers)
+           ↓
+   ViewModel (Update State)
+           ↓
+   Composable (Recompose & Display)
+           ↓
+   User Sees Updated UI
+```
+
+---
+
+## Development Notes
+
+<Feedback variant="warning" marginBottom="16">
+  <Text variant="body-default-m">
+    <strong>UX Bug:</strong> Forcing TextFieldValue selection ke end pada setiap onValueChange dapat merusak cursor position di Compose text inputs.
+  </Text>
+</Feedback>
+
+<Feedback variant="info" marginBottom="16">
+  <Text variant="body-default-m">
+    <strong>Account Deletion:</strong> Manage deletion harus diproteksi ketika transaksi masih mereferensi account_id atau transfer_account_id.
+  </Text>
+</Feedback>
+
+### GitHub Actions CI/CD
+
+Aplikasi memiliki 2 workflow utama:
+
+1. **build-debug.yml** - Trigger pada setiap push
+   - Compile Kotlin
+   - Run unit tests
+   - Build debug APK
+
+2. **build-and-release.yml** - Trigger pada git tags (v*)
+   - Build release APK dan AAB
+   - Create GitHub Release
+   - Upload artifacts
+
+---
+
+## Pembelajaran Architecture
+
+Dengan mempelajari codebase Artharum, Anda akan memahami:
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Clean Architecture</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Separation of concerns dengan layer terpisah (UI, Domain, Data)
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">MVVM Pattern</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      ViewModel untuk state management dan separation logic dari UI
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Jetpack Compose</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Modern declarative UI framework untuk Android development
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Room Database</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Type-safe database access layer dengan abstraction dari SQLite
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Kotlin Coroutines</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Async programming dengan suspend functions dan Flow
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Dependency Injection</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Manual DI container untuk loose coupling antar layer
+    </Text>
+  </Card>
+</Grid>
+
+---
+
+## Dokumentasi Lengkap
+
+Untuk dokumentasi lebih detail, lihat folder `docs/wiki/`:
+
+<Row gap="12" marginBottom="16" wrap>
+  <Button variant="secondary" size="m" href="/docs/wiki/Architecture.md">
+    Architecture Details
+  </Button>
+  <Button variant="secondary" size="m" href="/docs/wiki/Project-Structure.md">
+    Project Structure
+  </Button>
+  <Button variant="secondary" size="m" href="/docs/wiki/Development-Setup.md">
+    Development Setup
+  </Button>
+  <Button variant="secondary" size="m" href="/docs/wiki/FAQ.md">
+    FAQ
+  </Button>
+</Row>
+
+---
+
+## Contributing
+
+Jika ingin berkontribusi pada project ini, silakan baca panduan di [docs/wiki/Contributing.md](docs/wiki/Contributing.md).
+
+**Area Kontribusi:**
+- Bug fixes
+- Feature additions
+- Documentation improvements
+- Tests
+- Performance optimization
+
+---
+
+## License
+
+Project ini tersedia untuk penggunaan pribadi dan pembelajaran.
+
+---
+
+## Support
+
+Untuk pertanyaan atau issues:
+- Buka GitHub Issues
+- Check [FAQ](docs/wiki/FAQ.md)
+- Baca [Troubleshooting](docs/wiki/Troubleshooting)

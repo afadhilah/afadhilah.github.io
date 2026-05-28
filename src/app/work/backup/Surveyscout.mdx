@@ -1,11 +1,12 @@
 ---
 title: "SurveyScout — Digital Survey Marketplace"
 publishedAt: "2026-05-29"
-summary: "Flutter multi-role application as a digital field survey marketplace. Connects Client, Surveyor, and Respondent in one integrated platform with reward system, real-time analytics, and survey project management."
+summary: "Aplikasi Flutter multi-role sebagai marketplace survei lapangan digital. Menghubungkan Client, Surveyor, dan Respondent dalam satu platform terintegrasi dengan sistem reward, analytics real-time, dan manajemen proyek survei."
 images:
   - "/images/projects/surveyscout/cover.jpg"
-  - "/images/projects/surveyscout/dashboard.png"
-  - "/images/projects/surveyscout/team.png"
+  - "/images/projects/surveyscout/dashboard-client.jpg"
+  - "/images/projects/surveyscout/dashboard-surveyor.jpg"
+  - "/images/projects/surveyscout/respondent-survey.jpg"
 team:
   - name: "Ahmad Fadhilah"
     role: "Flutter Developer"
@@ -15,9 +16,9 @@ team:
 
 ## Overview
 
-**SurveyScout** is a mobile marketplace application for field surveys built using Flutter. The platform connects three main actors: **Client** who need field data, **Surveyor** who collect data, and **Respondent** who fill out online surveys — all within one integrated ecosystem.
+**SurveyScout** adalah aplikasi mobile marketplace untuk survei lapangan yang dibangun menggunakan Flutter. Platform ini menghubungkan tiga aktor utama: **Client** yang membutuhkan data lapangan, **Surveyor** yang mengumpulkan data, dan **Respondent** yang mengisi survei online — semuanya dalam satu ekosistem yang terintegrasi.
 
-This project was developed as part of the Software Engineering course at ITS Semester 7, with focus on scalable mobile architecture, role-based access control, and modern UI/UX design.
+Proyek ini dikembangkan sebagai bagian dari mata kuliah Rekayasa Perangkat Lunak di ITS Semester 7, dengan fokus pada arsitektur mobile yang scalable, role-based access control, dan desain UI/UX yang modern.
 
 <Feedback variant="info">
   <Text variant="body-default-m">
@@ -27,84 +28,84 @@ This project was developed as part of the Software Engineering course at ITS Sem
 
 ---
 
-## Problems Solved
+## Permasalahan yang Diselesaikan
 
-Conventional field survey data collection processes face several major obstacles:
+Proses pengumpulan data survei lapangan konvensional menghadapi beberapa hambatan utama:
 
 <Grid columns="2" gap="16" marginBottom="16">
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Icon name="close" size="m" onBackground="danger-medium" />
-    <Text variant="heading-strong-s">Platform Fragmentation</Text>
+    <Text variant="heading-strong-s">Fragmentasi Platform</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      Client, surveyor, and respondent use separate tools making coordination inefficient.
+      Client, surveyor, dan responden menggunakan tools terpisah sehingga koordinasi menjadi tidak efisien.
     </Text>
   </Card>
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Icon name="close" size="m" onBackground="danger-medium" />
-    <Text variant="heading-strong-s">Minimal Transparency</Text>
+    <Text variant="heading-strong-s">Transparansi Minim</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      No real-time survey progress tracking system makes monitoring difficult from client side.
+      Tidak ada sistem tracking progress survei secara real-time, menyulitkan monitoring dari sisi client.
     </Text>
   </Card>
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Icon name="close" size="m" onBackground="danger-medium" />
-    <Text variant="heading-strong-s">Manual Recruitment</Text>
+    <Text variant="heading-strong-s">Rekrutmen Manual</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      Finding qualified surveyors requires time-consuming manual selection process.
+      Mencari surveyor yang qualified membutuhkan proses seleksi manual yang memakan waktu.
     </Text>
   </Card>
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Icon name="close" size="m" onBackground="danger-medium" />
-    <Text variant="heading-strong-s">No Standardized Incentive</Text>
+    <Text variant="heading-strong-s">Tidak Ada Insentif Terstandar</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      Unstructured reward system for respondents reduces engagement and data quality.
+      Sistem reward untuk responden tidak terstruktur, menurunkan engagement dan kualitas data.
     </Text>
   </Card>
 </Grid>
 
-SurveyScout arrives as a unified solution addressing all the above problems in a single mobile application.
+SurveyScout hadir sebagai solusi terpadu yang menjawab semua permasalahan di atas dalam satu aplikasi mobile.
 
 ---
 
-## Main Features per Role
+## Fitur Utama per Role
 
 ### Client
 
 <Card padding="32" radius="l" border="neutral-alpha-weak" direction="column" gap="16" marginBottom="16">
   <Row gap="12" vertical="center">
     <Icon name="person" size="l" />
-    <Text variant="heading-strong-m">Client Dashboard</Text>
+    <Text variant="heading-strong-m">Dashboard Client</Text>
   </Row>
   <Text variant="body-default-m" onBackground="neutral-medium">
-    Client has full control over survey project lifecycle — from project creation, field team recruitment, to results analysis.
+    Client memiliki kontrol penuh atas lifecycle proyek survei — mulai dari pembuatan proyek, rekrutmen tim lapangan, hingga analisis hasil.
   </Text>
   <Grid columns="2" gap="12">
     <Column gap="8">
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Create & manage survey projects</Text>
+        <Text variant="body-default-s">Buat & kelola proyek survei</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Scout & recruit qualified surveyors</Text>
+        <Text variant="body-default-s">Scout & rekrut surveyor qualified</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Filter respondents by demographics</Text>
+        <Text variant="body-default-s">Filter responden by demografi</Text>
       </Row>
     </Column>
     <Column gap="8">
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Analytics dashboard with charts</Text>
+        <Text variant="body-default-s">Analytics dashboard dengan chart</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Payment system & invoice</Text>
+        <Text variant="body-default-s">Sistem pembayaran & invoice</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Surveyor rating & review</Text>
+        <Text variant="body-default-s">Rating & review surveyor</Text>
       </Row>
     </Column>
   </Grid>
@@ -115,34 +116,34 @@ SurveyScout arrives as a unified solution addressing all the above problems in a
 <Card padding="32" radius="l" border="neutral-alpha-weak" direction="column" gap="16" marginBottom="16">
   <Row gap="12" vertical="center">
     <Icon name="person" size="l" />
-    <Text variant="heading-strong-m">Surveyor Dashboard</Text>
+    <Text variant="heading-strong-m">Dashboard Surveyor</Text>
   </Row>
   <Text variant="body-default-m" onBackground="neutral-medium">
-    Surveyor can view available projects, apply, manage active work, and track earnings in real-time.
+    Surveyor dapat melihat proyek yang tersedia, melamar, mengelola pekerjaan aktif, dan melacak penghasilan secara real-time.
   </Text>
   <Grid columns="2" gap="12">
     <Column gap="8">
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Browse & apply field projects</Text>
+        <Text variant="body-default-s">Browse & apply proyek lapangan</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Track active progress with milestone</Text>
+        <Text variant="body-default-s">Tracking progress aktif dengan milestone</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Submit results with file upload simulation</Text>
+        <Text variant="body-default-s">Submit hasil dengan simulasi upload file</Text>
       </Row>
     </Column>
     <Column gap="8">
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Portfolio & digital certificate</Text>
+        <Text variant="body-default-s">Portfolio & sertifikat digital</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Earnings analytics with line chart</Text>
+        <Text variant="body-default-s">Earnings analytics dengan line chart</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
@@ -157,30 +158,30 @@ SurveyScout arrives as a unified solution addressing all the above problems in a
 <Card padding="32" radius="l" border="neutral-alpha-weak" direction="column" gap="16" marginBottom="16">
   <Row gap="12" vertical="center">
     <Icon name="person" size="l" />
-    <Text variant="heading-strong-m">Respondent Dashboard</Text>
+    <Text variant="heading-strong-m">Dashboard Respondent</Text>
   </Row>
   <Text variant="body-default-m" onBackground="neutral-medium">
-    Respondent fills out surveys online and receives rewards in the form of points that can be withdrawn to bank account or e-wallet.
+    Responden mengisi survei online dan mendapatkan reward berupa poin yang dapat dicairkan ke rekening bank atau e-wallet.
   </Text>
   <Grid columns="2" gap="12">
     <Column gap="8">
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Survey catalog with various topics</Text>
+        <Text variant="body-default-s">Katalog survei dengan berbagai topik</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Multi-type survey form questions</Text>
+        <Text variant="body-default-s">Form survei multi-tipe pertanyaan</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Points system & conversion to Rupiah</Text>
+        <Text variant="body-default-s">Sistem poin & konversi ke Rupiah</Text>
       </Row>
     </Column>
     <Column gap="8">
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Leaderboard & gamification</Text>
+        <Text variant="body-default-s">Leaderboard & gamifikasi</Text>
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
@@ -188,7 +189,7 @@ SurveyScout arrives as a unified solution addressing all the above problems in a
       </Row>
       <Row gap="8" vertical="center">
         <Icon name="check" size="s" onBackground="success-medium" />
-        <Text variant="body-default-s">Survey history & reward analytics</Text>
+        <Text variant="body-default-s">Riwayat survei & reward analytics</Text>
       </Row>
     </Column>
   </Grid>
@@ -203,31 +204,31 @@ SurveyScout arrives as a unified solution addressing all the above problems in a
   data={{
     headers: [
       { content: "Layer", key: "layer" },
-      { content: "Technology", key: "tech" },
-      { content: "Version", key: "version" },
-      { content: "Purpose", key: "use" }
+      { content: "Teknologi", key: "tech" },
+      { content: "Versi", key: "version" },
+      { content: "Kegunaan", key: "use" }
     ],
     rows: [
       ["Framework", "Flutter", "SDK ^3.8.0", "Cross-platform mobile development"],
-      ["Language", "Dart", "Latest", "Primary programming language"],
+      ["Language", "Dart", "Latest", "Programming language utama"],
       ["State Management", "Provider", "^6.1.1", "Reactive state & dependency injection"],
-      ["Routing", "GoRouter", "^13.0.0", "Declarative routing with 80+ routes"],
-      ["Local DB", "SQLite (sqflite)", "^2.3.0", "User data & session persistence"],
+      ["Routing", "GoRouter", "^13.0.0", "Deklaratif routing dengan 80+ routes"],
+      ["Local DB", "SQLite (sqflite)", "^2.3.0", "Persistensi data user & session"],
       ["Storage", "SharedPreferences", "^2.2.2", "Session token & auto-login"],
-      ["Charts", "FL Chart", "^0.66.0", "Analytics dashboard visualization"],
+      ["Charts", "FL Chart", "^0.66.0", "Analytics dashboard visualisasi"],
       ["Typography", "Google Fonts", "^6.3.2", "Plus Jakarta Sans & Inter"],
       ["Security", "crypto", "^3.0.3", "SHA-256 password hashing"],
       ["Animation", "Shimmer", "^3.0.0", "Skeleton loading UX"],
-      ["UI Framework", "Material Design 3", "-", "Design system & UI components"],
+      ["UI Framework", "Material Design 3", "-", "Design system & komponen UI"],
     ]
   }}
 />
 
 ---
 
-## Application Architecture
+## Arsitektur Aplikasi
 
-Application uses **layered architecture** with clear separation of concerns:
+Aplikasi menggunakan **layered architecture** dengan pemisahan concern yang jelas:
 
 <CodeBlock
   marginBottom="16"
@@ -249,8 +250,8 @@ Application uses **layered architecture** with clear separation of concerns:
 │   │   └── mock_api.dart           # Mock data + API wrapper + models
 │   ├── widgets/
 │   │   ├── bottom_nav_scaffold.dart # Floating bottom navigation
-│   │   ├── modern_widgets.dart      # GradientCard, StatCard, etc.
-│   │   ├── shared_widgets.dart      # PrimaryButton, StatusBadge, etc.
+│   │   ├── modern_widgets.dart      # GradientCard, StatCard, dll
+│   │   ├── shared_widgets.dart      # PrimaryButton, StatusBadge, dll
 │   │   └── upload_simulation.dart   # File upload progress widget
 │   └── theme/
 │       └── app_theme.dart     # Color palette, typography tokens
@@ -353,7 +354,7 @@ String _hashPassword(String password) {
 
 ## Design System
 
-Design uses **4-color minimalist palette** based on warm brown, giving a professional and modern impression:
+Desain menggunakan **4-color minimalist palette** berbasis cokelat hangat, memberikan kesan profesional dan modern:
 
 <Grid columns="2" gap="16" marginBottom="16">
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="16">
@@ -448,17 +449,17 @@ Design uses **4-color minimalist palette** based on warm brown, giving a profess
     headers: [
       { content: "Widget", key: "widget" },
       { content: "File", key: "file" },
-      { content: "Description", key: "desc" }
+      { content: "Deskripsi", key: "desc" }
     ],
     rows: [
-      ["GradientCard", "modern_widgets.dart", "Card with brown gradient & shadow"],
-      ["StatCard", "modern_widgets.dart", "Statistics card with numbers & label"],
-      ["ModernProgressBar", "modern_widgets.dart", "Gradient progress bar with animation"],
-      ["PrimaryButton", "shared_widgets.dart", "Full-width button with loading state"],
+      ["GradientCard", "modern_widgets.dart", "Card dengan gradient cokelat & shadow"],
+      ["StatCard", "modern_widgets.dart", "Kartu statistik dengan angka & label"],
+      ["ModernProgressBar", "modern_widgets.dart", "Progress bar gradient dengan animasi"],
+      ["PrimaryButton", "shared_widgets.dart", "Full-width button dengan loading state"],
       ["StatusBadge", "shared_widgets.dart", "Badge Open / Active / Completed"],
-      ["ProjectCard", "shared_widgets.dart", "Card for survey project listing"],
+      ["ProjectCard", "shared_widgets.dart", "Card untuk listing proyek survei"],
       ["ShimmerLoading", "shared_widgets.dart", "Skeleton loading placeholder"],
-      ["UploadSimulationCard", "upload_simulation.dart", "File upload with animated progress"],
+      ["UploadSimulationCard", "upload_simulation.dart", "File upload dengan progress animasi"],
       ["BottomNavScaffold", "bottom_nav_scaffold.dart", "Floating bottom navigation per role"],
     ]
   }}
@@ -468,7 +469,7 @@ Design uses **4-color minimalist palette** based on warm brown, giving a profess
 
 ## Database Schema
 
-Uses local SQLite with two main tables and indexing for query performance:
+Menggunakan SQLite lokal dengan dua tabel utama dan indexing untuk performa query:
 
 <CodeBlock
   marginBottom="16"
@@ -496,7 +497,7 @@ CREATE TABLE sessions (
   expires_at TEXT    NOT NULL   -- 30 days TTL
 );
 
--- Indexes for query performance
+-- Indexes untuk query performance
 CREATE INDEX idx_users_email    ON users(email);
 CREATE INDEX idx_sessions_token ON sessions(token);`,
       language: "sql",
@@ -512,12 +513,12 @@ CREATE INDEX idx_sessions_token ON sessions(token);`,
 <AccordionGroup>
   <Accordion title="1. Splash Screen → Onboarding">
     <Text variant="body-default-m" onBackground="neutral-medium">
-      Application starts from Splash Screen (3 seconds). If user has never logged in, they are directed to Onboarding (3-slide PageView) which explains the platform's value proposition.
+      Aplikasi dimulai dari Splash Screen (3 detik). Jika user belum pernah login, diarahkan ke Onboarding (3-slide PageView) yang menjelaskan value proposition platform.
     </Text>
   </Accordion>
   <Accordion title="2. Role Gateway → Register / Login">
     <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
-      User selects role (Client / Surveyor / Respondent) at Role Gateway Screen. After selection, they enter role-specific registration or login form. Password is hashed using SHA-256 before being saved to SQLite.
+      User memilih role (Client / Surveyor / Respondent) di Role Gateway Screen. Setelah memilih, mereka masuk ke form registrasi atau login yang spesifik per role. Password di-hash menggunakan SHA-256 sebelum disimpan ke SQLite.
     </Text>
     <CodeBlock
       codes={[
@@ -539,102 +540,102 @@ CREATE INDEX idx_sessions_token ON sessions(token);`,
   </Accordion>
   <Accordion title="3. Session Management & Auto-login">
     <Text variant="body-default-m" onBackground="neutral-medium">
-      After successful login, token is saved to SharedPreferences with 30-day TTL. When application is opened again, AuthProvider checks saved token — if valid, user is immediately directed to dashboard by role without needing to login again.
+      Setelah login berhasil, token disimpan di SharedPreferences dengan TTL 30 hari. Saat aplikasi dibuka kembali, AuthProvider memeriksa token yang tersimpan — jika valid, user langsung diarahkan ke dashboard sesuai role tanpa perlu login ulang.
     </Text>
   </Accordion>
   <Accordion title="4. Route Guard & Role Redirect">
     <Text variant="body-default-m" onBackground="neutral-medium">
-      GoRouter uses <InlineCode>redirect</InlineCode> callback that is re-evaluated every time AuthProvider changes. Protected routes will redirect to <InlineCode>/login</InlineCode> if not authenticated. After login, user is automatically directed to dashboard by role.
+      GoRouter menggunakan <InlineCode>redirect</InlineCode> callback yang dievaluasi ulang setiap kali AuthProvider berubah. Route yang dilindungi akan redirect ke <InlineCode>/login</InlineCode> jika belum autentikasi. Setelah login, user diarahkan ke dashboard sesuai role secara otomatis.
     </Text>
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Challenges & Solutions
+## Tantangan & Solusi
 
 <Grid columns="1" gap="16" marginBottom="16">
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Text variant="heading-strong-s">Role-Based Navigation Complexity</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      <strong>Challenge:</strong> 4 different roles with 80+ routes that must be organized structurally and securely.
+      <strong>Tantangan:</strong> 4 role berbeda dengan 80+ routes yang harus diorganisir secara terstruktur dan aman.
     </Text>
     <Text variant="body-default-s" onBackground="neutral-medium">
-      <strong>Solution:</strong> GoRouter ShellRoute per role with independent floating bottom navigation. Centralized auth guard in single redirect callback that checks AuthProvider state, so there's no security logic duplication.
+      <strong>Solusi:</strong> GoRouter ShellRoute per role dengan floating bottom navigation independen. Auth guard terpusat di satu redirect callback yang memeriksa state AuthProvider, sehingga tidak ada duplikasi logika keamanan.
     </Text>
   </Card>
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Text variant="heading-strong-s">Consistent UI Across 72 Screens</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      <strong>Challenge:</strong> Maintaining visual consistency across 72 Dart screens developed iteratively.
+      <strong>Tantangan:</strong> Menjaga konsistensi visual di 72 screen Dart yang dikerjakan secara iteratif.
     </Text>
     <Text variant="body-default-s" onBackground="neutral-medium">
-      <strong>Solution:</strong> Centralized design tokens in <InlineCode>app_theme.dart</InlineCode> and reusable widget library (<InlineCode>modern_widgets.dart</InlineCode>, <InlineCode>shared_widgets.dart</InlineCode>). Each screen uses the same components so theme changes apply globally.
+      <strong>Solusi:</strong> Design token terpusat di <InlineCode>app_theme.dart</InlineCode> dan widget library reusable (<InlineCode>modern_widgets.dart</InlineCode>, <InlineCode>shared_widgets.dart</InlineCode>). Setiap screen menggunakan komponen yang sama sehingga perubahan tema berlaku global.
     </Text>
   </Card>
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
-    <Text variant="heading-strong-s">Realistic Mock API</Text>
+    <Text variant="heading-strong-s">Mock API yang Realistis</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      <strong>Challenge:</strong> Demonstrating full features without real backend requires convincing mock data.
+      <strong>Tantangan:</strong> Demonstrasi fitur lengkap tanpa backend real membutuhkan mock data yang convincing.
     </Text>
     <Text variant="body-default-s" onBackground="neutral-medium">
-      <strong>Solution:</strong> MockApiService singleton with deterministic data generator and simulated 500–1000ms delay. All data models are fully defined making them easy to replace with HTTP client when backend is available.
+      <strong>Solusi:</strong> MockApiService singleton dengan data generator deterministik dan simulated delay 500–1000ms. Semua model data sudah didefinisikan lengkap agar mudah diganti dengan HTTP client saat backend tersedia.
     </Text>
   </Card>
 </Grid>
 
 ---
 
-## Platform Features
+## Fitur Platform
 
 <Grid columns="2" gap="16" marginBottom="16">
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Icon name="check" size="m" onBackground="success-medium" />
     <Text variant="heading-strong-s">Multi-language</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      Support for Indonesian, English, and Malay with localization system based on <InlineCode>intl</InlineCode>.
+      Dukungan Bahasa Indonesia, English, dan Melayu dengan sistem localization berbasis <InlineCode>intl</InlineCode>.
     </Text>
   </Card>
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Icon name="check" size="m" onBackground="success-medium" />
     <Text variant="heading-strong-s">Dark Mode</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      Toggle dark/light mode with smooth transition saved to SharedPreferences.
+      Toggle dark/light mode dengan transisi smooth yang tersimpan di SharedPreferences.
     </Text>
   </Card>
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Icon name="check" size="m" onBackground="success-medium" />
     <Text variant="heading-strong-s">Offline Handling</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      Dedicated No Internet screen with graceful retry mechanism for better user experience.
+      Dedicated No Internet screen dengan retry mechanism yang graceful untuk pengalaman pengguna yang lebih baik.
     </Text>
   </Card>
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Icon name="check" size="m" onBackground="success-medium" />
     <Text variant="heading-strong-s">In-app Chat</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      User chat system (client ↔ surveyor) for project coordination without leaving the app.
+      Sistem chat antar pengguna (client ↔ surveyor) untuk koordinasi proyek tanpa keluar dari aplikasi.
     </Text>
   </Card>
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Icon name="check" size="m" onBackground="success-medium" />
     <Text variant="heading-strong-s">Admin KYC Verification</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      Admin panel for identity document verification (KYC) of surveyors before accepting paid projects.
+      Panel admin untuk verifikasi dokumen identitas (KYC) surveyor sebelum dapat menerima proyek berbayar.
     </Text>
   </Card>
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
     <Icon name="check" size="m" onBackground="success-medium" />
     <Text variant="heading-strong-s">Subscription Tiers</Text>
     <Text variant="body-default-s" onBackground="neutral-weak">
-      Three subscription plans for surveyors (Silver/Gold/Platinum) and three project plans for clients (Basic/Pro/Enterprise).
+      Tiga paket berlangganan untuk surveyor (Silver/Gold/Platinum) dan tiga paket proyek untuk client (Basic/Pro/Enterprise).
     </Text>
   </Card>
 </Grid>
 
 ---
 
-## Project Statistics
+## Statistik Proyek
 
 <Grid columns="4" gap="16" marginBottom="16">
   <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="8" horizontal="center">
@@ -657,7 +658,7 @@ CREATE INDEX idx_sessions_token ON sessions(token);`,
 
 ---
 
-## How to Run
+## Cara Menjalankan
 
 <CodeBlock
   marginBottom="16"
@@ -670,7 +671,7 @@ cd surveyscout_app
 # Install dependencies
 flutter pub get
 
-# Run on emulator / device
+# Jalankan di emulator / device
 flutter run
 
 # Build APK
@@ -683,20 +684,20 @@ flutter build apk --release`,
 
 <Feedback variant="warning">
   <Text variant="body-default-m">
-    <strong>Note:</strong> Initial route currently points to <InlineCode>/ui-showcase</InlineCode> for development ease. Change to <InlineCode>/splash</InlineCode> in <InlineCode>lib/router.dart</InlineCode> for complete user flow.
+    <strong>Catatan:</strong> Initial route saat ini mengarah ke <InlineCode>/ui-showcase</InlineCode> untuk kemudahan development. Ubah ke <InlineCode>/splash</InlineCode> di <InlineCode>lib/router.dart</InlineCode> untuk alur pengguna yang lengkap.
   </Text>
 </Feedback>
 
 ---
 
-## Outcomes & Learning
+## Outcome & Pembelajaran
 
-This project provides practical experience building **full-stack mobile application** with real-world complexity:
+Proyek ini memberikan pengalaman praktis membangun **full-stack mobile application** dengan kompleksitas nyata:
 
-- Designing **role-based access control** that is secure using declarative routing
-- Implementing **local-first architecture** with SQLite and state synchronization via Provider
-- Building **consistent design system** for team developing many screens in parallel
-- Understanding trade-offs between **mock API** for development velocity vs live backend for production readiness
-- Managing **complex state** (auth, navigation, data) in a single multi-role application
+- Merancang **role-based access control** yang aman menggunakan declarative routing
+- Mengimplementasikan **local-first architecture** dengan SQLite dan sinkronisasi state via Provider
+- Membangun **design system yang konsisten** untuk tim yang mengerjakan banyak screen secara paralel
+- Memahami trade-off antara **mock API** untuk development velocity vs live backend untuk production readiness
+- Mengelola **state yang kompleks** (auth, navigation, data) dalam satu aplikasi multi-role
 
-SurveyScout proves that Flutter is capable of handling medium-to-large scale applications with clean architecture, good performance, and solid developer experience.
+SurveyScout membuktikan bahwa Flutter mampu menangani aplikasi dengan skala menengah-besar dengan arsitektur yang clean, performa yang baik, dan developer experience yang solid.

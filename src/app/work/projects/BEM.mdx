@@ -1,0 +1,817 @@
+---
+title: "BEM Insights Hub - Platform Project Documentation"
+subtitle: "Data-driven Insights Hub for Infrastructure Analysis"
+summary: "BEM Insights Hub is a comprehensive data analytics platform for processing and visualizing infrastructure data with machine learning insights, built with Next.js and modern web technologies."
+image: "/images/gallery/horizontal-1.jpg"
+publishedAt: "2026-05-27"
+tag: "Project Documentation"
+---
+
+## Project Overview
+
+**BEM Insights Hub** is a powerful data-driven analytics platform designed to process large-scale infrastructure data and provide actionable insights through advanced visualization and machine learning capabilities. This platform serves as the central hub for data analysis, reporting, and collaborative decision-making.
+
+### Project Objectives
+
+The platform was created to achieve:
+
+1. **Data Integration** - Centralize data from multiple sources
+2. **Advanced Analytics** - Process complex datasets with statistical models
+3. **Visual Insights** - Present data in clear, actionable visualizations
+4. **Machine Learning** - Implement predictive models for forecasting
+5. **Real-time Monitoring** - Dashboard for live metrics tracking
+6. **Collaborative Analysis** - Team-based data exploration and reporting
+
+---
+
+## System Architecture
+
+### Architecture Overview
+
+```md
+┌────────────────────────────────────────────────────────────────┐
+│                    PRESENTATION LAYER (Frontend)               │
+│         Next.js 14 + React 18 + TypeScript + Tailwind CSS      │
+│                                                                │
+│  Pages:                                                        │
+│  • Dashboard (Overview)                                        │
+│  • Analytics (Charts, Tables)                                  │
+│  • Reports (Generated Reports)                                 │
+│  • Settings (Configuration)                                    │
+│  • Admin Panel (User Management)                               │
+│                                                                │
+│  Features:                                                     │
+│  • Server-side Rendering (SSR)                                 │
+│  • Static Generation (SSG)                                     │
+│  • API Route Handlers                                          │
+│  • Middleware Authentication                                   │
+└────────────────────┬───────────────────────────────────────────┘
+                     │ HTTPS / REST API (Fetch)
+                     │
+┌────────────────────┴────────────────────────────────────────────┐
+│                    API LAYER (Backend Services)                 │
+│         Express.js Server + Node.js                             │
+│                    Port: 3000                                   │
+│                                                                 │
+│  API Routes:                                                    │
+│  • /api/auth         (Authentication)                           │
+│  • /api/data         (Data Management)                          │
+│  • /api/analytics    (Analytics Processing)                     │
+│  • /api/reports      (Report Generation)                        │
+│  • /api/ml           (Machine Learning Models)                  │
+│  • /api/users        (User Management)                          │
+│                                                                 │
+│  Middleware:                                                    │
+│  • JWT Authentication                                           │
+│  • Role-based Authorization                                     │
+│  • Rate Limiting                                                │
+│  • Error Handling                                               │
+│  • Request Validation                                           │
+└────────────────────┬────────────────────────────────────────────┘
+                     │ Database Queries
+                     │
+┌────────────────────┴────────────────────────────────────────────┐
+│                    DATA LAYER                                   │
+│                                                                 │
+│  Primary Database:                                              │
+│  • PostgreSQL (Relational Data)                                 │
+│  • Redis Cache (Session & Cache)                                │
+│                                                                 │
+│  Data Sources:                                                  │
+│  • CSV Import                                                   │
+│  • REST APIs                                                    │
+│  • Database Connections                                         │
+│  • Real-time Streaming                                          │
+│                                                                 │
+│  Storage:                                                       │
+│  • File Storage (/data/uploads)                                 │
+│  • Backup System                                                │
+│  • Data Versioning                                              │
+└────────────────────┬────────────────────────────────────────────┘
+                     │
+┌────────────────────┴────────────────────────────────────────────┐
+│              PROCESSING LAYER (Analytics Engine)                │
+│                                                                 │
+│  Data Processing:                                               │
+│  • Python Scripts (Data Transformation)                         │
+│  • Apache Spark (Big Data Processing)                           │
+│  • Statistical Analysis Engine                                  │
+│                                                                 │
+│  Machine Learning:                                              │
+│  • Model Training                                               │
+│  • Prediction Engine                                            │
+│  • Pattern Recognition                                          │
+│  • Anomaly Detection                                            │
+│                                                                 │
+│  Output:                                                        │
+│  • Analytics Results                                            │
+│  • Predictions                                                  │
+│  • Insights                                                     │
+│  • Reports                                                      │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Module Structure
+
+```md
+project-root/
+├── .github/
+│   └── workflows/
+│       ├── tests.yml
+│       ├── deploy.yml
+│       └── lint.yml
+│
+├── backend/
+│   ├── src/
+│   │   ├── routes/
+│   │   │   ├── auth.ts
+│   │   │   ├── data.ts
+│   │   │   ├── analytics.ts
+│   │   │   └── reports.ts
+│   │   ├── controllers/
+│   │   │   ├── authController.ts
+│   │   │   ├── dataController.ts
+│   │   │   └── analyticsController.ts
+│   │   ├── middleware/
+│   │   │   ├── auth.ts
+│   │   │   ├── validation.ts
+│   │   │   └── errorHandler.ts
+│   │   ├── models/
+│   │   │   ├── User.ts
+│   │   │   ├── Report.ts
+│   │   │   └── Analytics.ts
+│   │   ├── services/
+│   │   │   ├── authService.ts
+│   │   │   ├── dataService.ts
+│   │   │   └── analyticsService.ts
+│   │   ├── utils/
+│   │   │   ├── database.ts
+│   │   │   └── logger.ts
+│   │   └── server.ts
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── .env.example
+│
+├── frontend/
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── dashboard/
+│   │   │   └── page.tsx
+│   │   ├── analytics/
+│   │   │   └── page.tsx
+│   │   ├── reports/
+│   │   │   └── page.tsx
+│   │   └── admin/
+│   │       └── page.tsx
+│   ├── components/
+│   │   ├── Navbar.tsx
+│   │   ├── Sidebar.tsx
+│   │   ├── Dashboard/
+│   │   │   ├── OverviewCard.tsx
+│   │   │   ├── MetricsChart.tsx
+│   │   │   └── RecentActivity.tsx
+│   │   ├── Analytics/
+│   │   │   ├── ChartView.tsx
+│   │   │   ├── DataTable.tsx
+│   │   │   └── FilterPanel.tsx
+│   │   └── Common/
+│   │       ├── Modal.tsx
+│   │       ├── Button.tsx
+│   │       └── Card.tsx
+│   ├── lib/
+│   │   ├── api.ts
+│   │   ├── auth.ts
+│   │   └── utils.ts
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── next.config.js
+│
+├── scripts/
+│   ├── migrate.sh
+│   ├── backup.sh
+│   └── seed.sh
+│
+├── docker/
+│   ├── Dockerfile.backend
+│   ├── Dockerfile.frontend
+│   └── docker-compose.yml
+│
+└── README.md
+```
+
+---
+
+## Technology Stack
+
+### Frontend Technology
+
+<Table
+  data={{
+    headers: [
+      { content: "Technology", key: "tech" },
+      { content: "Version", key: "version" },
+      { content: "Purpose", key: "purpose" }
+    ],
+    rows: [
+      ["Next.js", "14.x", "React Framework with SSR/SSG"],
+      ["React", "18.x", "UI Component Library"],
+      ["TypeScript", "5.x", "Type-safe JavaScript"],
+      ["Tailwind CSS", "3.x", "Utility-first CSS Framework"],
+      ["ShadCN UI", "Latest", "Component Library"],
+      ["Chart.js", "4.x", "Data Visualization"],
+      ["React Query", "5.x", "Server State Management"],
+      ["Zustand", "4.x", "Client State Management"],
+      ["Axios", "1.x", "HTTP Client"],
+      ["React Hook Form", "7.x", "Form Management"],
+      ["Vitest", "Latest", "Unit Testing"],
+      ["Playwright", "Latest", "E2E Testing"],
+      ["ESLint", "8.x", "Code Linting"]
+    ]
+  }}
+/>
+
+### Backend Technology
+
+<Table
+  data={{
+    headers: [
+      { content: "Technology", key: "tech" },
+      { content: "Version", key: "version" },
+      { content: "Purpose", key: "purpose" }
+    ],
+    rows: [
+      ["Node.js", "18.x", "JavaScript Runtime"],
+      ["Express.js", "4.x", "Web Framework"],
+      ["TypeScript", "5.x", "Type Safety"],
+      ["PostgreSQL", "14.x", "Relational Database"],
+      ["Redis", "7.x", "Cache & Session Store"],
+      ["JWT", "9.x", "Authentication"],
+      ["Bcrypt", "5.x", "Password Hashing"],
+      ["Joi", "17.x", "Schema Validation"],
+      ["Winston", "3.x", "Logging"],
+      ["PM2", "5.x", "Process Management"],
+      ["Jest", "29.x", "Testing Framework"],
+      ["Docker", "Latest", "Containerization"]
+    ]
+  }}
+/>
+
+### Data Processing
+
+<Table
+  data={{
+    headers: [
+      { content: "Technology", key: "tech" },
+      { content: "Version", key: "version" },
+      { content: "Purpose", key: "purpose" }
+    ],
+    rows: [
+      ["Python", "3.10+", "Data Processing Language"],
+      ["Pandas", "2.x", "Data Manipulation"],
+      ["NumPy", "1.x", "Numerical Computing"],
+      ["Scikit-learn", "1.x", "Machine Learning"],
+      ["TensorFlow", "2.x", "Deep Learning"],
+      ["Matplotlib", "3.x", "Data Visualization"],
+      ["Apache Spark", "3.x", "Big Data Processing"],
+      ["Jupyter", "Latest", "Interactive Notebooks"]
+    ]
+  }}
+/>
+
+---
+
+## Database Schema
+
+### Users Table
+
+```sql
+CREATE TABLE users (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  username VARCHAR(255) UNIQUE NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255),
+  last_name VARCHAR(255),
+  avatar_url VARCHAR(255),
+  role VARCHAR(50) DEFAULT 'user',
+  status VARCHAR(50) DEFAULT 'active',
+  last_login TIMESTAMP,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### Reports Table
+
+```sql
+CREATE TABLE reports (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES users(id),
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  content TEXT,
+  category VARCHAR(100),
+  status VARCHAR(50) DEFAULT 'draft',
+  visibility VARCHAR(50) DEFAULT 'private',
+  file_url VARCHAR(255),
+  views INT DEFAULT 0,
+  likes INT DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  published_at TIMESTAMP
+);
+```
+
+### Analytics Table
+
+```sql
+CREATE TABLE analytics (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  report_id UUID REFERENCES reports(id),
+  metric_name VARCHAR(255) NOT NULL,
+  metric_value DECIMAL(15, 2),
+  metric_date DATE,
+  data_source VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### Audit Log Table
+
+```sql
+CREATE TABLE audit_logs (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES users(id),
+  action VARCHAR(255) NOT NULL,
+  resource_type VARCHAR(100),
+  resource_id UUID,
+  changes TEXT,
+  ip_address VARCHAR(45),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+---
+
+## Key Features
+
+### 1. Dashboard Overview
+
+Centralized dashboard displaying key metrics and recent activities.
+
+<Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12" marginBottom="16">
+  <Text variant="heading-strong-m">Dashboard Features</Text>
+  <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="12">
+    Real-time metric cards, chart visualizations, and activity feed showing latest updates and insights.
+  </Text>
+  <Button variant="secondary" size="s">Real-time Updates</Button>
+  <Button variant="secondary" size="s">Customizable Widgets</Button>
+  <Button variant="secondary" size="s">Export Functionality</Button>
+</Card>
+
+### 2. Analytics Engine
+
+Advanced data analysis with multiple visualization options.
+
+<Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12" marginBottom="16">
+  <Text variant="heading-strong-m">Visualization Types</Text>
+  <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="12">
+    Support for various chart types to represent data effectively:
+  </Text>
+  <Row gap="8" marginBottom="12" wrap>
+    <Button variant="secondary" size="s">Line Charts</Button>
+    <Button variant="secondary" size="s">Bar Charts</Button>
+    <Button variant="secondary" size="s">Pie Charts</Button>
+    <Button variant="secondary" size="s">Scatter Plots</Button>
+    <Button variant="secondary" size="s">Heat Maps</Button>
+    <Button variant="secondary" size="s">Tables</Button>
+  </Row>
+</Card>
+
+### 3. Machine Learning Models
+
+Predictive models for forecasting and anomaly detection.
+
+- **Time Series Forecasting** - Predict future trends
+- **Classification Models** - Categorize data automatically
+- **Anomaly Detection** - Identify unusual patterns
+- **Clustering Analysis** - Group similar data points
+
+### 4. Report Generation
+
+Automated report creation with customizable templates.
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `// Report API Example
+const generateReport = async (filters) => {
+  const response = await fetch('/api/reports/generate', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: 'Q1 Analytics Report',
+      format: 'PDF',
+      metrics: ['revenue', 'users', 'engagement'],
+      dateRange: {
+        start: '2024-01-01',
+        end: '2024-03-31'
+      },
+      filters: filters
+    })
+  });
+  return response.json();
+};`,
+      language: "javascript",
+      label: "Report Generation"
+    }
+  ]}
+/>
+
+### 5. User Management
+
+Role-based access control with team collaboration features.
+
+<Table
+  data={{
+    headers: [
+      { content: "Role", key: "role" },
+      { content: "Permissions", key: "permissions" }
+    ],
+    rows: [
+      ["Admin", "Full system access, user management, configurations"],
+      ["Analyst", "Create reports, view analytics, export data"],
+      ["Viewer", "View reports and dashboards, no edit permissions"],
+      ["Guest", "Limited view-only access to shared reports"]
+    ]
+  }}
+/>
+
+### 6. Data Import/Export
+
+Support for multiple data formats and sources.
+
+- **Import Formats** - CSV, JSON, Excel, Parquet
+- **Export Formats** - PDF, Excel, JSON, CSV
+- **Batch Operations** - Process multiple files simultaneously
+- **API Integration** - Connect external data sources
+
+### 7. Collaboration Tools
+
+Team-based collaboration and sharing features.
+
+<Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12" marginBottom="16">
+  <Text variant="heading-strong-m">Collaboration Features</Text>
+  <Row gap="8" marginBottom="12" wrap>
+    <Button variant="secondary" size="s">Share Reports</Button>
+    <Button variant="secondary" size="s">Comments</Button>
+    <Button variant="secondary" size="s">Version Control</Button>
+    <Button variant="secondary" size="s">Team Workspaces</Button>
+    <Button variant="secondary" size="s">Notifications</Button>
+  </Row>
+</Card>
+
+---
+
+## API Endpoints
+
+### Authentication
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `POST /api/auth/register
+Content-Type: application/json
+
+{
+  "username": "john_doe",
+  "email": "john@example.com",
+  "password": "SecurePassword123"
+}
+
+---
+
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "SecurePassword123"
+}
+
+Response:
+{
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": {
+    "id": "uuid",
+    "username": "john_doe",
+    "email": "john@example.com"
+  }
+}`,
+      language: "javascript",
+      label: "Authentication Endpoints"
+    }
+  ]}
+/>
+
+### Data Management
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `GET /api/data/sources
+Response: Array of available data sources
+
+POST /api/data/import
+Content-Type: multipart/form-data
+- file: CSV/JSON/Excel file
+- dataSourceId: UUID
+
+GET /api/data/{dataSourceId}
+Query Params:
+- limit: number (default: 100)
+- offset: number (default: 0)
+- filter: JSON filter object
+
+PUT /api/data/{recordId}
+Content-Type: application/json
+Body: Updated record data
+
+DELETE /api/data/{recordId}
+Response: { success: true, message: "Record deleted" }`,
+      language: "javascript",
+      label: "Data Management Endpoints"
+    }
+  ]}
+/>
+
+### Analytics
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `GET /api/analytics/metrics
+Query Params:
+- startDate: ISO date string
+- endDate: ISO date string
+- groupBy: "day" | "week" | "month"
+- metrics: comma-separated metric names
+
+Response:
+{
+  "metrics": [
+    {
+      "name": "total_users",
+      "value": 12345,
+      "change": 5.2,
+      "trend": "up"
+    }
+  ]
+}
+
+POST /api/analytics/chart
+Body: {
+  "type": "line_chart",
+  "dataSource": "reports",
+  "xAxis": "date",
+  "yAxis": "revenue",
+  "filters": { "status": "completed" }
+}`,
+      language: "javascript",
+      label: "Analytics Endpoints"
+    }
+  ]}
+/>
+
+### Reports
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `GET /api/reports
+Query Params:
+- status: "draft" | "published"
+- userId: UUID
+- category: string
+- limit: number
+- offset: number
+
+POST /api/reports/generate
+Body: {
+  "title": "Q1 Report",
+  "format": "PDF" | "Excel" | "JSON",
+  "metrics": ["revenue", "users"],
+  "dateRange": {
+    "start": "2024-01-01",
+    "end": "2024-03-31"
+  }
+}
+
+Response:
+{
+  "id": "report_uuid",
+  "downloadUrl": "/downloads/reports/uuid.pdf",
+  "generatedAt": "2024-04-15T10:30:00Z"
+}`,
+      language: "javascript",
+      label: "Report Endpoints"
+    }
+  ]}
+/>
+
+---
+
+## Development Workflow
+
+### Local Setup
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `# Clone repository
+git clone https://github.com/yourorg/bem-insights-hub.git
+cd bem-insights-hub
+
+# Install backend dependencies
+cd backend
+npm install
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+
+# Return to root
+cd ..`,
+      language: "bash",
+      label: "Installation"
+    }
+  ]}
+/>
+
+### Environment Configuration
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `# backend/.env
+DATABASE_URL=postgresql://user:password@localhost:5432/bem_hub
+REDIS_URL=redis://localhost:6379
+JWT_SECRET=your_jwt_secret_key
+NODE_ENV=development
+PORT=3001
+
+# frontend/.env.local
+NEXT_PUBLIC_API_URL=http://localhost:3001/api
+NEXT_PUBLIC_APP_NAME=BEM Insights Hub`,
+      language: "bash",
+      label: "Environment Variables"
+    }
+  ]}
+/>
+
+### Running the Application
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `# Terminal 1 - Start Backend
+cd backend
+npm run dev
+
+# Terminal 2 - Start Frontend
+cd frontend
+npm run dev
+
+# Applications will be available at:
+# Frontend: http://localhost:3000
+# Backend API: http://localhost:3001/api`,
+      language: "bash",
+      label: "Development Server"
+    }
+  ]}
+/>
+
+### Docker Deployment
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `# Build and run with Docker Compose
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop services
+docker-compose down`,
+      language: "bash",
+      label: "Docker Deployment"
+    }
+  ]}
+/>
+
+---
+
+## Testing Strategy
+
+### Unit Tests
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `# Run backend tests
+cd backend
+npm run test
+
+# Run frontend tests
+cd frontend
+npm run test
+
+# Generate coverage report
+npm run test:coverage`,
+      language: "bash",
+      label: "Testing"
+    }
+  ]}
+/>
+
+### E2E Tests
+
+Tests for critical user flows using Playwright.
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `# Run E2E tests
+npm run test:e2e
+
+# Run specific test file
+npm run test:e2e -- tests/login.spec.ts
+
+# Run in debug mode
+npm run test:e2e -- --debug`,
+      language: "bash",
+      label: "E2E Testing"
+    }
+  ]}
+/>
+
+---
+
+## Deployment
+
+### Production Checklist
+
+- [ ] Environment variables configured correctly
+- [ ] Database migrations executed
+- [ ] SSL certificates configured
+- [ ] CDN configured for static assets
+- [ ] Backup system operational
+- [ ] Monitoring and logging setup
+- [ ] Security audit completed
+
+### Deployment Process
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `# Build frontend
+npm run build
+
+# Deploy to production
+npm run deploy
+
+# Monitor deployment
+npm run logs:prod
+
+# Rollback if needed
+npm run rollback`,
+      language: "bash",
+      label: "Deployment Commands"
+    }
+  ]}
+/>
+
+---
+
+## Team & Contributions
+
+This project is maintained by the BEM Development Team with contributions from the open-source community. For contribution guidelines, please see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+---
+
+## License
+
+BEM Insights Hub is released under the MIT License. See [LICENSE](LICENSE) file for details.

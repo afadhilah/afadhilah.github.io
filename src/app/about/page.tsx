@@ -98,7 +98,7 @@ export default function About() {
               <Icon onBackground="accent-weak" name="globe" />
               {person.location}
             </Row>
-            {person.languages && person.languages.length > 0 && (
+            {/* {person.languages && person.languages.length > 0 && (
               <Row wrap gap="8">
                 {person.languages.map((language, index) => (
                   <Tag key={index} size="l">
@@ -106,7 +106,7 @@ export default function About() {
                   </Tag>
                 ))}
               </Row>
-            )}
+            )} */}
           </Column>
         )}
         <Column className={styles.blockAlign} flex={9} maxWidth={40}>

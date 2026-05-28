@@ -1,0 +1,811 @@
+---
+title: "BEM Insights Hub - Platform Project Documentation"
+subtitle: "Dokumentasi lengkap tentang arsitektur, fitur, dan struktur BEM Insights Hub"
+summary: "BEM Insights Hub adalah platform data-driven modern yang dirancang khusus untuk BEM ITS (Badan Eksekutif Mahasiswa - Institut Teknologi Sepuluh Nopember) untuk berbagi research, visualisasi data, tracking trends, dan engagement komunitas dengan design brutalist yang cutting-edge."
+image: "/images/gallery/horizontal-1.jpg"
+publishedAt: "2026-05-28"
+tag: "Project Documentation"
+---
+
+## 👋 Pengenalan Singkat
+
+**BEM Insights Hub** adalah platform insights berbasis data yang dibangun khusus untuk **BEM ITS (Badan Eksekutif Mahasiswa - Institut Teknologi Sepuluh Nopember)**. Platform ini menggabungkan penelitian akademis, visualisasi data interaktif, analisis trend, dan dashboard admin dalam satu ekosistem yang modern dan user-friendly.
+
+Platform ini dirancang dengan filosofi **brutalist design** yang memberikan kesan profesional, clean, dan fokus pada konten dengan animasi smooth dan efek glitch yang eye-catching.
+
+---
+
+## 🎯 Tujuan Project
+
+BEM Insights Hub dibuat dengan tujuan utama:
+
+1. **Sharing Research** - Menyediakan platform untuk mempublikasikan dan mengeksplorasi research findings yang evidence-based
+2. **Data Visualization** - Menyajikan data kompleks dalam bentuk chart dan dashboard interaktif yang mudah dipahami
+3. **Trend Analysis** - Melacak dan menganalisis trending topics dalam real-time
+4. **Community Engagement** - Memberikan akses mudah kepada mahasiswa dan researcher untuk mengakses resources data
+5. **Content Management** - Menyediakan admin dashboard untuk manajemen konten dan platform administration
+
+---
+
+## ✨ Fitur Utama
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Row gap="8" vertical="center">
+      <Icon name="book" size="l" onBackground="brand-medium" />
+      <Text variant="heading-strong-s">Research Database</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Koleksi komprehensif artikel research peer-reviewed dengan filtering, searching, dan tagging untuk navigasi yang mudah.
+    </Text>
+  </Card>
+
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Row gap="8" vertical="center">
+      <Icon name="bar-chart-3" size="l" onBackground="success-medium" />
+      <Text variant="heading-strong-s">Data Visualization</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Dashboard analytics interaktif dengan chart, graph, dan visualisasi data real-time menggunakan Recharts.
+    </Text>
+  </Card>
+
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Row gap="8" vertical="center">
+      <Icon name="trending-up" size="l" onBackground="warning-medium" />
+      <Text variant="heading-strong-s">Trend Analysis</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Real-time tracking untuk trending research topics dan insights dengan update berkala.
+    </Text>
+  </Card>
+
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Row gap="8" vertical="center">
+      <Icon name="settings" size="l" onBackground="neutral-medium" />
+      <Text variant="heading-strong-s">Admin Dashboard</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Content management system lengkap untuk manage articles, data, users, dan platform settings.
+    </Text>
+  </Card>
+
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Row gap="8" vertical="center">
+      <Icon name="smartphone" size="l" onBackground="info-medium" />
+      <Text variant="heading-strong-s">Responsive Design</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Fully optimized untuk mobile, tablet, dan desktop dengan adaptasi layout otomatis.
+    </Text>
+  </Card>
+
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Row gap="8" vertical="center">
+      <Icon name="palette" size="l" onBackground="purple-medium" />
+      <Text variant="heading-strong-s">Brutalist Design</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Modern UI dengan smooth animations, glitch effects, dan custom cursor untuk pengalaman visual yang unik.
+    </Text>
+  </Card>
+</Grid>
+
+---
+
+## 🏗️ Arsitektur Project
+
+### High-Level Architecture
+
+```
+BEM Insights Hub
+│
+├── Frontend (React 18 + TypeScript)
+│   ├── Pages (Routing dengan React Router v6)
+│   ├── Components (Reusable UI components)
+│   ├── Hooks (Custom React hooks)
+│   ├── State Management (React Query + Context)
+│   └── Styling (Tailwind CSS + Framer Motion)
+│
+├── Build & Development
+│   ├── Vite (Fast build tool)
+│   ├── ESLint (Code quality)
+│   ├── Vitest (Unit testing)
+│   └── TypeScript (Type safety)
+│
+└── UI Library
+    └── shadcn/ui (14+ reusable UI components)
+```
+
+### Data Flow Architecture
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`User (Browser)
+    ↓
+React Router (Pages)
+    ↓
+React Components (UI + Logic)
+    ↓
+React Query (Data Fetching & Caching)
+    ↓
+API Endpoints (Backend)
+    ↓
+Data Response
+    ↓
+Component Re-render
+    ↓
+Tailwind CSS + Framer Motion (Styling & Animation)`,
+    language: "text",
+    label: "Data Flow"
+  }
+]} />
+
+---
+
+## 🛠️ Tech Stack
+
+<Table
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "Layer", key: "layer" },
+      { content: "Technology", key: "tech" },
+      { content: "Purpose", key: "purpose" }
+    ],
+    rows: [
+      ["Framework", "React 18+", "UI library untuk building interactive user interfaces"],
+      ["Language", "TypeScript 5.8", "Type-safe JavaScript untuk better DX dan fewer bugs"],
+      ["Build Tool", "Vite 7.3", "Lightning-fast build tool dan dev server"],
+      ["Styling", "Tailwind CSS 3.4", "Utility-first CSS framework untuk rapid UI development"],
+      ["CSS Processing", "PostCSS", "Transform CSS dengan plugins otomatis"],
+      ["UI Components", "shadcn/ui", "Collection 14+ components built on Radix UI"],
+      ["Icons", "Lucide React", "Beautiful, consistent SVG icon library"],
+      ["Animations", "Framer Motion 12.29", "Production-ready motion library untuk React"],
+      ["Routing", "React Router v6", "Client-side routing dan navigation"],
+      ["State Management", "React Query 5.83", "Data fetching, caching, dan synchronization"],
+      ["Form Handling", "React Hook Form 7.61", "Performant, flexible, extensible forms"],
+      ["Charts & Graphs", "Recharts 2.15", "Composable charting library built on React"],
+      ["Validation", "Zod 3.25", "TypeScript-first schema validation"],
+      ["Date Handling", "date-fns 3.6", "Modern date utility library"],
+      ["Toast Notifications", "Sonner 1.7", "Beautiful toast notifications for React"],
+      ["Testing", "Vitest 3.2", "Unit testing framework powered by Vite"],
+      ["Linting", "ESLint 9.32", "Code quality and consistency checking"],
+    ]
+  }}
+/>
+
+---
+
+## 📂 Struktur Folder Project
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`bem-insights-hub/
+├── public/                      # Static assets
+│   └── robots.txt
+│
+├── src/
+│   ├── components/              # Reusable React components
+│   │   ├── layout/              # Layout components
+│   │   │   ├── Navbar.tsx       # Navigation bar
+│   │   │   └── Footer.tsx       # Footer section
+│   │   │
+│   │   ├── home/                # Home page specific components
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── FeaturedResearch.tsx
+│   │   │   ├── DataVisualizationPreview.tsx
+│   │   │   ├── StatsHighlight.tsx
+│   │   │   ├── CTASection.tsx
+│   │   │   └── TrendingTopics.tsx
+│   │   │
+│   │   ├── ui/                  # Reusable UI components (shadcn/ui)
+│   │   │   ├── accordion.tsx
+│   │   │   ├── alert.tsx
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── chart.tsx
+│   │   │   ├── dialog.tsx
+│   │   │   ├── form.tsx
+│   │   │   ├── BrutalistCursor.tsx  # Custom cursor effect
+│   │   │   ├── GlitchText.tsx       # Glitch text animation
+│   │   │   └── ... (more UI components)
+│   │   │
+│   │   └── NavLink.tsx          # Navigation utility component
+│   │
+│   ├── pages/                   # Page components (routes)
+│   │   ├── Index.tsx            # Home page (/)
+│   │   ├── ResearchPage.tsx     # Research listing (/research)
+│   │   ├── ResearchArticle.tsx  # Single article (/research/:id)
+│   │   ├── DataPage.tsx         # Data & analytics (/data)
+│   │   ├── TrendsPage.tsx       # Trending topics (/trends)
+│   │   ├── AboutPage.tsx        # About section (/about)
+│   │   ├── AdminDashboard.tsx   # Admin panel (/admin)
+│   │   ├── CreateContentPage.tsx # Create content (/admin/create)
+│   │   └── NotFound.tsx         # 404 page
+│   │
+│   ├── hooks/                   # Custom React hooks
+│   │   ├── use-mobile.tsx       # Mobile device detection
+│   │   └── use-toast.ts         # Toast notification hook
+│   │
+│   ├── lib/                     # Utilities dan helpers
+│   │   └── utils.ts             # Common utility functions
+│   │
+│   ├── test/                    # Testing setup
+│   │   ├── example.test.ts      # Example test
+│   │   └── setup.ts             # Vitest configuration
+│   │
+│   ├── App.tsx                  # Main App component & routing
+│   ├── App.css                  # Global app styles
+│   ├── main.tsx                 # React entry point
+│   ├── index.css                # Global CSS styles
+│   └── vite-env.d.ts           # Vite environment types
+│
+├── Configuration Files
+│   ├── package.json             # Dependencies & scripts
+│   ├── tsconfig.json            # TypeScript main config
+│   ├── tsconfig.app.json        # TypeScript app config
+│   ├── tsconfig.node.json       # TypeScript Node config
+│   ├── vite.config.ts           # Vite build configuration
+│   ├── vitest.config.ts         # Vitest configuration
+│   ├── eslint.config.js         # ESLint rules
+│   ├── tailwind.config.ts       # Tailwind CSS config
+│   ├── postcss.config.js        # PostCSS config
+│   ├── components.json          # shadcn/ui components list
+│   │
+│   ├── index.html               # HTML entry point
+│   ├── README.md                # Project documentation
+│   └── BEM.mdx                  # This file!`,
+    language: "text",
+    label: "Project Structure"
+  }
+]} />
+
+---
+
+## 📄 Routes & Pages Overview
+
+Berikut adalah penjelasan setiap halaman dan rute yang tersedia:
+
+<Table
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "Route", key: "route" },
+      { content: "Page Component", key: "component" },
+      { content: "Purpose", key: "purpose" }
+    ],
+    rows: [
+      ["/", "Index.tsx", "Home page dengan hero section, featured research, stats, trending topics"],
+      ["/research", "ResearchPage.tsx", "Halaman listing semua research articles dengan filter & search"],
+      ["/research/:id", "ResearchArticle.tsx", "Detail view untuk single research article"],
+      ["/data", "DataPage.tsx", "Data visualization dashboard dengan interactive charts & analytics"],
+      ["/trends", "TrendsPage.tsx", "Real-time trending topics dan insights analysis"],
+      ["/about", "AboutPage.tsx", "About page - informasi tentang BEM Insights Hub"],
+      ["/admin", "AdminDashboard.tsx", "Admin dashboard untuk content management dan platform settings"],
+      ["/admin/create", "CreateContentPage.tsx", "Form untuk create/edit research articles dan konten"],
+      ["*", "NotFound.tsx", "404 Not Found page untuk route yang tidak exist"],
+    ]
+  }}
+/>
+
+---
+
+## 🎨 Design System & UI Components
+
+### Component Library (shadcn/ui)
+
+Platform menggunakan **14+ reusable UI components** yang dibangun di atas Radix UI:
+
+<AccordionGroup>
+  <Accordion title="Form & Input Components">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Komponen untuk handling form input dan validation:
+    </Text>
+    <Row gap="12" wrap marginBottom="12">
+      <Badge>form.tsx</Badge>
+      <Badge>input.tsx</Badge>
+      <Badge>select.tsx</Badge>
+      <Badge>checkbox.tsx</Badge>
+      <Badge>radio-group.tsx</Badge>
+      <Badge>textarea.tsx</Badge>
+      <Badge>input-otp.tsx</Badge>
+    </Row>
+  </Accordion>
+
+  <Accordion title="Display & Layout Components">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Komponen untuk struktur layout dan menampilkan konten:
+    </Text>
+    <Row gap="12" wrap marginBottom="12">
+      <Badge>card.tsx</Badge>
+      <Badge>button.tsx</Badge>
+      <Badge>badge.tsx</Badge>
+      <Badge>separator.tsx</Badge>
+      <Badge>pagination.tsx</Badge>
+      <Badge>breadcrumb.tsx</Badge>
+      <Badge>skeleton.tsx</Badge>
+    </Row>
+  </Accordion>
+
+  <Accordion title="Interactive & Modal Components">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Komponen untuk interaksi user dan modal dialogs:
+    </Text>
+    <Row gap="12" wrap marginBottom="12">
+      <Badge>dialog.tsx</Badge>
+      <Badge>drawer.tsx</Badge>
+      <Badge>dropdown-menu.tsx</Badge>
+      <Badge>context-menu.tsx</Badge>
+      <Badge>alert-dialog.tsx</Badge>
+      <Badge>hover-card.tsx</Badge>
+      <Badge>popover.tsx</Badge>
+    </Row>
+  </Accordion>
+
+  <Accordion title="Data & Navigation Components">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Komponen untuk menampilkan dan menavigasi data:
+    </Text>
+    <Row gap="12" wrap marginBottom="12">
+      <Badge>table.tsx</Badge>
+      <Badge>tabs.tsx</Badge>
+      <Badge>accordion.tsx</Badge>
+      <Badge>navigation-menu.tsx</Badge>
+      <Badge>command.tsx</Badge>
+      <Badge>carousel.tsx</Badge>
+    </Row>
+  </Accordion>
+
+  <Accordion title="Custom Components">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Komponen custom untuk efek visual unik:
+    </Text>
+    <Row gap="12" wrap marginBottom="12">
+      <Badge>BrutalistCursor.tsx</Badge>
+      <Badge>GlitchText.tsx</Badge>
+      <Badge>chart.tsx</Badge>
+      <Badge>sonner.tsx</Badge>
+      <Badge>toaster.tsx</Badge>
+    </Row>
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 🚀 Development Workflow
+
+### Setup & Installation
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`# 1. Clone repository
+git clone <repository-url>
+cd bem-insights-hub
+
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
+npm run dev
+
+# 4. Open browser ke http://localhost:5173`,
+    language: "bash",
+    label: "Setup Steps"
+  }
+]} />
+
+### Available Scripts
+
+<Table
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "Command", key: "command" },
+      { content: "Purpose", key: "purpose" }
+    ],
+    rows: [
+      ["npm run dev", "Start development server dengan hot reload"],
+      ["npm run build", "Build untuk production"],
+      ["npm run build:dev", "Build dengan mode development"],
+      ["npm run preview", "Preview production build locally"],
+      ["npm run lint", "Check code quality dengan ESLint"],
+      ["npm test", "Run unit tests once"],
+      ["npm run test:watch", "Run tests dalam watch mode untuk development"],
+    ]
+  }}
+/>
+
+---
+
+## 📊 State Management & Data Flow
+
+### React Query Setup
+
+Platform menggunakan **React Query v5** untuk data fetching, caching, dan synchronization:
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`// App.tsx - QueryClient setup
+const queryClient = new QueryClient();
+
+<QueryClientProvider client={queryClient}>
+  {/* App components */}
+</QueryClientProvider>`,
+    language: "tsx",
+    label: "React Query Setup"
+  }
+]} />
+
+### Key Features
+
+- **Automatic Caching** - Data otomatis di-cache untuk performa optimal
+- **Stale-While-Revalidate** - Tampilkan data lama sambil fetch data baru di background
+- **Parallel Queries** - Fetch multiple data source secara parallel
+- **Background Refetch** - Update data secara otomatis di background
+
+---
+
+## 🎨 Styling Architecture
+
+### Tailwind CSS + Custom Design Tokens
+
+<AccordionGroup>
+  <Accordion title="Tailwind Configuration">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Custom Tailwind config untuk design system yang konsisten:
+    </Text>
+    <CodeBlock
+      marginBottom="12"
+      codes={[
+        {
+          code: `// tailwind.config.ts
+export default {
+  theme: {
+    extend: {
+      colors: { /* custom colors */ },
+      spacing: { /* custom spacing */ },
+      borderRadius: { /* custom radius */ },
+    },
+  },
+}`,
+          language: "typescript",
+          label: "tailwind.config.ts"
+        }
+      ]}
+    />
+  </Accordion>
+
+  <Accordion title="PostCSS & Autoprefixer">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      PostCSS configuration untuk automatic vendor prefixes dan optimizations.
+    </Text>
+  </Accordion>
+
+  <Accordion title="CSS Class Merging">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      Menggunakan <InlineCode>clsx</InlineCode> dan <InlineCode>tailwind-merge</InlineCode> untuk smart class merging:
+    </Text>
+    <CodeBlock
+      marginBottom="12"
+      codes={[
+        {
+          code: `import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+// Smart merge Tailwind classes
+const cn = (...classes) => twMerge(clsx(classes));`,
+          language: "typescript",
+          label: "lib/utils.ts"
+        }
+      ]}
+    />
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 🧪 Testing Strategy
+
+Platform menggunakan **Vitest** untuk unit testing:
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`// test/setup.ts
+import { expect, afterEach, vi } from 'vitest';
+import { cleanup } from '@testing-library/react';
+
+// Cleanup after each test
+afterEach(() => {
+  cleanup();
+});
+
+// Example test: test/example.test.ts
+import { describe, it, expect } from 'vitest';
+
+describe('Example', () => {
+  it('should work correctly', () => {
+    expect(true).toBe(true);
+  });
+});`,
+    language: "typescript",
+    label: "Testing Setup"
+  }
+]} />
+
+### Test Commands
+
+```bash
+# Run tests once
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+```
+
+---
+
+## 💻 Performance Optimization
+
+### Key Optimization Strategies
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-m">Code Splitting</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      React Router lazy loading untuk route-based code splitting dan faster initial load time.
+    </Text>
+  </Card>
+
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-m">Image Optimization</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Responsive images dengan srcset untuk optimal delivery pada berbagai device sizes.
+    </Text>
+  </Card>
+
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-m">Caching Strategy</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      React Query caching + browser caching untuk minimize API calls dan reduce server load.
+    </Text>
+  </Card>
+
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-m">Bundle Optimization</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Vite tree-shaking dan minification untuk smaller production bundle size.
+    </Text>
+  </Card>
+</Grid>
+
+---
+
+## 🔒 Code Quality & Standards
+
+### ESLint Configuration
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`// eslint.config.js
+import js from '@eslint/js';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+
+export default [
+  { ignores: ['dist'] },
+  {
+    files: ['**/*.{ts,tsx}'],
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      // ... linting rules
+    },
+  },
+];`,
+    language: "javascript",
+    label: "eslint.config.js"
+  }
+]} />
+
+### Linting Standards
+
+- **React Hooks Rules** - Enforce correct hooks usage patterns
+- **React Refresh** - Automatic refresh support
+- **TypeScript Best Practices** - Type safety and consistency
+- **Code Style** - Consistent formatting dan naming conventions
+
+---
+
+## 🚀 Deployment & Build
+
+### Production Build
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`# Build untuk production
+npm run build
+
+# Output akan ada di folder 'dist/'
+# - index.html
+# - assets/
+#   - main.[hash].js
+#   - main.[hash].css`,
+    language: "bash",
+    label: "Build Process"
+  }
+]} />
+
+### Environment Configuration
+
+Semua environment variables seharusnya didefinisikan di file `.env`:
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`# .env
+VITE_API_URL=https://api.example.com
+VITE_APP_NAME=BEM Insights Hub
+VITE_APP_VERSION=1.0.0`,
+    language: "bash",
+    label: ".env"
+  }
+]} />
+
+---
+
+## 📚 Additional Resources
+
+<AccordionGroup>
+  <Accordion title="Official Documentation Links">
+    <Column gap="12" marginBottom="12">
+      <SmartLink href="https://react.dev">
+        <Text variant="label-strong-m" onBackground="brand-medium">
+          React 18 Documentation →
+        </Text>
+      </SmartLink>
+      <SmartLink href="https://vitejs.dev">
+        <Text variant="label-strong-m" onBackground="brand-medium">
+          Vite Documentation →
+        </Text>
+      </SmartLink>
+      <SmartLink href="https://tailwindcss.com">
+        <Text variant="label-strong-m" onBackground="brand-medium">
+          Tailwind CSS Documentation →
+        </Text>
+      </SmartLink>
+      <SmartLink href="https://tanstack.com/query/latest">
+        <Text variant="label-strong-m" onBackground="brand-medium">
+          React Query Documentation →
+        </Text>
+      </SmartLink>
+      <SmartLink href="https://ui.shadcn.com">
+        <Text variant="label-strong-m" onBackground="brand-medium">
+          shadcn/ui Components →
+        </Text>
+      </SmartLink>
+    </Column>
+  </Accordion>
+
+  <Accordion title="Development Tips">
+    <Column gap="12" marginBottom="12">
+      <Feedback variant="info" marginBottom="8">
+        <Text variant="body-default-m">
+          <strong>Hot Module Replacement:</strong> Vite automatically hot-reloads components saat file berubah. Tidak perlu manual refresh!
+        </Text>
+      </Feedback>
+      <Feedback variant="success" marginBottom="8">
+        <Text variant="body-default-m">
+          <strong>TypeScript Strict Mode:</strong> Enable strict mode di tsconfig.json untuk better type safety dan fewer runtime errors.
+        </Text>
+      </Feedback>
+      <Feedback variant="warning" marginBottom="8">
+        <Text variant="body-default-m">
+          <strong>Bundle Analysis:</strong> Gunakan <InlineCode>vite-plugin-visualizer</InlineCode> untuk analyze bundle size dan identify large dependencies.
+        </Text>
+      </Feedback>
+    </Column>
+  </Accordion>
+
+  <Accordion title="Troubleshooting Common Issues">
+    <Column gap="12" marginBottom="12">
+      <Card padding="16" radius="m" border="neutral-alpha-weak" direction="column" gap="8">
+        <Text variant="label-strong-m">Port Already in Use</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="8">
+          Gunakan custom port:
+        </Text>
+        <InlineCode>npm run dev -- --port 3000</InlineCode>
+      </Card>
+      <Card padding="16" radius="m" border="neutral-alpha-weak" direction="column" gap="8">
+        <Text variant="label-strong-m">Build Error: Module Not Found</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="8">
+          Clear cache dan reinstall dependencies:
+        </Text>
+        <InlineCode>rm -rf node_modules package-lock.json && npm install</InlineCode>
+      </Card>
+      <Card padding="16" radius="m" border="neutral-alpha-weak" direction="column" gap="8">
+        <Text variant="label-strong-m">TypeScript Errors After Update</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="8">
+          Update TypeScript types dan rebuild:
+        </Text>
+        <InlineCode>npm update && npm run build</InlineCode>
+      </Card>
+    </Column>
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 🎯 Next Steps & Future Enhancements
+
+<AccordionGroup>
+  <Accordion title="Planned Features">
+    <Row gap="8" marginBottom="12" wrap>
+      <Badge>User Authentication</Badge>
+      <Badge>Real-time Notifications</Badge>
+      <Badge>Advanced Search Filters</Badge>
+      <Badge>Data Export (CSV/PDF)</Badge>
+      <Badge>Collaboration Features</Badge>
+      <Badge>API Documentation</Badge>
+    </Row>
+  </Accordion>
+
+  <Accordion title="Performance Improvements">
+    <Row gap="8" marginBottom="12" wrap>
+      <Badge>Service Worker</Badge>
+      <Badge>Progressive Web App (PWA)</Badge>
+      <Badge>Server-Side Rendering (SSR)</Badge>
+      <Badge>GraphQL Integration</Badge>
+      <Badge>Edge Caching</Badge>
+      <Badge>Database Optimization</Badge>
+    </Row>
+  </Accordion>
+
+  <Accordion title="Developer Experience">
+    <Row gap="8" marginBottom="12" wrap>
+      <Badge>Storybook Integration</Badge>
+      <Badge>API Mocking (MSW)</Badge>
+      <Badge>E2E Testing (Playwright)</Badge>
+      <Badge>CI/CD Pipeline</Badge>
+      <Badge>Pre-commit Hooks</Badge>
+      <Badge>Development Guide</Badge>
+    </Row>
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 📞 Support & Contact
+
+Untuk pertanyaan, feedback, atau kontribusi, silakan hubungi tim development BEM ITS atau buat issue di repository.
+
+---
+
+**Last Updated:** May 29, 2026  
+**Version:** 1.0.0  
+**Maintained by:** BEM ITS Development Team

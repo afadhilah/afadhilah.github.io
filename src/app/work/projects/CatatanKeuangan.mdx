@@ -1,0 +1,768 @@
+---
+title: "Artharum - Personal Finance Management Application"
+subtitle: "Personal Finance Management for Android"
+summary: "Artharum is an Android application for recording, managing, and analyzing personal finances with transaction, budget, and visual statistics features."
+image: "/images/gallery/horizontal-1.jpg"
+publishedAt: "2026-05-28"
+tag: "Documentation"
+---
+
+## About Artharum
+
+**Artharum** is a native Android application designed to help you record and manage personal finances easily. This application provides comprehensive tools for transaction tracking, managing multiple accounts, setting budgets, and analyzing expenses with intuitive data visualization.
+
+### Application Purpose
+
+Artharum was created to meet the following needs:
+- **Record transactions** - Income, expense, and transfers between accounts
+- **Manage multiple accounts** - Cash, bank, e-wallet, credit cards
+- **Budget monitoring** - Set limits per category and track progress
+- **Expense analysis** - Visualize distribution and financial trends
+- **Make financial decisions** - Data-driven insights for financial planning
+
+---
+
+## Main Features
+
+### 1. Dashboard
+
+The main page that displays a summary of your finances in real-time.
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Total Balance</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Combined balance from all your accounts
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Income & Expense</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Summary of income and expenses this month
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Net Balance</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Difference between income and expense
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Visualization</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Pie & bar chart for expense distribution
+    </Text>
+  </Card>
+</Grid>
+
+### 2. Transactions
+
+Comprehensive feature for recording all types of financial transactions.
+
+**Transaction Types:**
+- **Income** - Revenue (salary, bonus, etc.)
+- **Expense** - Spending (shopping, bills, etc.)
+- **Transfer** - Transfer between personal accounts
+
+**Transaction Information:**
+- Transaction date and time
+- Detailed description/notes
+- Amount of money
+- Category (Food, Transportation, Health, etc.)
+- Source/destination account
+- Attachments or additional notes
+
+**Advanced Features:**
+- Edit transactions that have been created
+- Delete transactions (with confirmation)
+- Search by keyword
+- Filter by date range
+- Filter by category
+- Filter by account
+
+### 3. Accounts
+
+Manage multiple accounts to organize your money.
+
+<Table
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "Account Type", key: "type" },
+      { content: "Example", key: "example" },
+      { content: "Description", key: "desc" }
+    ],
+    rows: [
+      ["Bank", "BCA, Mandiri, BNI", "Main bank account"],
+      ["Cash", "Wallet", "Cash money"],
+      ["E-Wallet", "GCash, Gopay, OVO", "Digital wallet"],
+      ["Credit Card", "CC Visa, CC Mastercard", "Credit card"],
+      ["Others", "Investment, Saving", "Custom account"],
+    ]
+  }}
+/>
+
+**Account Management Features:**
+- Add new account with custom name
+- Choose color for visual identification
+- Edit account information
+- Delete account (with validation)
+- View account details and transaction history
+
+### 4. Budget
+
+Feature to set and monitor expense budget per category.
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Set Budget Limit</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Determine spending limit per category per month
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Alerts & Notifications</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Get warning when approaching or exceeding limit
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Progress Tracking</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Visualize progress with interactive progress bar
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Multiple Periods</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Monthly or custom range budget as needed
+    </Text>
+  </Card>
+</Grid>
+
+### 5. Statistics
+
+Visual analysis to understand your spending patterns.
+
+- Pie chart showing expense distribution per category
+- Bar chart showing income vs expense trends
+- Trend graph per time period
+- Insights and savings recommendations
+
+---
+
+## Architecture
+
+Artharum is built using **Clean Architecture** combined with **MVVM (Model-View-ViewModel)** pattern.
+
+### Layer Architecture
+
+```
+┌──────────────────────────────────────────────┐
+│         Presentation Layer (UI)              │
+│    (Composable, ViewModel, Screen)           │
+└──────────────────────────────────────────────┘
+                    ↓ ↑
+┌──────────────────────────────────────────────┐
+│     Domain Layer (Business Logic)            │
+│  (UseCase, Repository Interface, Entity)    │
+└──────────────────────────────────────────────┘
+                    ↓ ↑
+┌──────────────────────────────────────────────┐
+│     Data Layer (Database & Repository)      │
+│  (Room DAO, Entity DB, Repository Impl)     │
+└──────────────────────────────────────────────┘
+```
+
+### 1. Presentation Layer
+
+Responsible for displaying UI and handling user interaction.
+
+**Components:**
+- **Composable** - UI components using Jetpack Compose
+- **ViewModel** - Manages state and business logic for UI
+- **Screen/Page** - Container for navigation
+- **Event** - User interaction event
+
+**Technology:**
+- Jetpack Compose
+- StateFlow for state management
+- Navigation Component
+
+**Structure:**
+```
+ui/
+├── screen/
+│   ├── dashboard/
+│   ├── transaction/
+│   ├── account/
+│   └── budget/
+├── component/
+│   ├── Card components
+│   ├── Charts
+│   └── Custom UI elements
+├── viewmodel/
+│   └── ViewModel for each screen
+└── navigation/
+    └── Navigation graph
+```
+
+### 2. Domain Layer
+
+Layer containing business logic and independent from framework.
+
+**Components:**
+- **UseCase** - Encapsulate business logic, one use case = one business function
+- **Entity** - Domain model (representation of business data)
+- **Repository Interface** - Contract for data access
+
+**Example UseCase:**
+- `GetAllTransactionsUseCase` - Retrieve all transactions
+- `CreateTransactionUseCase` - Create new transaction
+- `GetBudgetUseCase` - Get budget setting
+- `CalculateNetBalanceUseCase` - Calculate net balance
+
+**Structure:**
+```
+domain/
+├── usecase/
+│   ├── transaction/
+│   ├── budget/
+│   ├── account/
+│   └── statistics/
+├── entity/
+│   ├── Transaction
+│   ├── Account
+│   ├── Budget
+│   └── Category
+└── repository/
+    ├── TransactionRepository interface
+    ├── AccountRepository interface
+    └── BudgetRepository interface
+```
+
+### 3. Data Layer
+
+Layer that handles storage and retrieval of data.
+
+**Components:**
+- **Room Database** - Local database for offline storage
+- **DAO (Data Access Object)** - Database queries
+- **Entity (DB)** - Database models
+- **Repository Implementation** - Implementation of interface from domain layer
+- **Mapper** - Convert between DB entity and domain entity
+
+**Technology:**
+- Room (SQLite)
+- KSP (Kotlin Symbol Processing) for code generation
+
+**Structure:**
+```
+data/
+├── local/
+│   ├── dao/
+│   │   ├── TransactionDao
+│   │   ├── AccountDao
+│   │   └── BudgetDao
+│   ├── entity/
+│   │   ├── TransactionEntity (DB)
+│   │   ├── AccountEntity (DB)
+│   │   └── BudgetEntity (DB)
+│   └── AppDatabase.kt
+├── repository/
+│   ├── TransactionRepositoryImpl
+│   ├── AccountRepositoryImpl
+│   └── BudgetRepositoryImpl
+└── mapper/
+    ├── TransactionMapper
+    ├── AccountMapper
+    └── BudgetMapper
+```
+
+---
+
+## Tech Stack
+
+<Table
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "Component", key: "component" },
+      { content: "Technology", key: "tech" },
+      { content: "Version", key: "version" }
+    ],
+    rows: [
+      ["Programming Language", "Kotlin", "2.0.21"],
+      ["UI Framework", "Jetpack Compose", "2024.09.00"],
+      ["Database", "Room", "2.7.2"],
+      ["Navigation", "Compose Navigation", "2.9.0"],
+      ["Dependency Injection", "Manual DI", "-"],
+      ["Concurrency", "Kotlin Coroutines", "1.10.2"],
+      ["Date/Time", "kotlinx-datetime", "0.6.1"],
+      ["Build System", "Gradle", "8.13"],
+      ["Android Gradle Plugin", "AGP", "8.11.2"],
+      ["Code Generation", "KSP", "2.0.21-1.0.28"],
+      ["Min SDK", "Android", "24 (API 24)"],
+      ["Target SDK", "Android", "36 (API 36)"],
+      ["Compile SDK", "Android", "36 (API 36)"],
+      ["JVM Target", "Java", "11"],
+    ]
+  }}
+/>
+
+### Framework & Libraries
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`// Core & Lifecycle
+androidx-core-ktx: 1.18.0
+androidx-lifecycle-runtime-ktx: 2.10.0
+androidx-lifecycle-runtime-compose: 2.10.0
+androidx-lifecycle-viewmodel-compose: 2.10.0
+
+// Compose UI
+androidx-compose-bom: 2024.09.00
+androidx-ui
+androidx-ui-graphics
+androidx-ui-tooling-preview
+androidx-material3
+androidx-material-icons-extended
+
+// Navigation
+androidx-navigation-compose: 2.9.0
+
+// Database
+androidx-room-runtime: 2.7.2
+androidx-room-ktx: 2.7.2
+androidx-room-compiler: 2.7.2 (KSP)
+
+// Async & Concurrency
+kotlinx-coroutines-android: 1.10.2
+
+// Date & Time
+kotlinx-datetime: 0.6.1
+
+// Testing
+junit: 4.13.2
+androidx-junit: 1.3.0
+androidx-espresso-core: 3.7.0`,
+    language: "text",
+    label: "Dependencies"
+  }
+]} />
+
+---
+
+## Project Structure
+
+### Root Level
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`CatatanKeuanganPribadi/
+├── app/                          # Main application module
+├── gradle/                       # Gradle configuration
+│   └── libs.versions.toml       # Centralized dependency versions
+├── docs/                         # Documentation
+│   └── wiki/                     # Wiki pages
+├── build.gradle.kts              # Root build configuration
+├── settings.gradle.kts           # Gradle settings
+├── gradle.properties             # Gradle properties
+├── local.properties              # Local SDK path
+├── run-device.ps1               # Script: run on physical device
+├── run-android.ps1              # Script: run on emulator
+└── README.md                     # Project overview`,
+    language: "text",
+    label: "Root Structure"
+  }
+]} />
+
+### app/ - Main Module
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`app/
+├── src/
+│   ├── main/
+│   │   ├── java/com/example/catatankeuanganpribadi/
+│   │   │   ├── ui/               # Presentation Layer
+│   │   │   ├── domain/           # Domain Layer
+│   │   │   ├── data/             # Data Layer
+│   │   │   ├── di/               # Dependency Injection
+│   │   │   └── MainActivity.kt  # Entry point
+│   │   ├── res/
+│   │   │   ├── values/           # Strings, colors, dimens
+│   │   │   ├── drawable/         # Icons & images
+│   │   │   ├── mipmap/           # App icons
+│   │   │   └── layout/           # XML layouts (if any)
+│   │   └── AndroidManifest.xml
+│   ├── test/                     # Unit tests
+│   └── androidTest/              # Instrumentation tests
+├── schemas/                      # Room database schemas
+├── build/                        # Build output (gitignored)
+├── build.gradle.kts
+└── proguard-rules.pro`,
+    language: "text",
+    label: "App Module Structure"
+  }
+]} />
+
+### Source Code Organization
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`java/com/example/catatankeuanganpribadi/
+
+├── ui/                                    # Presentation Layer
+│   ├── screen/                           # Screen Composables
+│   │   ├── dashboard/DashboardScreen.kt
+│   │   ├── transaction/TransactionListScreen.kt
+│   │   ├── account/AccountScreen.kt
+│   │   └── budget/BudgetScreen.kt
+│   ├── component/                        # Reusable Components
+│   │   ├── TransactionCard.kt
+│   │   ├── BudgetCard.kt
+│   │   ├── StatChart.kt
+│   │   └── CustomDialogs.kt
+│   ├── viewmodel/                        # ViewModels
+│   │   ├── DashboardViewModel.kt
+│   │   ├── TransactionViewModel.kt
+│   │   └── BudgetViewModel.kt
+│   └── navigation/NavigationGraph.kt
+│
+├── domain/                                # Domain Layer
+│   ├── usecase/
+│   │   ├── transaction/
+│   │   │   ├── GetAllTransactionsUseCase.kt
+│   │   │   ├── CreateTransactionUseCase.kt
+│   │   │   └── DeleteTransactionUseCase.kt
+│   │   ├── budget/GetBudgetUseCase.kt
+│   │   └── account/GetAccountsUseCase.kt
+│   ├── entity/
+│   │   ├── Transaction.kt
+│   │   ├── Account.kt
+│   │   ├── Budget.kt
+│   │   └── Category.kt
+│   └── repository/
+│       ├── TransactionRepository.kt
+│       ├── AccountRepository.kt
+│       └── BudgetRepository.kt
+│
+├── data/                                  # Data Layer
+│   ├── local/
+│   │   ├── dao/
+│   │   │   ├── TransactionDao.kt
+│   │   │   ├── AccountDao.kt
+│   │   │   └── BudgetDao.kt
+│   │   ├── entity/
+│   │   │   ├── TransactionEntity.kt
+│   │   │   ├── AccountEntity.kt
+│   │   │   └── BudgetEntity.kt
+│   │   └── AppDatabase.kt
+│   ├── repository/
+│   │   ├── TransactionRepositoryImpl.kt
+│   │   ├── AccountRepositoryImpl.kt
+│   │   └── BudgetRepositoryImpl.kt
+│   └── mapper/
+│       ├── TransactionMapper.kt
+│       ├── AccountMapper.kt
+│       └── BudgetMapper.kt
+│
+├── di/                                    # Dependency Injection
+│   └── Module.kt                         # DI Container/Module
+│
+└── MainActivity.kt                        # App Entry Point`,
+    language: "text",
+    label: "Source Code Organization"
+  }
+]} />
+
+---
+
+## How to Run
+
+### Prerequisites
+
+<Row gap="12" marginBottom="16" wrap>
+  <Feedback variant="info" marginBottom="0">
+    <Text variant="body-default-m">
+      <strong>JDK 21:</strong> Make sure to use JDK 21 (not Java 25)
+    </Text>
+  </Feedback>
+</Row>
+
+- **JDK 21** - Java Development Kit version 21
+- **Android SDK 36.0.0** or higher
+- **Android Emulator** or **Physical Device** with Android 12+ (API 31+)
+
+### Quick Start
+
+#### Run on Physical Device
+
+```powershell
+.\run-device.ps1
+```
+
+This script will:
+1. Build debug APK
+2. Install to physical device
+3. Launch application automatically
+
+#### Run on Emulator
+
+```powershell
+.\run-android.ps1
+```
+
+This script will:
+1. Build debug APK
+2. Install to running emulator
+3. Launch application automatically
+
+#### Build Only
+
+```powershell
+.\gradlew.bat :app:assembleDebug
+```
+
+Only build APK without installing and launching.
+
+### Compile Check
+
+To check if code compiles without errors:
+
+```powershell
+.\gradlew.bat :app:compileDebugKotlin
+```
+
+---
+
+## Features & Capabilities
+
+<AccordionGroup>
+  <Accordion title="Core Features">
+    <Table
+      data={{
+        headers: [
+          { content: "Feature", key: "feature" },
+          { content: "Status", key: "status" },
+          { content: "Description", key: "desc" }
+        ],
+        rows: [
+          ["Transaction Records", "✅ Active", "Income, expense, transfer"],
+          ["Multiple Accounts", "✅ Active", "Cash, bank, e-wallet, CC"],
+          ["Budget Management", "✅ Active", "Set limit per category"],
+          ["Statistics & Chart", "✅ Active", "Pie & bar chart"],
+          ["Search & Filter", "✅ Active", "By date, category, account"],
+          ["Export Data", "❌ Planned", "CSV or PDF export"],
+          ["Cloud Sync", "❌ Planned", "Cloud backup & sync"],
+        ]
+      }}
+    />
+  </Accordion>
+  <Accordion title="Transaction Categories">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      The following categories are available for transactions:
+    </Text>
+    <Grid columns="2" gap="12">
+      <Text variant="label-default-m">Food & Beverage</Text>
+      <Text variant="label-default-m">Transportation</Text>
+      <Text variant="label-default-m">Health</Text>
+      <Text variant="label-default-m">Education</Text>
+      <Text variant="label-default-m">Entertainment</Text>
+      <Text variant="label-default-m">Home Needs</Text>
+      <Text variant="label-default-m">Utilities</Text>
+      <Text variant="label-default-m">Shopping</Text>
+      <Text variant="label-default-m">Investment</Text>
+      <Text variant="label-default-m">Communication</Text>
+    </Grid>
+  </Accordion>
+  <Accordion title="Database Schema">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="12">
+      The application uses Room Database with several main tables:
+    </Text>
+    <CodeBlock
+      codes={[
+        {
+          code: `// Main Tables
+- Transaction (id, amount, type, category, date, accountId, description)
+- Account (id, name, type, color, balance, createdAt)
+- Budget (id, categoryId, limit, spentAmount, period, month, year)
+- Category (id, name, icon, color, type)
+
+// Relationships
+- Transaction -> Account (foreign key: accountId)
+- Budget -> Category (foreign key: categoryId)`,
+          language: "text",
+          label: "Database Schema"
+        }
+      ]}
+    />
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Data Flow
+
+Here is the flow of data from User Input to Display:
+
+```
+User Action (Click, Input)
+           ↓
+   ViewModel (Handle Event)
+           ↓
+   UseCase (Execute Business Logic)
+           ↓
+   Repository Interface
+           ↓
+   Repository Implementation
+           ↓
+   Room DAO (Database Query)
+           ↓
+   Database (SQLite via Room)
+           ↓
+   Response (Data back up through layers)
+           ↓
+   ViewModel (Update State)
+           ↓
+   Composable (Recompose & Display)
+           ↓
+   User Sees Updated UI
+```
+
+---
+
+## Development Notes
+
+<Feedback variant="warning" marginBottom="16">
+  <Text variant="body-default-m">
+    <strong>UX Bug:</strong> Forcing TextFieldValue selection to end on every onValueChange can break cursor position in Compose text inputs.
+  </Text>
+</Feedback>
+
+<Feedback variant="info" marginBottom="16">
+  <Text variant="body-default-m">
+    <strong>Account Deletion:</strong> Deletion management must be protected when transactions still reference account_id or transfer_account_id.
+  </Text>
+</Feedback>
+
+### GitHub Actions CI/CD
+
+The application has 2 main workflows:
+
+1. **build-debug.yml** - Triggered on every push
+   - Compile Kotlin
+   - Run unit tests
+   - Build debug APK
+
+2. **build-and-release.yml** - Triggered on git tags (v*)
+   - Build release APK and AAB
+   - Create GitHub Release
+   - Upload artifacts
+
+---
+
+## Architecture Learning
+
+By studying the Artharum codebase, you will understand:
+
+<Grid columns="2" gap="16" marginBottom="16">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Clean Architecture</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Separation of concerns with separate layers (UI, Domain, Data)
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">MVVM Pattern</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      ViewModel for state management and separation of logic from UI
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Jetpack Compose</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Modern declarative UI framework for Android development
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Room Database</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Type-safe database access layer with abstraction from SQLite
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Kotlin Coroutines</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Async programming with suspend functions and Flow
+    </Text>
+  </Card>
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Dependency Injection</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Manual DI container for loose coupling between layers
+    </Text>
+  </Card>
+</Grid>
+
+---
+
+## Full Documentation
+
+For more detailed documentation, see the `docs/wiki/` folder:
+
+<Row gap="12" marginBottom="16" wrap>
+  <Button variant="secondary" size="m" href="/docs/wiki/Architecture.md">
+    Architecture Details
+  </Button>
+  <Button variant="secondary" size="m" href="/docs/wiki/Project-Structure.md">
+    Project Structure
+  </Button>
+  <Button variant="secondary" size="m" href="/docs/wiki/Development-Setup.md">
+    Development Setup
+  </Button>
+  <Button variant="secondary" size="m" href="/docs/wiki/FAQ.md">
+    FAQ
+  </Button>
+</Row>
+
+---
+
+## Contributing
+
+If you want to contribute to this project, please read the guidelines in [docs/wiki/Contributing.md](docs/wiki/Contributing.md).
+
+**Contribution Areas:**
+- Bug fixes
+- Feature additions
+- Documentation improvements
+- Tests
+- Performance optimization
+
+---
+
+## License
+
+This project is available for personal and educational use.
+
+---
+
+## Support
+
+For questions or issues:
+- Open GitHub Issues
+- Check [FAQ](docs/wiki/FAQ.md)
+- Read [Troubleshooting](docs/wiki/Troubleshooting)

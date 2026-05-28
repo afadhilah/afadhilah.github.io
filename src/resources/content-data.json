@@ -7,13 +7,15 @@
     "avatar": "/images/avatar.jpg",
     "email": "afadhilah2004@gmail.com",
     "location": "Asia/Jakarta",
-    "languages": [""]
+    "languages": ["Indonesian", "English"]
   },
+
   "newsletter": {
-    "display": true,
+    "display": false,
     "title": "Subscribe to Ahmad Fadhilah's Newsletter",
-    "description": "My weekly newsletter about creativity and engineering"
+    "description": "Thoughts about engineering, infrastructure, security, and digital products."
   },
+
   "social": [
     {
       "name": "GitHub",
@@ -31,7 +33,7 @@
       "name": "Instagram",
       "icon": "instagram",
       "link": "https://www.instagram.com/ahmadfadhilah/",
-      "essential": false
+      "essential": true
     },
     {
       "name": "Threads",
@@ -46,159 +48,169 @@
       "essential": true
     }
   ],
+
   "home": {
     "path": "/",
     "image": "/images/og/home.jpg",
     "label": "Home",
     "title": "Ahmad Fadhilah Mappisara's Portfolio",
-    "description": "Portfolio website showcasing my work as a Software Engineer",
-    "headline": "Building bridges between design and code",
-    "subline": "I'm Selene, a design engineer at ONCE UI, where I craft intuitive user experiences. After hours, I build my own projects.",
+    "description": "Portfolio showcasing projects in applications, cybersecurity, infrastructure, and scalable digital products.",
+    "headline": "Building scalable applications, systems, and digital products.",
+    "subline": "I'm Ahmad Fadhilah Mappisara, a software engineer focused on fullstack development, infrastructure, security research, networking, and experimental systems.",
     "featured": {
       "display": true,
-      "title": "Once UI",
-      "href": "/work/building-once-ui-a-customizable-design-system"
+      "title": "SurveyScout",
+      "href": "/work/surveyscout"
     }
   },
+
   "about": {
     "path": "/about",
     "label": "About",
     "title": "About – Ahmad Fadhilah Mappisara",
-    "description": "Meet Ahmad Fadhilah Mappisara, Software Engineer from Asia/Jakarta",
+    "description": "Meet Ahmad Fadhilah Mappisara, Software Engineer from Indonesia.",
+
     "tableOfContent": {
       "display": true,
       "subItems": false
     },
+
     "avatar": {
       "display": true
     },
+
     "calendar": {
-      "display": true,
+      "display": false,
       "link": "https://cal.com"
     },
+
     "intro": {
       "display": true,
       "title": "Introduction",
-      "description": "Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology."
+      "description": "I build systems and applications focused on scalability, infrastructure, cybersecurity, automation, and product engineering. My interests span fullstack development, networking, OSINT, distributed systems, and experimental developer tools."
     },
+
     "work": {
       "display": true,
-      "title": "Work Experience",
+      "title": "Projects & Experience",
+
       "experiences": [
         {
-          "company": "FLY",
-          "timeframe": "2022 - Present",
-          "role": "Senior Design Engineer",
+          "company": "SurveyScout",
+          "timeframe": "2025 - Present",
+          "role": "Fullstack Engineer",
+
           "achievements": [
-            "Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.",
-            "Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster."
+            "Built a survey and analytics platform focused on extracting actionable insights from public responses.",
+            "Designed dashboard systems, survey pipelines, and data visualization workflows.",
+            "Developed scalable product architecture using modern frontend and backend technologies."
           ],
+
           "images": [
             {
-              "src": "/images/projects/project-01/cover-01.jpg",
-              "alt": "Once UI Project",
+              "src": "/images/projects/surveyscout/cover.jpg",
+              "alt": "SurveyScout Dashboard",
               "width": 16,
               "height": 9
             }
           ]
         },
+
         {
-          "company": "Creativ3",
-          "timeframe": "2018 - 2022",
-          "role": "Lead Designer",
+          "company": "BEM ITS",
+          "timeframe": "2023 - 2026",
+          "role": "Minister of Action & Propaganda",
+
           "achievements": [
-            "Developed a design system that unified the brand across multiple platforms, improving design consistency by 40%.",
-            "Led a cross-functional team to launch a new product line, contributing to a 15% increase in overall company revenue."
+            "Led strategic media and campaign coordination initiatives across organizational movements.",
+            "Managed communication workflows, publication systems, and execution strategies.",
+            "Directed creative and technical collaboration across multiple divisions."
           ],
+
           "images": []
         }
       ]
     },
+
     "studies": {
       "display": true,
       "title": "Studies",
+
       "institutions": [
         {
           "name": "Institut Teknologi Sepuluh Nopember (ITS)",
-          "description": "Studied software engineering."
-        },
-        {
-          "name": "Build the Future",
-          "description": "Studied online marketing and personal branding."
+          "description": "Focused on software engineering, networking, cybersecurity, and distributed systems."
         }
       ]
     },
+
     "technical": {
       "display": true,
-      "title": "Technical skills",
+      "title": "Technical Skills",
+
       "skills": [
         {
-          "title": "Figma",
-          "description": "Able to prototype in Figma with Once UI with unnatural speed.",
+          "title": "Fullstack Engineering",
+
+          "description": "Building scalable web applications, dashboards, APIs, and modern digital products.",
+
           "tags": [
-            { "name": "Figma", "icon": "figma" }
-          ],
-          "images": [
-            {
-              "src": "/images/projects/project-01/cover-02.jpg",
-              "alt": "Project image",
-              "width": 16,
-              "height": 9
-            },
-            {
-              "src": "/images/projects/project-01/cover-03.jpg",
-              "alt": "Project image",
-              "width": 16,
-              "height": 9
-            }
+            { "name": "TypeScript", "icon": "typescript" },
+            { "name": "React", "icon": "react" },
+            { "name": "Next.js", "icon": "nextjs" },
+            { "name": "TailwindCSS", "icon": "tailwindcss" },
+            { "name": "Firebase", "icon": "firebase" }
           ]
         },
+
         {
-          "title": "Next.js",
-          "description": "Building next gen apps with Next.js + Once UI + Supabase.",
+          "title": "Infrastructure & Networking",
+
+          "description": "Working with Linux systems, networking environments, deployment workflows, and infrastructure experiments.",
+
           "tags": [
-            { "name": "JavaScript", "icon": "javascript" },
-            { "name": "Next.js", "icon": "nextjs" },
-            { "name": "Supabase", "icon": "supabase" }
-          ],
-          "images": [
-            {
-              "src": "/images/projects/project-01/cover-04.jpg",
-              "alt": "Project image",
-              "width": 16,
-              "height": 9
-            }
+            { "name": "Linux", "icon": "terminal" },
+            { "name": "Docker", "icon": "docker" },
+            { "name": "GNS3", "icon": "network" },
+            { "name": "Networking", "icon": "router" }
+          ]
+        },
+
+        {
+          "title": "Security & Research",
+
+          "description": "Exploring OSINT, automation workflows, system analysis, and experimental security tooling.",
+
+          "tags": [
+            { "name": "OSINT", "icon": "shield" },
+            { "name": "Automation", "icon": "gear" },
+            { "name": "Security", "icon": "lock" },
+            { "name": "Research", "icon": "search" }
           ]
         }
       ]
     }
   },
+
   "blog": {
     "path": "/blog",
     "label": "Blog",
-    "title": "Writing about design and tech...",
-    "description": "Read what Ahmad Fadhilah Mappisara has been up to recently"
+    "title": "Engineering & Systems Notes",
+    "description": "Thoughts and experiments by Ahmad Fadhilah Mappisara."
   },
+
   "work": {
     "path": "/work",
-    "label": "Work",
+    "label": "Projects",
     "title": "Projects – Ahmad Fadhilah Mappisara",
-    "description": "Design and dev projects by Ahmad Fadhilah Mappisara"
+    "description": "Projects focused on applications, infrastructure, cybersecurity, and scalable systems."
   },
+
   "gallery": {
     "path": "/gallery",
     "label": "Gallery",
-    "title": "Photo gallery – Ahmad Fadhilah Mappisara",
-    "description": "A photo collection by Ahmad Fadhilah Mappisara",
-    "images": [
-      { "src": "/images/gallery/horizontal-1.jpg", "alt": "image", "orientation": "horizontal" },
-      { "src": "/images/gallery/vertical-4.jpg", "alt": "image", "orientation": "vertical" },
-      { "src": "/images/gallery/horizontal-3.jpg", "alt": "image", "orientation": "horizontal" },
-      { "src": "/images/gallery/vertical-1.jpg", "alt": "image", "orientation": "vertical" },
-      { "src": "/images/gallery/vertical-2.jpg", "alt": "image", "orientation": "vertical" },
-      { "src": "/images/gallery/horizontal-2.jpg", "alt": "image", "orientation": "horizontal" },
-      { "src": "/images/gallery/horizontal-4.jpg", "alt": "image", "orientation": "horizontal" },
-      { "src": "/images/gallery/vertical-3.jpg", "alt": "image", "orientation": "vertical" }
-    ]
+    "title": "Gallery – Ahmad Fadhilah Mappisara",
+    "description": "A collection of moments, systems, projects, and experiments.",
+    "images": []
   }
 }

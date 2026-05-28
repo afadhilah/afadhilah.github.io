@@ -1,0 +1,170 @@
+---
+title: "MoTix - Movie Ticket Booking App"
+subtitle: "Aplikasi mobile lengkap untuk pembelian tiket film, jadwal, dan review."
+summary: "MoTix adalah aplikasi Flutter untuk pemesanan tiket bioskop dengan fitur autentikasi, manajemen tiket, ulasan film, dan integrasi Firebase."
+image: "/images/home_page_1.png"
+publishedAt: "2026-05-28"
+tag: "Flutter, Firebase, Mobile App"
+team:
+  - Yosua Hares (5025221270)
+  - Ahmad Fadhilah Mappisara (5025221195)
+  - Muhammad Alfan Mahdi (5025221275)
+---
+
+<Row gap="16" vertical="center" marginBottom="24">
+  <Icon name="deviceMobile" size="l" />
+  <Column gap="4">
+    <Text variant="heading-strong-l">MoTix</Text>
+    <Text variant="body-default-m" onBackground="neutral-weak">
+      Mobile Programming Project
+    </Text>
+  </Column>
+</Row>
+
+<Text variant="body-default-l" marginBottom="16" onBackground="neutral-medium">
+  MoTix adalah aplikasi *mobile* terintegrasi yang dirancang untuk memberikan pengalaman komprehensif dalam menjelajahi dan memesan tiket film bioskop. Aplikasi ini menjadi solusi *all-in-one* bagi penikmat film, menyediakan akses ke data film secara *real-time* yang ditarik menggunakan The Movie Database (TMDB) API (RESTful), mulai dari sinopsis, poster, tanggal tayang, hingga rating. 
+</Text>
+
+<Text variant="body-default-l" marginBottom="24" onBackground="neutral-medium">
+  Lebih dari sekadar direktori film, MoTix memiliki kapabilitas transaksi pengelolaan tiket bioskop yang interaktif (termasuk pemilihan kursi dan generasi QR Code), manajemen daftar tontonan (Watchlist) yang tersinkronisasi ke cloud, dan ekosistem komunitas melalui fitur Ulasan (Review) pengguna.
+</Text>
+
+<Row gap="12" marginBottom="32">
+  <Button variant="primary" size="s" prefixIcon="github" href="#">
+    View Repository
+  </Button>
+  <Button variant="secondary" size="s" prefixIcon="openLink" href="https://api.themoviedb.org/3">
+    TMDB API
+  </Button>
+</Row>
+
+---
+
+## 🛠 Tech Stack & Bahasa Pemrograman
+
+Proyek ini menggunakan **Dart** sebagai bahasa pemrograman utama yang merender UI/UX lewat *framework* **Flutter**. Di sisi *backend*, proyek ini sepenuhnya bertumpu pada **Firebase** sebagai layanan *Backend-as-a-Service* (BaaS), sehingga tidak memerlukan server khusus independen.
+
+<Grid columns="2" gap="16" marginBottom="32">
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Framework & UI</Text>
+    <Column gap="8">
+      <Text variant="body-default-s">• Flutter SDK ^3.7.2</Text>
+      <Text variant="body-default-s">• Cupertino Icons</Text>
+    </Column>
+  </Card>
+  
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Backend & Database (Firebase)</Text>
+    <Column gap="8">
+      <Text variant="body-default-s">• Firebase Core</Text>
+      <Text variant="body-default-s">• Cloud Firestore (Database)</Text>
+      <Text variant="body-default-s">• Firebase Auth</Text>
+      <Text variant="body-default-s">• Cloud Functions</Text>
+    </Column>
+  </Card>
+
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Analytics & Performance</Text>
+    <Column gap="8">
+      <Text variant="body-default-s">• Firebase Crashlytics</Text>
+      <Text variant="body-default-s">• Firebase Analytics</Text>
+    </Column>
+  </Card>
+
+  <Card padding="24" radius="l" border="neutral-alpha-weak" direction="column" gap="12">
+    <Text variant="heading-strong-s">Utilities</Text>
+    <Column gap="8">
+      <Text variant="body-default-s">• HTTP (API Requests)</Text>
+      <Text variant="body-default-s">• QR Flutter (QR Code generation)</Text>
+      <Text variant="body-default-s">• URL Launcher</Text>
+      <Text variant="body-default-s">• UUID</Text>
+    </Column>
+  </Card>
+</Grid>
+
+---
+
+## ✨ Fitur Utama Terspesifikasi
+
+<Table
+  marginBottom="32"
+  data={{
+    headers: [
+      { content: "Fitur", key: "feature" },
+      { content: "Mekanisme Detail & Fungsionalitas", key: "desc" }
+    ],
+    rows: [
+      ["Authentication", "Menggunakan Firebase Auth untuk proses Register dan Login yang aman. Membantu identifikasi entitas pengguna dalam interaksi dengan database (Watchlist & Review)."],
+      ["Home / Dashboard", "Menyajikan list film hasil *fetching* REST API (The Movie Database - TMDB) dalam kategori film yang sedang populer atau sedang dirilis lengkap dengan poster reponsif."],
+      ["Movie Details Page", "Halaman yang secara dinamis di-render berdasarkan ID Film, menampilkan metrik spesifik, sinopsis panjang, jadwal pemutaran asinkron, dan daftar ulasan terkait film tersebut."],
+      ["Sistem Beli Tiket & Seat Selection", "Fitur interaktif yang memungkinkan user memilih spot kursi spesifik secara visual. Setiap tiket yang dibeli akan didokumentasikan ke sistem beserta UUID dan QR Code hash."],
+      ["Watchlist (CRUD)", "Akses personal untuk *user* menyimpan film yang diantisipasi ke dalam daftar tontonan yang persisten, melakukan Insert, Read, maupun Delete record pada Cloud Firestore."],
+      ["User Reviews (CRUD)", "Fitur interaksi dua arah di mana pengguna tidak hanya mengkonsumsi konten informasi tapi juga ikut memposting *Review text* unik pada objek Movie (Insert) dan membacanya (Read)."],
+    ]
+  }}
+/>
+
+---
+
+## 📐 Arsitektur & Desain
+
+<AccordionGroup>
+  <Accordion title="Arsitektur Sistem (Serverless BaaS)">
+    <Text variant="body-default-m" onBackground="neutral-medium" marginBottom="16">
+      Aplikasi ini mengadopsi pola arsitektur **Serverless** via *Backend-as-a-Service* (BaaS). Di sisi klien (Client-Side), *app mobile* di-develop menggunakan **Dart/Flutter**. Klien berinteraksi menggunakan <i>SDK native</i> langsung ke Cloud Firestore & Firebase Auth tanpa adanya perantara *custom backend*. Selain itu, di sisi klien juga terdapat pemrosesan instruksi HTTP Request eksternal via REST API berbentuk data asinkron (komunikasi JSON) ke TMDB API. Semua pemrosesan data rill-time difasilitasi oleh arsitektur *event-driven* Firebase.
+    </Text>
+    <Media
+      src="/images/system_architecture.jpg"
+      alt="Diagram Arsitektur Sistem"
+      aspectRatio="16/9"
+      radius="m"
+      border="neutral-alpha-weak"
+      enlarge
+    />
+  </Accordion>
+
+  <Accordion title="Use Case Diagram">
+    <Media
+      src="/images/use_case_diagram.png"
+      alt="Use Case Diagram"
+      aspectRatio="16/9"
+      radius="m"
+      border="neutral-alpha-weak"
+      enlarge
+    />
+  </Accordion>
+
+  <Accordion title="Activity Diagram">
+    <Media
+      src="/images/activity_diagram.jpg"
+      alt="Activity Diagram"
+      aspectRatio="16/9"
+      radius="m"
+      border="neutral-alpha-weak"
+      enlarge
+    />
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 🎨 UI & Screens
+
+<Grid columns="2" gap="16" marginBottom="32">
+  <Column gap="8">
+    <Media src="/images/login_page.png" alt="Login Page" aspectRatio="9/19" radius="m" border="neutral-alpha-weak" enlarge />
+    <Text variant="label-default-s" horizontal="center">Halaman Login</Text>
+  </Column>
+  <Column gap="8">
+    <Media src="/images/register_page.png" alt="Register Page" aspectRatio="9/19" radius="m" border="neutral-alpha-weak" enlarge />
+    <Text variant="label-default-s" horizontal="center">Halaman Register</Text>
+  </Column>
+  <Column gap="8">
+    <Media src="/images/home_page_1.png" alt="Home Page" aspectRatio="9/19" radius="m" border="neutral-alpha-weak" enlarge />
+    <Text variant="label-default-s" horizontal="center">Home Page (Now Playing)</Text>
+  </Column>
+  <Column gap="8">
+    <Media src="/images/popular_movies_page.png" alt="Popular Movies" aspectRatio="9/19" radius="m" border="neutral-alpha-weak" enlarge />
+    <Text variant="label-default-s" horizontal="center">Popular Movies</Text>
+  </Column>
+</Grid>
