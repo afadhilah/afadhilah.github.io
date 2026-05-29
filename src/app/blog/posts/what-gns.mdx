@@ -1,0 +1,129 @@
+---
+title: "What GNS3 Taught Me About Real Systems"
+publishedAt: "2026-05-30"
+summary: "Learning networking through GNS3 changed the way I think about software engineering, infrastructure, and how real systems behave outside the IDE."
+tag: "Engineering"
+---
+
+## Introduction
+
+When I first started using GNS3, I treated it as a networking tool and nothing more. My goal was fairly simple: complete networking assignments, understand routing protocols, and learn enough infrastructure concepts to pass courses that required them. At the time, most of my attention was still focused on application development. The projects I enjoyed building were web applications, dashboards, APIs, and automation tools. Networking felt like a completely separate discipline that happened to be part of the curriculum.
+
+***Looking back, that assumption turned out to be wrong.***
+
+The more time I spent building network topologies, troubleshooting connectivity issues, and simulating infrastructure environments, the more I realized that networking was exposing something that application development often hides. Modern software is rarely just software. What users perceive as a single product is usually a collection of interconnected systems that depend on each other in ways that are not immediately obvious. An application might have excellent code, a clean interface, and a well-designed database, yet still fail because of problems that exist entirely outside the application itself.
+
+That realization changed the way I think about engineering. GNS3 taught me networking concepts, but more importantly, it taught me how to think about systems.
+
+## The Difference Between Building Software and Building Systems
+
+Before spending serious time with GNS3, most of my projects followed a familiar pattern. There was a frontend, a backend, and a database. If all three components were working correctly, I considered the system complete. Performance problems were usually blamed on inefficient code. Failures were usually assumed to be bugs. The boundaries of the project felt relatively clear.
+
+Working with networking simulations challenged that perspective almost immediately.
+
+A topology could appear perfectly correct while still refusing to work. Interfaces might be configured properly, IP addresses might be assigned correctly, and routing protocols might appear healthy, yet communication could still fail somewhere along the path. The difficult part was that the symptoms often appeared far away from the actual problem. A server that looked unreachable might not have a server issue at all. The root cause could be a routing table, an interface configuration, a missing route advertisement, or a simple addressing mistake made several devices away.
+
+That was one of the first times I encountered a system where understanding individual components was not enough. Every component could be functioning correctly on its own while the overall system remained broken.
+
+The distinction sounds subtle, but it fundamentally changed how I approach technical problems. Building software often focuses attention on components. Building systems forces attention toward interactions.
+
+## Why Troubleshooting Became More Interesting Than Configuration
+
+One of the most unexpected lessons from GNS3 was that troubleshooting taught me far more than configuration itself.
+
+Configuring a routing protocol is a relatively straightforward process once the commands are understood. The real challenge begins when the network behaves differently than expected. In those moments, documentation becomes less useful than reasoning. Instead of asking what command should be entered next, the more important question becomes why the system is behaving the way it is.
+
+I began noticing that many debugging sessions followed a similar pattern. The initial explanation was usually wrong. The first assumption rarely survived more than a few minutes of investigation. A problem that appeared to originate from one device often turned out to be caused by something several hops away. The more complex the topology became, the less reliable intuition alone seemed to be.
+
+Eventually I stopped trying to guess solutions and started tracing evidence instead. What information is available? Where does communication stop? What assumptions am I making? Which of those assumptions have actually been verified?
+
+That habit carried over into software development as well. Some of the most frustrating bugs I have encountered in applications followed exactly the same pattern as networking failures. The symptoms pointed in one direction while the root cause existed somewhere else entirely. Learning to investigate systems methodically turned out to be more valuable than memorizing commands.
+
+## Understanding Complexity Through OSPF
+
+Among all the networking concepts I encountered, OSPF was probably one of the most influential. At first it seemed like another technical topic that existed purely within the networking world. The more I worked with it, however, the more I began seeing parallels with software architecture.
+
+Static routes make perfect sense in small environments. When there are only a few routers and a limited number of networks, manually defining routes is simple and predictable. As the topology grows, that simplicity disappears. Every new connection increases the amount of information that must be maintained. Every change introduces opportunities for mistakes. Eventually the operational overhead becomes larger than the original problem.
+
+What fascinated me about OSPF was not the protocol itself, but the idea behind it. Rather than forcing administrators to manually maintain every route, the system continuously exchanges information and builds an understanding of the network automatically. Complexity still exists, but it is managed differently.
+
+That same principle appears repeatedly in software engineering. Well-designed systems reduce the amount of manual coordination required to keep them running. Good abstractions exist because complexity eventually becomes too expensive to manage directly. Whether the problem involves routing information, deployment processes, authentication flows, or application state, the underlying lesson remains surprisingly similar: complexity does not disappear, but it can be organized in ways that make it manageable.
+
+## The Moment Infrastructure Became Real
+
+Networking felt academic until I started deploying actual services inside simulated environments.
+
+The moment servers, applications, load balancers, and testing tools entered the picture, the focus shifted dramatically. The objective was no longer to make devices communicate. The objective became making systems function reliably under realistic conditions.
+
+Questions that rarely appeared in smaller software projects suddenly became important. What happens if traffic increases significantly? Which component becomes the bottleneck first? How does the system behave when a service becomes unavailable? What assumptions are being made about connectivity, latency, or resource availability?
+
+These questions moved the discussion away from implementation details and toward architecture. Instead of evaluating individual components, I found myself evaluating relationships between components. The quality of a system was no longer determined solely by whether each piece worked independently. It depended on whether the entire collection of pieces continued working together under changing conditions.
+
+That perspective made engineering feel significantly more interesting. The challenge was no longer writing functionality. The challenge was understanding how functionality behaved within a larger environment.
+
+## Performance Is a System Property
+
+One lesson that repeatedly surfaced during testing was that performance problems are rarely owned by a single component.
+
+Early in my development experience, I tended to associate performance issues directly with code quality. Slow applications were assumed to contain inefficient queries, expensive computations, or poorly optimized algorithms. While those factors certainly matter, infrastructure work revealed a much broader picture.
+
+<Table
+  data={{
+    headers: [
+      { content: "Area", key: "area" },
+      { content: "Potential Impact", key: "impact" }
+    ],
+    rows: [
+      [
+        "Application Layer",
+        "Inefficient business logic, expensive queries, or excessive processing"
+      ],
+      [
+        "Database Layer",
+        "Slow lookups, indexing issues, or poor schema design"
+      ],
+      [
+        "Network Layer",
+        "Latency, routing inefficiencies, packet loss, or congestion"
+      ],
+      [
+        "Infrastructure Layer",
+        "Resource constraints, CPU saturation, or memory limitations"
+      ],
+      [
+        "Architecture Layer",
+        "Poor distribution of workloads or unnecessary dependencies"
+      ]
+    ]
+  }}
+/>
+
+What became increasingly clear was that performance emerges from interactions across the entire system. A perfectly optimized application can still feel slow if it depends on unstable infrastructure. Likewise, strong infrastructure cannot compensate for inefficient software forever. Understanding performance therefore requires understanding the relationships between layers rather than examining each layer independently.
+
+This realization also changed the way I think about optimization. The goal is not necessarily to optimize everything. The goal is to identify where improvements will actually matter.
+
+## Why Real Systems Rarely Look Like Diagrams
+
+Architecture diagrams are useful because they simplify reality. They highlight important relationships while hiding unnecessary details. The problem is that real systems eventually accumulate those hidden details anyway.
+
+The longer I worked on technical projects, the more obvious this became. Every system starts with a clean design. The architecture diagram is understandable. The responsibilities are clearly separated. The flow of information appears logical.
+
+Then reality intervenes.
+
+Requirements change. New features appear. Constraints emerge. Deadlines force compromises. Infrastructure evolves. Teams make decisions that are reasonable at the time but difficult to revisit later.
+
+Months later, the system still works, but it rarely resembles the original diagram.
+
+GNS3 exposed this dynamic surprisingly well. Even relatively small topologies could become difficult to reason about once enough devices, protocols, and dependencies were introduced. The challenge was never eliminating complexity entirely. The challenge was keeping complexity understandable.
+
+That lesson continues to influence how I approach software projects. Good engineering is not about creating perfect systems. It is about creating systems that remain understandable after they stop being perfect.
+
+## Final Thoughts
+
+I originally approached GNS3 expecting to learn networking. What I gained was a different way of thinking about engineering.
+
+It taught me that failures often originate far away from where they appear. It taught me that debugging is largely an exercise in questioning assumptions. It taught me that complexity grows naturally and must be managed deliberately. Most importantly, it taught me that software is only one layer within a much larger ecosystem of systems, infrastructure, and dependencies.
+
+Today, when I work on applications, I find myself thinking about architecture much earlier than I used to. Questions about scalability, observability, deployment, reliability, and system interactions feel just as important as questions about features or implementation details. That shift in perspective did not come from reading architecture books or studying large-scale systems. It started with routers, routing tables, and a networking simulator that turned out to be teaching much more than networking.
+
+The most valuable technical lessons are often the ones that change how we think rather than what we know. For me, GNS3 was one of those lessons.

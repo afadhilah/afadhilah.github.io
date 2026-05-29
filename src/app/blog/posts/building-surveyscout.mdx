@@ -1,0 +1,169 @@
+---
+title: "Building SurveyScout: From Idea to Architecture"
+subtitle: "How a simple survey idea slowly turned into a system design problem."
+summary: "Some notes about building SurveyScout, designing analytics workflows, and learning why architecture matters more than features."
+image: "/images/projects/surveyscout/dashboard.png"
+publishedAt: "2026-05-30"
+---
+
+## Overview
+SurveyScout originally started from a very simple idea. I noticed that most surveys only stop at data collection. People create forms, gather responses, export spreadsheets, then manually try to understand everything afterward. The problem wasn’t collecting responses. The difficult part was turning responses into something meaningful. That was the starting point.
+
+---
+
+## The First Version Was Extremely Simple
+
+At the beginning, SurveyScout was basically just:
+- form input,
+- response storage,
+- and a basic dashboard.
+
+Nothing complicated.
+
+Like most side projects, I initially focused too much on making features work quickly:
+- authentication,
+- survey creation,
+- response submission,
+- charts,
+- and frontend UI.
+
+It worked, but the structure became messy very fast.
+
+As the project grew, I started running into problems:
+- duplicated logic,
+- difficult state management,
+- inconsistent data structures,
+- and frontend components that became harder to maintain.
+
+That was probably the moment I realized building products is mostly about managing complexity.
+
+---
+
+## Thinking Beyond the Interface
+
+At first I spent a lot of time thinking about UI.
+
+Eventually I became more interested in the systems behind it:
+- how responses should be processed,
+- how analytics should be structured,
+- how dashboards should scale,
+- and how data should flow between services.
+
+The project slowly shifted from:
+> “How do I build this page?”
+to:
+> “How should this system actually work?”
+
+That mindset changed almost everything.
+
+---
+
+## Designing the Data Flow
+
+One of the biggest lessons from building SurveyScout was understanding how important data flow is.
+
+When systems become larger, unclear data structures quickly become a problem.
+
+I started rethinking:
+- response pipelines,
+- database structure,
+- dashboard rendering,
+- and frontend/backend communication.
+
+Instead of directly connecting everything together, I tried separating responsibilities more clearly.
+
+For example:
+- survey creation,
+- response processing,
+- analytics generation,
+- and visualization
+
+all became independent concerns.
+
+That made the project much easier to reason about later.
+
+---
+
+## Building Dashboards Is Harder Than It Looks
+
+Dashboards seem simple until you actually build one.
+
+The difficult part is not rendering charts.
+
+The difficult part is:
+- structuring data efficiently,
+- handling large responses,
+- making everything reactive,
+- and keeping the interface understandable.
+
+I spent more time restructuring data than designing UI.
+
+Especially when experimenting with:
+- filtering systems,
+- response aggregation,
+- dynamic charts,
+- and analytics summaries.
+
+Most problems were not frontend problems.
+
+They were architecture problems.
+
+---
+
+## Side Projects Teach Different Things
+
+One thing I like about side projects is that they expose weaknesses very quickly.
+
+When building SurveyScout, I realized I still lacked understanding in many areas:
+- system design,
+- scalability,
+- deployment workflows,
+- maintainability,
+- and project structure.
+
+But that’s also what made the process interesting.
+
+Every time the project became harder to manage, I learned something new about engineering.
+
+Not from tutorials, but from trying to fix real problems inside the project itself.
+
+---
+
+## Simplicity Became More Important
+
+Earlier versions of SurveyScout were much more complicated.
+
+Too many components, too many abstractions, too many unnecessary ideas.
+
+Over time I started removing things instead of adding more.
+
+I realized simpler systems are easier to:
+- maintain,
+- debug,
+- scale,
+- and improve long-term.
+
+Now whenever I build something new, I try to ask:
+> “Does this actually make the system better, or just more complicated?”
+
+That question saves a lot of time.
+
+---
+
+## Final Thoughts
+
+SurveyScout started as a small experiment.
+
+But somewhere during the process, it became less about surveys and more about learning how systems are designed.
+
+It taught me:
+- how architecture affects development,
+- why maintainability matters,
+- how complexity grows,
+- and why engineering decisions become more important as projects evolve.
+
+The project is still growing, and there are still many things I want to improve.
+
+But looking back, the most valuable part was never the final product.
+
+It was everything learned while building it.

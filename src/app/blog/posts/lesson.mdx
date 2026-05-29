@@ -1,0 +1,150 @@
+---
+title: "Lessons Learned Building Systems as a Student Engineer"
+subtitle: "Beberapa hal yang saya pelajari dari membangun project, debugging sistem, dan menghabiskan terlalu banyak waktu di terminal."
+summary: "Catatan tentang membangun aplikasi, memahami sistem, belajar networking, dan kenapa side project sering mengajarkan lebih banyak dibanding tugas kuliah."
+image: "/images/gallery/horizontal-2.jpg"
+publishedAt: "2026-05-30"
+tag: "Engineering"
+---
+
+Waktu pertama kali belajar ngoding, saya pikir tujuan akhirnya cuma bikin aplikasi yang “jalan”.
+
+Selama tombol bisa diklik, API berhasil return data, dan project bisa dipresentasikan sebelum deadline, rasanya sudah cukup.
+
+Ternyata tidak sesederhana itu.
+
+Semakin sering bikin project, saya mulai sadar kalau bagian paling sulit bukan menulis code, tapi menjaga sistem tetap masuk akal ketika project mulai berkembang.
+
+Folder mulai berantakan, dependency makin banyak, backend mulai susah dipahami, deployment bermasalah, dan satu perubahan kecil bisa merusak semuanya.
+
+Dari situ saya mulai lebih tertarik ke cara sistem dibangun dibanding sekadar menyelesaikan fitur.
+
+---
+
+## Banyak Hal Dipelajari Saat Sistem Rusak
+
+Tutorial biasanya menunjukkan kondisi ideal.
+
+Semua dependency compatible, semua command berhasil dijalankan, dan project terlihat rapi.
+
+Realitanya jauh berbeda.
+
+Sebagian besar hal yang saya pelajari justru datang dari:
+- container yang gagal connect,
+- routing yang aneh,
+- deployment error,
+- konfigurasi networking yang salah,
+- atau backend yang tiba-tiba crash tanpa alasan jelas.
+
+Terutama waktu mulai eksplor:
+- GNS3,
+- Linux environment,
+- deployment workflow,
+- load balancing,
+- dan backend systems.
+
+Kadang satu error bisa menghabiskan waktu berjam-jam hanya untuk menemukan ternyata ada satu konfigurasi kecil yang salah.
+
+Melelahkan, tapi dari situ biasanya pemahaman mulai terbentuk.
+
+---
+
+## Side Project Mengajarkan Banyak Hal
+
+Kuliah membantu memahami dasar.
+
+Tapi sebagian besar pengalaman engineering yang benar-benar terasa “real” justru datang dari side project.
+
+Karena di situ tidak ada step-by-step yang jelas.
+
+Kita dipaksa:
+- mencari solusi sendiri,
+- membaca dokumentasi,
+- debugging,
+- mencoba ulang,
+- dan memahami bagaimana sistem sebenarnya bekerja.
+
+Saya mulai lebih memahami banyak hal setelah mencoba membangun project yang lebih kompleks:
+- dashboard analytics,
+- sistem survey,
+- networking simulation,
+- backend services,
+- dan berbagai eksperimen kecil lainnya.
+
+Bukan karena project-nya sempurna, tapi karena prosesnya memaksa saya belajar banyak hal di luar teori.
+
+---
+
+## Simplicity > Overengineering
+
+Dulu saya sering berpikir semakin banyak teknologi yang dipakai berarti project semakin bagus.
+
+Semakin lama, saya malah lebih menghargai sistem yang sederhana.
+
+Project yang:
+- mudah dipahami,
+- gampang di-maintain,
+- tidak terlalu banyak abstraction,
+- dan tidak penuh buzzword.
+
+Karena ketika project mulai besar, complexity cepat sekali jadi masalah.
+
+Sekarang saya lebih sering mencoba mengurangi hal yang tidak perlu dibanding terus menambah tools baru.
+
+---
+
+## Belajar Infrastructure Mengubah Cara Saya Melihat Software
+
+Sebelum belajar networking dan infrastructure, saya cuma fokus ke frontend dan backend.
+
+Setelah mulai belajar:
+- routing,
+- Linux,
+- container,
+- deployment,
+- dan distributed systems,
+
+cara saya melihat software berubah cukup banyak.
+
+Aplikasi bukan cuma soal UI dan API lagi.
+
+Tapi juga tentang:
+- bagaimana service saling berkomunikasi,
+- bagaimana sistem berjalan di environment nyata,
+- bagaimana scaling bekerja,
+- dan bagaimana failure bisa terjadi.
+
+Hal-hal seperti ini membuat proses membangun aplikasi terasa jauh lebih menarik.
+
+---
+
+## Tidak Semua Project Harus Jadi Startup
+
+Dulu saya sering merasa setiap project harus besar atau terlihat “wah”.
+
+Sekarang saya lebih menikmati project yang terasa meaningful.
+
+Kadang project kecil justru mengajarkan lebih banyak dibanding project besar yang terlalu ambisius.
+
+Beberapa project terbaik justru datang dari rasa penasaran sederhana:
+> “Kalau sistem ini dibuat seperti ini, hasilnya bagaimana?”
+
+Dan biasanya dari eksperimen kecil seperti itu muncul banyak pembelajaran baru.
+
+---
+
+## Final Thoughts
+
+Saya masih merasa sedang belajar.
+
+Masih banyak hal yang belum saya pahami, masih banyak sistem yang belum saya mengerti sepenuhnya.
+
+Tapi semakin sering membangun project, saya semakin sadar kalau engineering bukan cuma tentang menulis code.
+
+Lebih banyak tentang:
+- memahami sistem,
+- menyederhanakan complexity,
+- debugging,
+- dan membangun sesuatu yang benar-benar berguna.
+
+Dan sejauh ini, sebagian besar pembelajaran terbaik datang dari project yang awalnya cuma iseng dibuat.
